@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/tile.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/General/dark yellow tile.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/General/tan tile.png" type="Texture" id=3]
+
+[node name="tile" type="Node2D" groups=[
+"tile",
+]]
+scale = Vector2( 0.75, 0.75 )
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="occupied_sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.490196 )
+scale = Vector2( 0.13, 0.13 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.13, 0.13 )
+texture = ExtResource( 3 )
+
+[node name="debug" type="Label" parent="."]
+visible = false
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 13.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "idx"
+align = 1
+valign = 1
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]

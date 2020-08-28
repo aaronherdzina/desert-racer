@@ -1,0 +1,117 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Audio/Wind Ambience.wav" type="AudioStream" id=1]
+[ext_resource path="res://Audio/heavy wind.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Untitled - 5_21_20, 5.44 PM.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/sci fi chords - 5_21_20, 4.41 PM.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/firey crash.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/fire ignite.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/slow burn.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/sci-fi-explosion.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/gritty engine.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/engine flutter.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/sci fi effect1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/sci fi effect2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/sci-fi-impact.wav" type="AudioStream" id=13]
+[ext_resource path="res://Audio/sci-fi-explosion2.wav" type="AudioStream" id=14]
+[ext_resource path="res://Audio/Glitchy Sci-Fi Interface Hover 1.wav" type="AudioStream" id=15]
+[ext_resource path="res://Audio/card shuffle.wav" type="AudioStream" id=16]
+[ext_resource path="res://Audio/Sci-Fi Device 7.wav" type="AudioStream" id=17]
+
+[node name="sound_container" type="Node2D"]
+position = Vector2( 603.4, 351.696 )
+
+[node name="wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = -20.0
+
+[node name="heavy wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = -15.0
+pitch_scale = 0.8
+
+[node name="music 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+
+[node name="chords" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 10.0
+
+[node name="firey_crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.0
+
+[node name="fire_ignite" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = 5.0
+
+[node name="slow_burn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = 10.0
+
+[node name="sci-fi-crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = 4.0
+pitch_scale = 2.0
+
+[node name="tech_passby" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+
+[node name="engine_passby" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+pitch_scale = 0.6
+
+[node name="engine noise 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="engine noise 2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -15.0
+pitch_scale = 1.8
+
+[node name="no_effect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -5.0
+pitch_scale = 3.0
+
+[node name="sci_fi_effect 2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = -5.0
+pitch_scale = 1.6
+
+[node name="impact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+pitch_scale = 1.3
+
+[node name="large explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+volume_db = 5.0
+pitch_scale = 0.7
+
+[node name="impact_quick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 31.032, 3.448 )
+stream = ExtResource( 13 )
+pitch_scale = 2.0
+
+[node name="card swipe" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 31.032, 3.448 )
+stream = ExtResource( 15 )
+
+[node name="card shuffle" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 31.032, 3.448 )
+stream = ExtResource( 16 )
+pitch_scale = 0.9
+
+[node name="sci fi select" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 31.032, 3.448 )
+stream = ExtResource( 17 )
+pitch_scale = 2.0
+
+[node name="sci fi select2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 31.032, 3.448 )
+stream = ExtResource( 17 )
+pitch_scale = 0.7

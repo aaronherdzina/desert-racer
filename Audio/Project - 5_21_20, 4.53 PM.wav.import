@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Project - 5_21_20, 4.53 PM.wav-effe378d9fad30b63d634969d0ee99c3.sample"
+
+[deps]
+
+source_file="res://Audio/Project - 5_21_20, 4.53 PM.wav"
+dest_files=[ "res://.import/Project - 5_21_20, 4.53 PM.wav-effe378d9fad30b63d634969d0ee99c3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

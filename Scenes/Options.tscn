@@ -1,0 +1,725 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/UI/Options.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/General/darkBlueBox.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Options" type="Node"]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="cont1" type="Node2D" parent="." index="0"]
+
+pause_mode = 2
+z_index = 4096
+_sections_unfolded = [ "Z Index" ]
+
+[node name="background" type="Sprite" parent="cont1" index="0"]
+
+pause_mode = 2
+modulate = Color( 0, 0, 0, 0.823529 )
+position = Vector2( 578.632, 451.069 )
+scale = Vector2( 22, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Control" type="Control" parent="cont1" index="1"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -407.0
+margin_top = 351.0
+margin_right = -121.0
+margin_bottom = 436.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Hint", "Margin", "Rect" ]
+
+[node name="Container" type="Container" parent="cont1/Control" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1919.0
+margin_bottom = 225.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="Fullscreen" type="Button" parent="cont1/Control/Container" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 878.0
+margin_top = 64.0
+margin_right = 1028.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Fullscreen"
+flat = false
+align = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="CheckBox" type="CheckBox" parent="cont1/Control/Container/Fullscreen" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 150.0
+margin_right = 174.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="btn" type="Area2D" parent="cont1/Control/Container/Fullscreen" index="1"]
+
+pause_mode = 2
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="btn col" type="CollisionShape2D" parent="cont1/Control/Container/Fullscreen/btn" index="0"]
+
+pause_mode = 2
+position = Vector2( 74.7, 12.3 )
+scale = Vector2( 7.42308, 1.5 )
+shape = SubResource( 1 )
+
+[node name="height" type="LineEdit" parent="cont1/Control/Container" index="1"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 963.0
+margin_top = 119.0
+margin_right = 1021.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "1080"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="width" type="LineEdit" parent="cont1/Control/Container" index="2"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 883.0
+margin_top = 119.0
+margin_right = 941.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "1920"
+align = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="Resolution" type="Label" parent="cont1/Control/Container" index="3"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 885.0
+margin_top = 99.0
+margin_right = 1020.0
+margin_bottom = 113.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Resolution"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin" ]
+
+[node name="widthXHeight" type="Label" parent="cont1/Control/Container" index="4"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 882.0
+margin_top = 119.0
+margin_right = 1022.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "x"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="keepResolutionChanges" type="Button" parent="cont1/Control/Container" index="5"]
+
+pause_mode = 2
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 880.0
+margin_top = 149.0
+margin_right = 1024.0
+margin_bottom = 197.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Keep Changes"
+flat = false
+align = 1
+
+[node name="audio" type="Container" parent="cont1/Control/Container" index="6"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="HSlider" type="HSlider" parent="cont1/Control/Container/audio" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1079.0
+margin_top = 99.0
+margin_right = 1322.0
+margin_bottom = 115.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = -100.0
+max_value = 100.0
+step = 0.1
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = true
+editable = true
+tick_count = 100
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="Label" type="Label" parent="cont1/Control/Container/audio" index="1"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1176.0
+margin_top = 75.0
+margin_right = 1225.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="MuteButton" type="Button" parent="cont1/Control/Container/audio" index="2"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1085.0
+margin_top = 74.0
+margin_right = 1130.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Mute"
+flat = false
+align = 1
+
+[node name="btn" type="Area2D" parent="cont1/Control/Container/audio/MuteButton" index="0"]
+
+pause_mode = 2
+position = Vector2( -1.57503, -0.300003 )
+scale = Vector2( 0.30078, 0.8375 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="btn col" type="CollisionShape2D" parent="cont1/Control/Container/audio/MuteButton/btn" index="0"]
+
+pause_mode = 2
+position = Vector2( 74.7, 12.3 )
+scale = Vector2( 7.42308, 1.5 )
+shape = SubResource( 1 )
+
+[node name="CheckBox" type="CheckBox" parent="cont1/Control/Container/audio" index="3"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1138.0
+margin_top = 72.0
+margin_right = 1162.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+
+[node name="vol down" type="Button" parent="cont1/Control/Container/audio" index="4"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1087.0
+margin_top = 118.0
+margin_right = 1123.0
+margin_bottom = 138.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "<<<"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="btn" type="Area2D" parent="cont1/Control/Container/audio/vol down" index="0"]
+
+pause_mode = 2
+position = Vector2( 0.5, 2 )
+scale = Vector2( 0.234374, 0.646485 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="btn col" type="CollisionShape2D" parent="cont1/Control/Container/audio/vol down/btn" index="0"]
+
+pause_mode = 2
+position = Vector2( 74.7, 12.3 )
+scale = Vector2( 7.42308, 1.5 )
+shape = SubResource( 1 )
+
+[node name="vol up" type="Button" parent="cont1/Control/Container/audio" index="5"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1276.0
+margin_top = 119.0
+margin_right = 1312.0
+margin_bottom = 139.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = ">>>"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="btn" type="Area2D" parent="cont1/Control/Container/audio/vol up" index="0"]
+
+pause_mode = 2
+position = Vector2( 0.5, 2.5 )
+scale = Vector2( 0.234374, 0.646485 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="btn col" type="CollisionShape2D" parent="cont1/Control/Container/audio/vol up/btn" index="0"]
+
+pause_mode = 2
+position = Vector2( 74.7, 12.3 )
+scale = Vector2( 7.42308, 1.5 )
+shape = SubResource( 1 )
+
+[node name="label2" type="Label" parent="cont1/Control/Container/audio" index="6"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1124.0
+margin_top = 119.0
+margin_right = 1276.0
+margin_bottom = 139.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "50"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Button" type="Button" parent="cont1/Control" index="1"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 751.0
+margin_top = 75.0
+margin_right = 827.0
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label" type="Label" parent="cont1/Control/Button" index="0"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 76.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Return"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btn" type="Area2D" parent="cont1/Control/Button" index="1"]
+
+pause_mode = 2
+position = Vector2( 3.25003, 6.10001 )
+scale = Vector2( 0.475, 1.60781 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="btn col" type="CollisionShape2D" parent="cont1/Control/Button/btn" index="0"]
+
+pause_mode = 2
+position = Vector2( 74.7, 12.3 )
+scale = Vector2( 7.42308, 1.5 )
+shape = SubResource( 1 )
+
+[node name="useController" type="Button" parent="cont1/Control" index="2"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_top = 75.0
+margin_right = 676.0
+margin_bottom = 126.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Mouse & Keyboard"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="btn" type="Area2D" parent="cont1/Control/useController" index="0"]
+
+pause_mode = 2
+position = Vector2( 1.40005, 6.10001 )
+scale = Vector2( 0.876563, 1.60781 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="btn col" type="CollisionShape2D" parent="cont1/Control/useController/btn" index="0"]
+
+pause_mode = 2
+position = Vector2( 74.7, 12.3 )
+scale = Vector2( 7.42308, 1.5 )
+shape = SubResource( 1 )
+
+[connection signal="focus_entered" from="cont1/Control/Container/Fullscreen" to="." method="_on_Fullscreen_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/Container/Fullscreen" to="." method="_on_Fullscreen_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/Container/Fullscreen" to="." method="_on_Fullscreen_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/Container/Fullscreen" to="." method="_on_Fullscreen_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/Container/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+
+[connection signal="pressed" from="cont1/Control/Container/Fullscreen/CheckBox" to="." method="_on_CheckBox_pressed"]
+
+[connection signal="text_entered" from="cont1/Control/Container/height" to="." method="_on_height_text_entered"]
+
+[connection signal="text_entered" from="cont1/Control/Container/width" to="." method="_on_width_text_entered"]
+
+[connection signal="focus_entered" from="cont1/Control/Container/keepResolutionChanges" to="." method="_on_keepResolutionChanges_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/Container/keepResolutionChanges" to="." method="_on_keepResolutionChanges_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/Container/keepResolutionChanges" to="." method="_on_keepResolutionChanges_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/Container/keepResolutionChanges" to="." method="_on_keepResolutionChanges_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/Container/keepResolutionChanges" to="." method="_on_keepResolutionChanges_pressed"]
+
+[connection signal="value_changed" from="cont1/Control/Container/audio/HSlider" to="." method="_on_HSlider_value_changed"]
+
+[connection signal="focus_entered" from="cont1/Control/Container/audio/MuteButton" to="." method="_on_MuteButton_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/Container/audio/MuteButton" to="." method="_on_MuteButton_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/Container/audio/MuteButton" to="." method="_on_MuteButton_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/Container/audio/MuteButton" to="." method="_on_MuteButton_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/Container/audio/MuteButton" to="." method="_on_Button_pressed"]
+
+[connection signal="pressed" from="cont1/Control/Container/audio/CheckBox" to="." method="_on_AudioCheckBox_pressed"]
+
+[connection signal="focus_entered" from="cont1/Control/Container/audio/vol down" to="." method="_on_vol_down_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/Container/audio/vol down" to="." method="_on_vol_down_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/Container/audio/vol down" to="." method="_on_vol_down_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/Container/audio/vol down" to="." method="_on_vol_down_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/Container/audio/vol down" to="." method="_on_vol_down_pressed"]
+
+[connection signal="focus_entered" from="cont1/Control/Container/audio/vol up" to="." method="_on_vol_up_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/Container/audio/vol up" to="." method="_on_vol_up_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/Container/audio/vol up" to="." method="_on_vol_up_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/Container/audio/vol up" to="." method="_on_vol_up_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/Container/audio/vol up" to="." method="_on_vol_up_pressed"]
+
+[connection signal="focus_entered" from="cont1/Control/Button" to="." method="_on_Button_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/Button" to="." method="_on_Button_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/Button" to="." method="_on_Button_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/Button" to="." method="_on_Button_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/Button" to="." method="_on_Back_Button_pressed"]
+
+[connection signal="focus_entered" from="cont1/Control/useController" to="." method="_on_useController_focus_entered"]
+
+[connection signal="focus_exited" from="cont1/Control/useController" to="." method="_on_useController_focus_exited"]
+
+[connection signal="mouse_entered" from="cont1/Control/useController" to="." method="_on_useController_mouse_entered"]
+
+[connection signal="mouse_exited" from="cont1/Control/useController" to="." method="_on_useController_mouse_exited"]
+
+[connection signal="pressed" from="cont1/Control/useController" to="." method="_on_useController_pressed"]
+
+

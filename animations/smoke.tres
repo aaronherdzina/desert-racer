@@ -1,0 +1,150 @@
+[gd_resource type="Animation" load_steps=49 format=2]
+
+[ext_resource path="res://Sprites/smoke/000000000000001.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/smoke/000000000000002.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/smoke/000000000000003.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/smoke/000000000000004.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/smoke/000000000000005.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/smoke/000000000000006.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/smoke/000000000000007.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/smoke/000000000000008.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/smoke/000000000000009.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/smoke/000000000000010.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/smoke/000000000000011.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/smoke/000000000000012.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/smoke/000000000000013.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/smoke/000000000000014.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/smoke/000000000000015.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/smoke/000000000000016.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/smoke/000000000000017.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/smoke/000000000000018.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/smoke/000000000000019.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/smoke/000000000000020.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/smoke/000000000000021.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/smoke/000000000000022.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/smoke/000000000000023.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/smoke/000000000000024.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/smoke/000000000000025.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/smoke/000000000000026.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/smoke/000000000000027.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/smoke/000000000000028.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/smoke/000000000000029.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/smoke/000000000000030.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/smoke/000000000000031.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/smoke/000000000000032.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/smoke/000000000000033.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/smoke/000000000000034.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/smoke/000000000000035.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/smoke/000000000000036.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/smoke/000000000000037.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/smoke/000000000000038.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/smoke/000000000000039.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/smoke/000000000000040.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-1.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-2.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-3.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/smoke_main_imgs/Smoke_Anim-4.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-4.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-5.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/smoke_main_imgs/Smoke_Anim-2.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/smoke_main_imgs/Smoke_Anim-1.png" type="Texture" id=48]
+
+[resource]
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_container1/smoke_imgs/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_container1/smoke_imgs/Sprite2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 0.9, 1.2, 1.5, 1.8, 2.1, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.6, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 47 ), ExtResource( 43 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 43 ), ExtResource( 45 ), ExtResource( 46 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("anim_container1/smoke_imgs/Sprite2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.896924, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -41.7193, -2.12134 ), Vector2( 31.5743, 3.32225 ), Vector2( -176.07, -16.2634 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("anim_container1/smoke_imgs/Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -171.591, -14.1218 ), Vector2( -134.35, -14.1421 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("anim_container1/smoke_imgs/Sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.62501 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.882353, 0.784314, 0.0784314 ), Color( 1, 0.882353, 0.784314, 0.0470588 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("anim_container1/smoke_imgs/Sprite2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.896924 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("anim_container1/smoke_imgs/Sprite:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 0.6 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("anim_container1/smoke_imgs:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -159.158, 116.45 ) ]
+}

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/passby engine.wav-690cac07a92ec2f6ae1081dad8a72003.sample"
+
+[deps]
+
+source_file="res://Audio/passby engine.wav"
+dest_files=[ "res://.import/passby engine.wav-690cac07a92ec2f6ae1081dad8a72003.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,282 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/projectile.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/projectiles/mine/mine new.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/projectiles/mine/mine new 2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/sun/sun detail2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/sun/sun detail3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/sun/sun detail1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/projectiles/basic anim/proj anim3.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/projectiles/basic anim/proj anim1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/projectiles/basic anim/proj anim2.png" type="Texture" id=9]
+[ext_resource path="res://animations/explosion_large.tres" type="Animation" id=10]
+[ext_resource path="res://Sprites/projectiles/floater/floater 1.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/projectiles/floater/floater 2.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/projectiles/floater/floater 3.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "basic projectile"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/shadow:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -50, -50 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body/shadow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 100 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("body/shadow:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("body/Sprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("body/Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("body/Sprite:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("body/shadow:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("body/explosions:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("body/explosions/explosion2:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "floater"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/shadow:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mine"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("body/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body/shadow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ) ]
+}
+
+[node name="projectile" type="Node2D" groups=[
+"projectile",
+]]
+scale = Vector2( 0.2, 0.2 )
+z_index = 400
+script = ExtResource( 1 )
+
+[node name="body" type="KinematicBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="shadow" type="Sprite" parent="body"]
+modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 0, 100 )
+texture = ExtResource( 8 )
+flip_v = true
+
+[node name="Sprite" type="Sprite" parent="body"]
+position = Vector2( -50, -50 )
+texture = ExtResource( 8 )
+
+[node name="debug" type="Label" parent="body"]
+visible = false
+margin_left = -100.0
+margin_right = -60.0
+margin_bottom = 14.0
+rect_scale = Vector2( 5, 5 )
+custom_colors/font_color = Color( 0.148438, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+
+[node name="explosions" type="Sprite" parent="body"]
+self_modulate = Color( 1, 0.588235, 0.588235, 1 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 750
+z_as_relative = false
+texture = ExtResource( 4 )
+
+[node name="explosion2" type="Sprite" parent="body/explosions"]
+modulate = Color( 1, 0.588235, 0.588235, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="explosion3" type="Sprite" parent="body/explosions"]
+modulate = Color( 1, 1, 1, 0.784314 )
+self_modulate = Color( 1, 1, 1, 0.348584 )
+texture = ExtResource( 5 )
+
+[node name="explosion4" type="Sprite" parent="body/explosions"]
+modulate = Color( 1, 1, 1, 0.784314 )
+texture = ExtResource( 6 )
+
+[node name="preview_body" type="KinematicBody2D" parent="."]
+visible = false
+modulate = Color( 0.588235, 0.588235, 1, 0.117647 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="preview_body"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="shadow" type="Sprite" parent="preview_body"]
+modulate = Color( 0, 0, 0, 0.392157 )
+texture = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="preview_body"]
+position = Vector2( -50, -50 )
+texture = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "basic projectile"
+"anims/basic projectile" = SubResource( 2 )
+anims/explosion = ExtResource( 10 )
+anims/floater = SubResource( 3 )
+anims/mine = SubResource( 4 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,432 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/create_deck_scene.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UI/Untitled_Artwork 2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/cards/speed up.png" type="Texture" id=3]
+[ext_resource path="res://fonts/finished fonts/line font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/lint_font.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "move_arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1161.94, 2.86328 ), Vector2( 1250.27, 2.86328 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "move_arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1161.94, 2.86328 ), Vector2( 1250.27, 2.86328 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move_arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1161.94, 2.86328 ), Vector2( 1250.27, 2.86328 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1161.94, 2.86328 ), Vector2( 1250.27, 2.86328 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 65
+extra_spacing_char = 3
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+extra_spacing_char = 3
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 15
+extra_spacing_char = 3
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 11
+extra_spacing_char = 3
+font_data = ExtResource( 5 )
+
+[node name="create_deck_scene" type="Node2D"]
+position = Vector2( 0, 44 )
+script = ExtResource( 1 )
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 672.4, 425.35 )
+scale = Vector2( 3.24133, 3.834 )
+texture = ExtResource( 2 )
+
+[node name="background2" type="Sprite" parent="."]
+modulate = Color( 0.137255, 0.137255, 0.137255, 1 )
+position = Vector2( 640, 133.125 )
+scale = Vector2( 1.2, 1.88583 )
+texture = ExtResource( 2 )
+
+[node name="line" type="Sprite" parent="."]
+modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+position = Vector2( 110.001, 433.5 )
+scale = Vector2( 1.36667, 0.01 )
+texture = ExtResource( 2 )
+
+[node name="line2" type="Sprite" parent="."]
+modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+position = Vector2( 837.5, 433.5 )
+scale = Vector2( 0.241667, 0.01 )
+texture = ExtResource( 2 )
+
+[node name="line4" type="Sprite" parent="."]
+modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+position = Vector2( 1300, 433.5 )
+scale = Vector2( 0.441666, 0.01 )
+texture = ExtResource( 2 )
+
+[node name="line3" type="Sprite" parent="."]
+modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+position = Vector2( 60.0001, 420 )
+scale = Vector2( 2.53333, 0.02 )
+texture = ExtResource( 2 )
+
+[node name="line5" type="Sprite" parent="."]
+modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+position = Vector2( 1550, 420 )
+scale = Vector2( 1, 0.02 )
+texture = ExtResource( 2 )
+
+[node name="card_container" type="Node2D" parent="."]
+position = Vector2( 635, 170 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 5
+
+[node name="example_img" type="Sprite" parent="card_container"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="example_img2" type="Sprite" parent="card_container"]
+visible = false
+position = Vector2( 2426, 15 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="card_container"]
+autoplay = "move_arrow"
+anims/move_arrow = SubResource( 1 )
+
+[node name="arrow" type="Sprite" parent="card_container"]
+visible = false
+modulate = Color( 0.784314, 0.784314, 0.784314, 0.882353 )
+position = Vector2( 1220.83, 2.86328 )
+rotation = 2.35619
+scale = Vector2( 0.15, 0.15 )
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="arrow2" type="Sprite" parent="card_container/arrow"]
+visible = false
+position = Vector2( -150.85, 160.277 )
+rotation = -1.5708
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="next_card" type="Node2D" parent="."]
+position = Vector2( 835, 280 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 5
+
+[node name="example_img" type="Sprite" parent="next_card"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="example_img2" type="Sprite" parent="next_card"]
+visible = false
+position = Vector2( 2426, 15 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="next_card"]
+autoplay = "move_arrow"
+anims/move_arrow = SubResource( 2 )
+
+[node name="arrow" type="Sprite" parent="next_card"]
+visible = false
+modulate = Color( 0.784314, 0.784314, 0.784314, 0.882353 )
+position = Vector2( 1220.83, 2.86328 )
+rotation = 2.35619
+scale = Vector2( 0.15, 0.15 )
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="arrow2" type="Sprite" parent="next_card/arrow"]
+visible = false
+position = Vector2( -150.85, 160.277 )
+rotation = -1.5708
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="last_card" type="Node2D" parent="."]
+position = Vector2( 435, 280 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 5
+
+[node name="example_img" type="Sprite" parent="last_card"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="example_img2" type="Sprite" parent="last_card"]
+visible = false
+position = Vector2( 2426, 15 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="last_card"]
+autoplay = "move_arrow"
+anims/move_arrow = SubResource( 3 )
+
+[node name="arrow" type="Sprite" parent="last_card"]
+visible = false
+modulate = Color( 0.784314, 0.784314, 0.784314, 0.882353 )
+position = Vector2( 1220.83, 2.86328 )
+rotation = 2.35619
+scale = Vector2( 0.15, 0.15 )
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="arrow2" type="Sprite" parent="last_card/arrow"]
+visible = false
+position = Vector2( -150.85, 160.277 )
+rotation = -1.5708
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="part_container_display" type="Node2D" parent="."]
+position = Vector2( 700, 179 )
+scale = Vector2( 0.15, 0.15 )
+z_index = 5
+
+[node name="example_img" type="Sprite" parent="part_container_display"]
+visible = false
+scale = Vector2( 2, 2 )
+
+[node name="example_img2" type="Sprite" parent="part_container_display"]
+visible = false
+position = Vector2( 2426, 15 )
+scale = Vector2( 2, 2 )
+
+[node name="deck_container" type="Node2D" parent="."]
+position = Vector2( 635, 555 )
+scale = Vector2( 0.25, 0.25 )
+z_index = 5
+
+[node name="example_img" type="Sprite" parent="deck_container"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="example_img2" type="Sprite" parent="deck_container"]
+visible = false
+position = Vector2( 2426, 15 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deck_container"]
+autoplay = "move_arrow"
+anims/move_arrow = SubResource( 4 )
+
+[node name="arrow" type="Sprite" parent="deck_container"]
+visible = false
+modulate = Color( 0.784314, 0.784314, 0.784314, 0.882353 )
+position = Vector2( 1235.29, 2.86328 )
+rotation = 2.35619
+scale = Vector2( 0.15, 0.15 )
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="arrow2" type="Sprite" parent="deck_container/arrow"]
+position = Vector2( -150.85, 160.277 )
+rotation = -1.5708
+z_index = 300
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="part_container" type="Node2D" parent="."]
+position = Vector2( 700, 513 )
+scale = Vector2( 0.15, 0.15 )
+z_index = 5
+
+[node name="example_img" type="Sprite" parent="part_container"]
+visible = false
+scale = Vector2( 2, 2 )
+
+[node name="example_img2" type="Sprite" parent="part_container"]
+visible = false
+position = Vector2( 2426, 15 )
+scale = Vector2( 2, 2 )
+
+[node name="card_count" type="Label" parent="."]
+margin_left = 980.0
+margin_top = 396.0
+margin_right = 1093.0
+margin_bottom = 518.0
+rect_pivot_offset = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0/3"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="card_id" type="Label" parent="."]
+visible = false
+margin_left = 390.0
+margin_top = 297.0
+margin_right = 503.0
+margin_bottom = 419.0
+rect_pivot_offset = Vector2( 1.5, 1.5 )
+text = "1"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="title" type="Label" parent="."]
+margin_top = -66.0
+margin_right = 1280.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "DECK CREATION"
+align = 1
+valign = 1
+
+[node name="all card" type="Label" parent="."]
+margin_top = -3.0
+margin_right = 1280.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ALL CARDS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current deck" type="Label" parent="."]
+margin_top = 396.0
+margin_right = 1280.0
+margin_bottom = 476.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "CURRENT DECK"
+align = 1
+valign = 1
+
+[node name="limit per deck" type="Label" parent="."]
+margin_left = 1025.0
+margin_top = 376.0
+margin_right = 1295.0
+margin_bottom = 466.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "LIMIT PER DECK"
+align = 1
+valign = 1
+
+[node name="amount in deck" type="Label" parent="."]
+margin_left = 780.0
+margin_top = 376.0
+margin_right = 1050.0
+margin_bottom = 466.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Amount In Deck"
+align = 1
+valign = 1
+
+[node name="deck size" type="Label" parent="."]
+margin_left = 275.0
+margin_top = 656.0
+margin_right = 522.0
+margin_bottom = 672.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "DECK SIZE 15/30"
+align = 1
+valign = 1
+
+[node name="save_deck_and_quit" type="Label" parent="."]
+margin_left = 3.0
+margin_top = -44.0
+margin_right = 278.0
+margin_bottom = 105.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "PRESS [ESC]/(START) TO SAVE YOUR DECK AND RETURN TO MENU
+
+Note: Your Deck Must include at least 15 cards (details at the bottom)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="min deck size" type="Label" parent="."]
+margin_left = 749.0
+margin_top = 653.0
+margin_right = 961.0
+margin_bottom = 674.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MINIMUM DECK SIZE"
+align = 1
+valign = 1
+autowrap = true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/passby sci fi.wav-edac232cf735853c59fe3beb31c6eb0c.sample"
+
+[deps]
+
+source_file="res://Audio/passby sci fi.wav"
+dest_files=[ "res://.import/passby sci fi.wav-edac232cf735853c59fe3beb31c6eb0c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

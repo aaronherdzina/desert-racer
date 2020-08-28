@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sci fi effect2.wav-5bf435340d53f904639658ae8a0c1168.sample"
+
+[deps]
+
+source_file="res://Audio/sci fi effect2.wav"
+dest_files=[ "res://.import/sci fi effect2.wav-5bf435340d53f904639658ae8a0c1168.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

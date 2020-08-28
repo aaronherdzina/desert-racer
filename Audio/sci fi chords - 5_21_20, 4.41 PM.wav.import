@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sci fi chords - 5_21_20, 4.41 PM.wav-af6d61d0bf36df9e735ec372135b9f4d.sample"
+
+[deps]
+
+source_file="res://Audio/sci fi chords - 5_21_20, 4.41 PM.wav"
+dest_files=[ "res://.import/sci fi chords - 5_21_20, 4.41 PM.wav-af6d61d0bf36df9e735ec372135b9f4d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0
