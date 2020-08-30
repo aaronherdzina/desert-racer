@@ -51,6 +51,11 @@ var set_finish_col_idx = 0
 
 var finish_tile_color = Color(.95, .95, 1, .3)
 
+var player_continue_tutorial = true
+var in_tutorial = false
+var use_tutorial_deck = false
+var handling_tutorial_messages = false
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -666,6 +671,16 @@ func handle_turn_start():
 	var l = null
 	if get_node("/root").has_node("level"):
 		l = get_node("/root/level")
+	
+	while handling_tutorial_messages:
+		var timer = Timer.new()
+		timer.set_wait_time(.1)
+		timer.set_one_shot(true)
+		get_node("/root").add_child(timer)
+		timer.start()
+		yield(timer, "timeout")
+		timer.queue_free()
+
 	print('handle turn start')
 	if not level_over and main.checkIfNodeDeleted(l) == false and main.checkIfNodeDeleted(p) == false:
 		var enemies = get_tree().get_nodes_in_group("active_enemies")
@@ -770,31 +785,40 @@ func draw():
 	# Set loop limit based on hand, we count from 0 for indexing so always add 1
 	var hand_limit = meta.savable.player.hand_limit + 1
 	##
-
+	var tutorial_hand_set = false
 	for i in range(0, hand_limit):
 		# Draw from current_deck to hand, if its 0 shuffle discard back to hand
 		# WE SHOULD NEVER HAVE A len() == 0 current_deck after this
-		if len(ad) > 0 and main.checkIfNodeDeleted(ad[0]) == false:
-			#print('\n\n')
-			#print('card added from ad deck')
-			#print('\n\n')
-			temp_hand.append(ad[0]) # cards are removed on discard from ad
-			ad[0].details.in_deck = 'removal'
-			ad[0].modulate = Color(1, .7, .7, 1)
-			removal_deck.append(ad[0])
-			if len(ad) > 0:
-				ad.remove(0)
-		elif len(cd) > 0 and main.checkIfNodeDeleted(cd[0]) == false:
-			# this serves to reset vals from mid game bonuses like overclocking
-			temp_hand.append(cd[0])
-			if len(cd) > 0:
-				cd.remove(0)
-		elif len(dd) > 0 and main.checkIfNodeDeleted(dd[0]) == false:
-			temp_hand.append(shuffle_discard_to_current()[0])
-			if len(cd) > 0:
-				cd.remove(0)
+		if in_tutorial and use_tutorial_deck:
+			if not tutorial_hand_set:
+				temp_hand = get_current_tutorial_deck()
+				tutorial_hand_set = true
+			else:
+				# if we already set our hand for tutorial skip but don't continue loop
+				# so we hit the 'Handle display' block in loop below
+				pass
 		else:
-			print('NO CARDS TO DRAW???')
+			if len(ad) > 0 and main.checkIfNodeDeleted(ad[0]) == false:
+				#print('\n\n')
+				#print('card added from ad deck')
+				#print('\n\n')
+				temp_hand.append(ad[0]) # cards are removed on discard from ad
+				ad[0].details.in_deck = 'removal'
+				ad[0].modulate = Color(1, .7, .7, 1)
+				removal_deck.append(ad[0])
+				if len(ad) > 0:
+					ad.remove(0)
+			elif len(cd) > 0 and main.checkIfNodeDeleted(cd[0]) == false:
+				# this serves to reset vals from mid game bonuses like overclocking
+				temp_hand.append(cd[0])
+				if len(cd) > 0:
+					cd.remove(0)
+			elif len(dd) > 0 and main.checkIfNodeDeleted(dd[0]) == false:
+				temp_hand.append(shuffle_discard_to_current()[0])
+				if len(cd) > 0:
+					cd.remove(0)
+			else:
+				print('NO CARDS TO DRAW???')
 		##
 
 		# Handle display
@@ -851,6 +875,24 @@ func draw():
 	#for c in hand:
 	#	if main.checkIfNodeDeleted(c) == false:
 	#		print('c is ' + str(c.name))
+
+
+func get_current_tutorial_deck():
+	var tutorial_idx = meta.savable.tutorial_idx
+	if tutorial_idx == 0:
+		return card_preload.tutorial_deck_0
+	elif tutorial_idx == 1:
+		return card_preload.tutorial_deck_1
+	elif tutorial_idx == 2:
+		return card_preload.tutorial_deck_2
+	elif tutorial_idx == 3:
+		return card_preload.tutorial_deck_3
+	elif tutorial_idx == 4:
+		return card_preload.tutorial_deck_4
+	elif tutorial_idx == 5:
+		return card_preload.tutorial_deck_5
+	elif tutorial_idx == 6:
+		return card_preload.tutorial_deck_6
 
 
 func start_next_round():

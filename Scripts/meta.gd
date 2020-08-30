@@ -42,7 +42,8 @@ var savable = {
 		# as a dict and count up 1, so we can also keep a tally, then we can give the favorites
 		most_used_cards = []
 	},
-	had_tutorial = false
+	had_tutorial = false,
+	tutorial_idx = 0
 }
 
 var round_stats = {

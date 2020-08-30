@@ -186,6 +186,18 @@ var raven_deck = [move_up_1, move_up_1, move_up_2, curve_up_left_2, curve_up_lef
 var testing_deck = [card_bomb_1, card_bomb_1, card_bomb_1, move_left_1, move_right_1,
 					move_down_1, move_up_1, card_mine_1, card_float_1]
 
+
+var tutorial_deck_0 = [move_up_1, move_up_1, move_up_1, move_up_1, move_up_1, move_up_1]
+var tutorial_deck_1 = [move_down_1, move_down_1, move_down_1, move_down_1, move_down_1]
+var tutorial_deck_2 = [missile_1, missile_1, missile_1, missile_1, missile_1, missile_1]
+var tutorial_deck_3 = [card_mine_1, card_mine_1, card_mine_1, card_mine_1, card_mine_1, card_mine_1]
+var tutorial_deck_4 = [speed_down_1, speed_down_1, speed_down_1, speed_down_1, speed_down_1, speed_down_1]
+var tutorial_deck_5 = [speed_up_1, speed_up_1, speed_up_1, speed_up_1, speed_up_1, speed_up_1]
+var tutorial_deck_6 = [jump_1, jump_1, jump_1, jump_1, jump_1, jump_1]
+var tutorial_deck_7 = [curve_up_left_2, curve_up_left_2, curve_up_left_2,
+					  curve_up_left_2, curve_up_left_2, curve_up_left_2]
+
+
 func return_unstable_card_string_to_preload(card_title):
 	""" For 0 cost cards when losing control """
 	if 'RIGHT 1' in card_title:

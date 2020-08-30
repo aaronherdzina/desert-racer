@@ -172,6 +172,18 @@ func show_level_details(l, on=true):
 func handle_turn():
 	if game.level_over:
 		return
+	
+	# TODO: Have tutorial be 1 level set to cycle each round with specifically placed
+	# obstacles to match tutorial cards being drawn (i.e: tutorial is just one level played out each turn)
+	while not game.player_continue_tutorial:
+		var wait_timer = Timer.new()
+		wait_timer.set_wait_time(.05)
+		wait_timer.set_one_shot(true)
+		get_node("/root").add_child(wait_timer)
+		wait_timer.start()
+		yield(wait_timer, "timeout")
+		wait_timer.queue_free()
+
 	main.can_click_any = false
 	""" Handle moving through 'steps' order below, 1-4
 		0) Hanlde randomly spawning objects - can maybe just do this at end of turn to not slow down
@@ -190,7 +202,6 @@ func handle_turn():
 	"""
 	should_end_preview = true
 	while not safely_out_of_preview:
-		print('waiting to safely start turn')
 		var wait_timer = Timer.new()
 		wait_timer.set_wait_time(.05)
 		wait_timer.set_one_shot(true)
