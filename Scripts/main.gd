@@ -98,7 +98,7 @@ var controllerCursorObj = false
 #### MAIN READY/PROCESS
 func _ready():
 	randomize()
-	#test_all_cards()
+	test_all_cards()
 	master_sound = instancer(sound_container, null, true)
 	master_sound.get_node("chords").play()
 	menu_idx = 0

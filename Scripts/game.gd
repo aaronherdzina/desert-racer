@@ -52,9 +52,11 @@ var set_finish_col_idx = 0
 var finish_tile_color = Color(.95, .95, 1, .3)
 
 var player_continue_tutorial = true
-var in_tutorial = false
-var use_tutorial_deck = false
+var in_tutorial = true
+var use_tutorial_deck = true
 var handling_tutorial_messages = false
+# we set identifying card text here so we know if a player played the card we want
+var expected_tutorial_card_text = ''
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -370,6 +372,11 @@ func end_level():
 	added_deck = []
 	meta.savable.player.current_deck = []
 	hand = []
+	
+	# this should end before the level ends, however if not clear to avoid errors with tutorial decks
+	if in_tutorial:
+		in_tutorial = false
+
 	var l = null
 	if get_node("/root").has_node("level"):
 		l = get_node("/root/level")
@@ -461,6 +468,7 @@ func highlight_card():
 			if can_play_card_result[0]:
 				hand[hand_idx].modulate = Color(1, 1, .5, 1)
 			else:
+				print(can_play_card_result[1])
 				hand[hand_idx].modulate = meta.cant_play_card_color
 			hand[hand_idx].get_node("description").visible = true
 	else:
@@ -478,18 +486,19 @@ func validate_can_play_card(card):
 		p = get_node("/root/player")
 
 	if p == null or main.checkIfNodeDeleted(p) == true:
-		print('didnt find player? in validate_can_play_card')
 		reason = 'no player'
 		return [false, reason]
 
 	if card.details.cost > player_stability:
-		print('no stability  in validate_can_play_card')
 		reason = 'stability'
 		return [false, reason]
 	if p.player_in_air:
 		if 'projectile' in str(card.details.type) or 'jump' in str(card.details.type):
-			print('in air jump/projectile in validate_can_play_card')
 			reason = 'in air'
+			return [false, reason]
+	if in_tutorial:
+		if not expected_tutorial_card_text in str(card.details.title):
+			reason = 'wrong tutorial card, expecting ' + str(expected_tutorial_card_text)
 			return [false, reason]
 	return [true, reason]
 
@@ -628,6 +637,8 @@ func set_initial_deck():
 	for card in meta.char_list[meta.char_idx].unique_cards:
 		deck.append(card)
 
+	if in_tutorial:
+		card_preload.set_preload_decks()
 	for card in deck:
 		# loop to avoid duping lists
 		var c = main.instancer(card)
@@ -786,17 +797,19 @@ func draw():
 	var hand_limit = meta.savable.player.hand_limit + 1
 	##
 	var tutorial_hand_set = false
+	if in_tutorial:
+		hand_limit = 3
 	for i in range(0, hand_limit):
 		# Draw from current_deck to hand, if its 0 shuffle discard back to hand
 		# WE SHOULD NEVER HAVE A len() == 0 current_deck after this
 		if in_tutorial and use_tutorial_deck:
 			if not tutorial_hand_set:
 				temp_hand = get_current_tutorial_deck()
+				expected_tutorial_card_text = set_tutorial_expected_card()
+				print('got tutorial hand ' + str(temp_hand))
 				tutorial_hand_set = true
-			else:
-				# if we already set our hand for tutorial skip but don't continue loop
-				# so we hit the 'Handle display' block in loop below
-				pass
+			# if we already set our hand for tutorial skip but don't continue loop
+			# so we hit the 'Handle display' block in loop below
 		else:
 			if len(ad) > 0 and main.checkIfNodeDeleted(ad[0]) == false:
 				#print('\n\n')
@@ -822,6 +835,7 @@ func draw():
 		##
 
 		# Handle display
+		print('temp_hand ' + str(len(temp_hand)) + ' i ' + str(i))
 		if i < len(temp_hand) and i >= 0:
 			if main.checkIfNodeDeleted(temp_hand[i]) == false:
 				temp_hand[i].position = l.get_node("hand_pos_0").position
@@ -829,6 +843,7 @@ func draw():
 				temp_hand[i].set_scale(card_hand_size)
 				temp_hand[i].details.played = false
 				temp_hand[i].visible = true
+				print('here????')
 				temp_hand[i].z_index = 700
 				if temp_hand[i].details.in_deck != 'removal':
 					temp_hand[i].modulate = Color(1, 1, 1, 1)
@@ -853,6 +868,7 @@ func draw():
 			if can_play_card_result[0]:
 				can_afford = true
 			else:
+				print(can_play_card_result[1])
 				c.modulate = meta.cant_play_card_color
 	if not can_afford:
 		player_lost_control = true
@@ -877,22 +893,44 @@ func draw():
 	#		print('c is ' + str(c.name))
 
 
+func set_tutorial_expected_card():
+	var tutorial_idx = meta.savable.tutorial_idx
+	if tutorial_idx == 0:
+		return card_preload.tutorial_0_expected_card
+	elif tutorial_idx == 1:
+		return card_preload.tutorial_1_expected_card
+	elif tutorial_idx == 2:
+		return card_preload.tutorial_2_expected_card
+	elif tutorial_idx == 3:
+		return card_preload.tutorial_3_expected_card
+	elif tutorial_idx == 4:
+		return card_preload.tutorial_4_expected_card
+	elif tutorial_idx == 5:
+		return card_preload.tutorial_5_expected_card
+	elif tutorial_idx == 6:
+		return card_preload.tutorial_6_expected_card
+	elif tutorial_idx == 7:
+		return card_preload.tutorial_7_expected_card
+
+
 func get_current_tutorial_deck():
 	var tutorial_idx = meta.savable.tutorial_idx
 	if tutorial_idx == 0:
-		return card_preload.tutorial_deck_0
+		return card_preload.instanced_tutorial_deck_0
 	elif tutorial_idx == 1:
-		return card_preload.tutorial_deck_1
+		return card_preload.instanced_tutorial_deck_1
 	elif tutorial_idx == 2:
-		return card_preload.tutorial_deck_2
+		return card_preload.instanced_tutorial_deck_2
 	elif tutorial_idx == 3:
-		return card_preload.tutorial_deck_3
+		return card_preload.instanced_tutorial_deck_3
 	elif tutorial_idx == 4:
-		return card_preload.tutorial_deck_4
+		return card_preload.instanced_tutorial_deck_4
 	elif tutorial_idx == 5:
-		return card_preload.tutorial_deck_5
+		return card_preload.instanced_tutorial_deck_5
 	elif tutorial_idx == 6:
-		return card_preload.tutorial_deck_6
+		return card_preload.instanced_tutorial_deck_6
+	elif tutorial_idx == 7:
+		return card_preload.instanced_tutorial_deck_7
 
 
 func start_next_round():

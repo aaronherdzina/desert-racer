@@ -187,15 +187,67 @@ var testing_deck = [card_bomb_1, card_bomb_1, card_bomb_1, move_left_1, move_rig
 					move_down_1, move_up_1, card_mine_1, card_float_1]
 
 
-var tutorial_deck_0 = [move_up_1, move_up_1, move_up_1, move_up_1, move_up_1, move_up_1]
-var tutorial_deck_1 = [move_down_1, move_down_1, move_down_1, move_down_1, move_down_1]
-var tutorial_deck_2 = [missile_1, missile_1, missile_1, missile_1, missile_1, missile_1]
-var tutorial_deck_3 = [card_mine_1, card_mine_1, card_mine_1, card_mine_1, card_mine_1, card_mine_1]
-var tutorial_deck_4 = [speed_down_1, speed_down_1, speed_down_1, speed_down_1, speed_down_1, speed_down_1]
-var tutorial_deck_5 = [speed_up_1, speed_up_1, speed_up_1, speed_up_1, speed_up_1, speed_up_1]
-var tutorial_deck_6 = [jump_1, jump_1, jump_1, jump_1, jump_1, jump_1]
-var tutorial_deck_7 = [curve_up_left_2, curve_up_left_2, curve_up_left_2,
-					  curve_up_left_2, curve_up_left_2, curve_up_left_2]
+var tutorial_deck_0 = [move_up_1, move_left_1, redraw]
+var tutorial_deck_1 = [move_down_1, move_down_1, move_down_1]
+var tutorial_deck_2 = [missile_1, missile_1, missile_1]
+var tutorial_deck_3 = [card_mine_1, card_mine_1, card_mine_1]
+var tutorial_deck_4 = [speed_down_1, speed_down_1, speed_down_1]
+var tutorial_deck_5 = [speed_up_1, speed_up_1, speed_up_1]
+var tutorial_deck_6 = [jump_1, jump_1, jump_1]
+var tutorial_deck_7 = [curve_up_left_2, curve_up_left_2, curve_up_left_2]
+
+var tutorial_0_expected_card = 'UP'
+var tutorial_1_expected_card = 'DOWN'
+var tutorial_2_expected_card = 'MISSILE'
+var tutorial_3_expected_card = 'MINE'
+var tutorial_4_expected_card = 'SPEED DOWN'
+var tutorial_5_expected_card = 'SPEED UP'
+var tutorial_6_expected_card = 'JUMP'
+var tutorial_7_expected_card = 'CURVE'
+
+var instanced_tutorial_deck_0 = []
+var instanced_tutorial_deck_1 = []
+var instanced_tutorial_deck_2 = []
+var instanced_tutorial_deck_3 = []
+var instanced_tutorial_deck_4 = []
+var instanced_tutorial_deck_5 = []
+var instanced_tutorial_deck_6 = []
+var instanced_tutorial_deck_7 = []
+
+
+func set_preload_decks():
+	for card in tutorial_deck_0:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_0.append(c)
+	for card in tutorial_deck_1:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_1.append(c)
+	for card in tutorial_deck_2:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_2.append(c)
+	for card in tutorial_deck_3:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_3.append(c)
+	for card in tutorial_deck_4:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_4.append(c)
+	for card in tutorial_deck_5:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_5.append(c)
+	for card in tutorial_deck_6:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_6.append(c)
+	for card in tutorial_deck_7:
+		var c = card.instance()
+		get_node('/root').add_child(c)
+		instanced_tutorial_deck_7.append(c)
 
 
 func return_unstable_card_string_to_preload(card_title):

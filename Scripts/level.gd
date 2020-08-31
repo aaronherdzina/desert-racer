@@ -94,6 +94,8 @@ func _ready():
 		game.object_chance += 60
 	if game.objs_per_turn < 1:
 		game.objs_per_turn = 1
+	if game.in_tutorial:
+		turn.step = 6
 
 var removing = false
 func destroy_self():
@@ -224,9 +226,12 @@ func _process(delta):
 
 
 func handle_round_timer():
-	if not turn.step_timer_can_change or  game.level_over:
+	if game.in_tutorial or\
+	   not turn.step_timer_can_change or\
+	   game.level_over:
 		return
-
+	
+	print('in tut ' + str(game.in_tutorial))
 	turn.step_timer = stepify(turn.step_timer - level_delta, .01)
 	if turn.step_timer <= 0:
 		turn.step_timer = 0

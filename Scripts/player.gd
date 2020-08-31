@@ -307,7 +307,7 @@ func set_tile_values(t):
 	t.player_can_crash = player_can_crash
 	t.player_in_air = player_in_air
 	t.player_can_be_shot = player_can_be_shot
-	
+
 	t.player_str = str(self)
 	t.previous_obstacle_dir = game.player_move_dir
 	if player_can_be_hurt and not invincible:

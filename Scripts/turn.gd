@@ -125,6 +125,10 @@ func play_card(end_turn, here_with_input=false):
 			return
 		elif end_turn: 
 			#print('pre handle_turn in play card')
+			if game.in_tutorial:
+				meta.savable.tutorial_idx += 1
+				if meta.savable.tutorial_idx > 7:
+					game.in_tutorial = false
 			handle_end_of_turn_stability_and_timer()
 			handle_turn()
 			var timer2 = Timer.new()
@@ -175,14 +179,6 @@ func handle_turn():
 	
 	# TODO: Have tutorial be 1 level set to cycle each round with specifically placed
 	# obstacles to match tutorial cards being drawn (i.e: tutorial is just one level played out each turn)
-	while not game.player_continue_tutorial:
-		var wait_timer = Timer.new()
-		wait_timer.set_wait_time(.05)
-		wait_timer.set_one_shot(true)
-		get_node("/root").add_child(wait_timer)
-		wait_timer.start()
-		yield(wait_timer, "timeout")
-		wait_timer.queue_free()
 
 	main.can_click_any = false
 	""" Handle moving through 'steps' order below, 1-4
