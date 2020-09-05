@@ -124,8 +124,10 @@ func play_card(end_turn, here_with_input=false):
 			game.draw()
 			return
 		elif end_turn: 
-			#print('pre handle_turn in play card')
 			if game.in_tutorial:
+				if game.handling_tutorial_messages:
+					game.handling_tutorial_messages = false
+				game.previous_tutorial_idx = meta.savable.tutorial_idx
 				meta.savable.tutorial_idx += 1
 				if meta.savable.tutorial_idx > 7:
 					game.in_tutorial = false
@@ -140,7 +142,6 @@ func play_card(end_turn, here_with_input=false):
 			timer2.queue_free()
 			if main.checkIfNodeDeleted(hold_card) == false and hold_card:
 				hold_card.visible = false
-
 		else:
 			# we clear step_timer_can_change in draw after handle_turn so reset if handle_turn not called
 			step_timer_can_change = true

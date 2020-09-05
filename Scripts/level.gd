@@ -96,6 +96,22 @@ func _ready():
 		game.objs_per_turn = 1
 	if game.in_tutorial:
 		turn.step = 6
+	var tp = main.instancer(main.text_popup)
+	tp.get_node('Label').set_text(game.set_tutorial_messages())
+	tp.add_to_group("remove_tutorial")
+	main.can_click_start = true
+	game.handling_tutorial_messages = true
+	while game.handling_tutorial_messages: # wait until input clears in main
+		var timer = Timer.new()
+		timer.set_wait_time(.1)
+		timer.set_one_shot(true)
+		get_node("/root").add_child(timer)
+		timer.start()
+		yield(timer, "timeout")
+		timer.queue_free()
+	for n in get_tree().get_nodes_in_group("remove_tutorial"):
+		if n and n != null and main.checkIfNodeDeleted(n) == false:
+			n.queue_free()
 
 var removing = false
 func destroy_self():

@@ -320,9 +320,6 @@ func set_tile_values(t):
 
 func handle_crash():
 	if not crashing:
-		#$body/anim_container1/smoke_anim.stop()
-		#$body/anim_container1/smoke_shadow_anim.stop()
-		#$body/anim_container1/shake_anim.stop()
 		$turn_anim_player.playback_speed = 1
 		var e = main.instancer(main.explosion_scene)
 		e.position = current_tile.global_position

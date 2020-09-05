@@ -55,6 +55,7 @@ var player_continue_tutorial = true
 var in_tutorial = true
 var use_tutorial_deck = true
 var handling_tutorial_messages = false
+var previous_tutorial_idx = 0
 # we set identifying card text here so we know if a player played the card we want
 var expected_tutorial_card_text = ''
 
@@ -682,16 +683,6 @@ func handle_turn_start():
 	var l = null
 	if get_node("/root").has_node("level"):
 		l = get_node("/root/level")
-	
-	while handling_tutorial_messages:
-		var timer = Timer.new()
-		timer.set_wait_time(.1)
-		timer.set_one_shot(true)
-		get_node("/root").add_child(timer)
-		timer.start()
-		yield(timer, "timeout")
-		timer.queue_free()
-
 	print('handle turn start')
 	if not level_over and main.checkIfNodeDeleted(l) == false and main.checkIfNodeDeleted(p) == false:
 		var enemies = get_tree().get_nodes_in_group("active_enemies")
@@ -773,6 +764,41 @@ func handle_turn_start():
 		draw()
 		print('handle turn start end AFTER DRAW ')
 	main.can_click_any = true
+	
+	if in_tutorial:
+		var tp = main.instancer(main.text_popup)
+		tp.get_node('Label').set_text(set_tutorial_messages())
+		tp.add_to_group("remove_tutorial")
+		main.can_click_start = true
+		handling_tutorial_messages = true
+		while handling_tutorial_messages: # wait until input clears in main
+			var timer = Timer.new()
+			timer.set_wait_time(.1)
+			timer.set_one_shot(true)
+			get_node("/root").add_child(timer)
+			timer.start()
+			yield(timer, "timeout")
+			timer.queue_free()
+		for n in get_tree().get_nodes_in_group("remove_tutorial"):
+			if n and n != null and main.checkIfNodeDeleted(n) == false:
+				n.queue_free()
+
+		var tp2 = main.instancer(main.text_popup)
+		tp2.get_node('Label').set_text(set_tutorial_messages(2, true))
+		tp2.add_to_group("remove_tutorial")
+		main.can_click_start = true
+		handling_tutorial_messages = true
+		var timer = Timer.new()
+		timer.set_wait_time(1.2)
+		timer.set_one_shot(true)
+		get_node("/root").add_child(timer)
+		timer.start()
+		yield(timer, "timeout")
+		timer.queue_free()
+		for n in get_tree().get_nodes_in_group("remove_tutorial"):
+			if n and n != null and main.checkIfNodeDeleted(n) == false:
+				n.queue_free()
+
 
 
 var redraw = false
@@ -812,9 +838,6 @@ func draw():
 			# so we hit the 'Handle display' block in loop below
 		else:
 			if len(ad) > 0 and main.checkIfNodeDeleted(ad[0]) == false:
-				#print('\n\n')
-				#print('card added from ad deck')
-				#print('\n\n')
 				temp_hand.append(ad[0]) # cards are removed on discard from ad
 				ad[0].details.in_deck = 'removal'
 				ad[0].modulate = Color(1, .7, .7, 1)
@@ -835,7 +858,6 @@ func draw():
 		##
 
 		# Handle display
-		print('temp_hand ' + str(len(temp_hand)) + ' i ' + str(i))
 		if i < len(temp_hand) and i >= 0:
 			if main.checkIfNodeDeleted(temp_hand[i]) == false:
 				temp_hand[i].position = l.get_node("hand_pos_0").position
@@ -843,7 +865,6 @@ func draw():
 				temp_hand[i].set_scale(card_hand_size)
 				temp_hand[i].details.played = false
 				temp_hand[i].visible = true
-				print('here????')
 				temp_hand[i].z_index = 700
 				if temp_hand[i].details.in_deck != 'removal':
 					temp_hand[i].modulate = Color(1, 1, 1, 1)
@@ -911,6 +932,27 @@ func set_tutorial_expected_card():
 		return card_preload.tutorial_6_expected_card
 	elif tutorial_idx == 7:
 		return card_preload.tutorial_7_expected_card
+
+
+func set_tutorial_messages(idx=1, show_second_message=false):
+	var tutorial_idx = meta.savable.tutorial_idx if not show_second_message else previous_tutorial_idx
+	idx = previous_tutorial_idx
+	if tutorial_idx == 0:
+		return meta.tutorial_0_message_1 if not show_second_message else meta.tutorial_0_message_2
+	elif tutorial_idx == 1:
+		return meta.tutorial_1_message_1 if not show_second_message else meta.tutorial_1_message_2
+	elif tutorial_idx == 2:
+		return meta.tutorial_2_message_1 if not show_second_message else meta.tutorial_2_message_2
+	elif tutorial_idx == 3:
+		return meta.tutorial_3_message_1 if not show_second_message else meta.tutorial_3_message_2
+	elif tutorial_idx == 4:
+		return meta.tutorial_4_message_1 if not show_second_message else meta.tutorial_4_message_2
+	elif tutorial_idx == 5:
+		return meta.tutorial_5_message_1 if not show_second_message else meta.tutorial_5_message_2
+	elif tutorial_idx == 6:
+		return meta.tutorial_6_message_1 if not show_second_message else meta.tutorial_6_message_2
+	elif tutorial_idx == 7:
+		return meta.tutorial_7_message_1 if not show_second_message else meta.tutorial_7_message_2
 
 
 func get_current_tutorial_deck():

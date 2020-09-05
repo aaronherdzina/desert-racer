@@ -17,5 +17,3 @@ func move_scene_node(delta):
 			velocity = (move_to_tile.global_position -\
 						get_node("player_body").global_position).normalized() * speed
 			get_node("player_body").move_and_collide(velocity * delta)
-	
-	#	get_node("player_body/Sprite").look_at(move_to_tile.global_position.normalized())

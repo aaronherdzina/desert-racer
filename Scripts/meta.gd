@@ -158,6 +158,27 @@ var screen_cap_array = []
 var can_capture = true
 var playing_screen_cap = false
 
+
+var tutorial_0_message_1 = 'Welcome to ' + str(main.game_name).capitalize() + '! \n' + \
+						  'Your goal is to race to the end and try not to crash! '+\
+						  'Speaking of which... Quick use W-A-S-D or the arrow keys on your keyboard '+\
+						  'or the left joystick on a game pad to highlight the card \'MOVE UP 1\''
+var tutorial_0_message_2 = 'Great job!'
+var tutorial_1_message_1 = 'tutorial_1_message_1!'
+var tutorial_1_message_2 = 'tutorial_1_message_2'
+var tutorial_2_message_1 = 'tutorial_2_message_1'
+var tutorial_2_message_2 = 'tutorial_2_message_2'
+var tutorial_3_message_1 = 'tutorial_3_message_1'
+var tutorial_3_message_2 = 'tutorial_3_message_2'
+var tutorial_4_message_1 = ''
+var tutorial_4_message_2 = ''
+var tutorial_5_message_1 = ''
+var tutorial_5_message_2 = ''
+var tutorial_6_message_1 = ''
+var tutorial_6_message_2 = ''
+var tutorial_7_message_1 = ''
+var tutorial_7_message_2 = ''
+
 func play_screen_cap_anim():
 	if can_capture:
 		can_capture = false
