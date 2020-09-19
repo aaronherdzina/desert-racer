@@ -189,21 +189,21 @@ var testing_deck = [card_bomb_1, card_bomb_1, card_bomb_1, move_left_1, move_rig
 
 var tutorial_deck_0 = [move_up_1, move_left_1, redraw]
 var tutorial_deck_1 = [move_down_1, move_down_1, move_down_1]
-var tutorial_deck_2 = [missile_1, missile_1, missile_1]
-var tutorial_deck_3 = [card_mine_1, card_mine_1, card_mine_1]
-var tutorial_deck_4 = [speed_down_1, speed_down_1, speed_down_1]
-var tutorial_deck_5 = [speed_up_1, speed_up_1, speed_up_1]
-var tutorial_deck_6 = [jump_1, jump_1, jump_1]
-var tutorial_deck_7 = [curve_up_left_2, curve_up_left_2, curve_up_left_2]
+var tutorial_deck_2 = [move_left_1, move_right_2, missile_1]
+var tutorial_deck_3 = [move_left_2, card_mine_1, move_right_2]
+var tutorial_deck_4 = [speed_up_1, speed_down_1, recycle_1]
+var tutorial_deck_5 = [jump_1, jump_1, jump_1]
+var tutorial_deck_6 = [curve_up_left_2, curve_up_left_2, curve_up_left_2]
+var tutorial_deck_7 = [move_down_1, recycle_1, speed_up_1]
 
 var tutorial_0_expected_card = 'UP'
 var tutorial_1_expected_card = 'DOWN'
 var tutorial_2_expected_card = 'MISSILE'
-var tutorial_3_expected_card = 'MINE'
+var tutorial_3_expected_card = 'LEFT'
 var tutorial_4_expected_card = 'SPEED DOWN'
-var tutorial_5_expected_card = 'SPEED UP'
-var tutorial_6_expected_card = 'JUMP'
-var tutorial_7_expected_card = 'CURVE'
+var tutorial_5_expected_card = 'JUMP'
+var tutorial_6_expected_card = 'CURVE'
+var tutorial_7_expected_card = 'SPEED UP'
 
 var instanced_tutorial_deck_0 = []
 var instanced_tutorial_deck_1 = []

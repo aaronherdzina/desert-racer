@@ -521,8 +521,11 @@ func handle_round_over():
 	print('after hand discard in game.gd')
 	if game.player_stability > meta.savable.player.stability_max:
 		game.player_stability = meta.savable.player.stability_max
-	if game.player_stability < 0:
-		game.player_stability = 0
+	if game.player_stability <= 0:
+		if in_tutorial:
+			game.player_stability = 500
+		else:
+			game.player_stability = 0
 	
 	print('before card removal')
 	removal_deck = []
@@ -684,6 +687,8 @@ func handle_turn_start():
 	if get_node("/root").has_node("level"):
 		l = get_node("/root/level")
 	print('handle turn start')
+	if player_stability <= 0 and in_tutorial:
+		player_stability = 500
 	if not level_over and main.checkIfNodeDeleted(l) == false and main.checkIfNodeDeleted(p) == false:
 		var enemies = get_tree().get_nodes_in_group("active_enemies")
 		var objects = get_tree().get_nodes_in_group("active_objects")
@@ -893,7 +898,7 @@ func draw():
 				c.modulate = meta.cant_play_card_color
 	if not can_afford:
 		player_lost_control = true
-		if l and l != null:
+		if l and l != null and not in_tutorial:
 			l.get_node("text_container/high_z_index/afford_tip").visible = true
 			l.get_node("text_container/high_z_index/in_air_warning").visible = false
 		turn.step_timer = 8
@@ -932,6 +937,48 @@ func set_tutorial_expected_card():
 		return card_preload.tutorial_6_expected_card
 	elif tutorial_idx == 7:
 		return card_preload.tutorial_7_expected_card
+
+
+func set_tutorial_obj_and_tile():
+	var tutorial_idx = meta.savable.tutorial_idx
+	var l = get_node("/root/level")
+	if not l or main.checkIfNodeDeleted(l):
+		return null
+	for tile in l.level_tiles:
+		if tile.row == meta.tutorial_0_tile_idx.x\
+		and tile.col == meta.tutorial_0_tile_idx.y and not l.t_0_found:
+			l.t_0_found = true
+			return tile
+		elif tile.row == meta.tutorial_1_tile_idx.x\
+		and tile.col == meta.tutorial_1_tile_idx.y and not l.t_1_found:
+			l.t_1_found = true
+			return tile
+		elif tile.row == meta.tutorial_2_tile_idx.x\
+		and tile.col == meta.tutorial_2_tile_idx.y and not l.t_2_found:
+			l.t_2_found = true
+			return tile
+		elif tile.row == meta.tutorial_3_tile_idx.x\
+		and tile.col == meta.tutorial_3_tile_idx.y and not l.t_3_found:
+			l.t_3_found = true
+			return tile
+		elif tile.row == meta.tutorial_4_tile_idx.x\
+		and tile.col == meta.tutorial_4_tile_idx.y and not l.t_4_found:
+			l.t_4_found = true
+			return tile
+		elif tile.row == meta.tutorial_5_tile_idx.x\
+		and tile.col == meta.tutorial_5_tile_idx.y and not l.t_5_found:
+			l.t_5_found = true
+			return tile
+		elif tile.row == meta.tutorial_6_tile_idx.x\
+		and tile.col == meta.tutorial_6_tile_idx.y and not l.t_6_found:
+			l.t_6_found = true
+			return tile
+		elif tile.row == meta.tutorial_7_tile_idx.x\
+		and tile.col == meta.tutorial_7_tile_idx.y and not l.t_7_found:
+			l.t_7_found = true
+			return tile
+
+
 
 
 func set_tutorial_messages(idx=1, show_second_message=false):

@@ -60,6 +60,17 @@ const ROW_BLOCK_Y_BUFFER = 4.5
 const ROW_BLOCK_X_BUFFER = 45
 const OBJ_ROW_BLOCK_SCALE = Vector2(.15, .098)
 
+# FOR TUTORIAL OBJ SPWANING
+var t_0_found = false
+var t_1_found = false
+var t_2_found = false
+var t_3_found = false
+var t_4_found = false
+var t_5_found = false
+var t_6_found = false
+var t_7_found = false
+######
+
 func _ready():
 	game.level_won = false
 	game.level_over = false
@@ -95,7 +106,7 @@ func _ready():
 	if game.objs_per_turn < 1:
 		game.objs_per_turn = 1
 	if game.in_tutorial:
-		turn.step = 6
+		turn.step = 4
 	var tp = main.instancer(main.text_popup)
 	tp.get_node('Label').set_text(game.set_tutorial_messages())
 	tp.add_to_group("remove_tutorial")
@@ -299,6 +310,8 @@ func spawn_player():
 	p.get_neighbors()
 	game.set_initial_deck()
 	game.draw()
+	if game.in_tutorial:
+		game.player_stability = 500
 	#print('PLAYER spawned at pos ' + str(p.position))
 
 
@@ -539,14 +552,23 @@ func spawn_projectiles(parent, payload={'can_hurt_player': false,
 	return p
 
 
-func spawn_objects():
-	if len(last_column_tiles) <= 0:
+func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
+	if len(last_column_tiles) <= 0 and not game.in_tutorial:
 		#print('no last_column_tiles to spawn object???')
 		return
 
+	if game.in_tutorial:
+		chosen_spawn_tile = game.set_tutorial_obj_and_tile()
+		if chosen_spawn_tile:
+			print('spawning obj at row ' + str(chosen_spawn_tile.row) + ' and col ' + str(chosen_spawn_tile.col))
+			print('\nfound tile for tutorial\n')
+		else:
+			return
+	
+	var faux_default_pos = Vector2(-10,-10) # if we see this skip setting this (this is just to avoid changing each spawn call
 	var available_tiles = []
 	var is_row_block = false
-	if rand_range(0, 100) <= game.obj_row_block_chance:
+	if rand_range(0, 100) <= game.obj_row_block_chance and not game.in_tutorial:
 		is_row_block = true
 
 	for t in last_column_tiles:
@@ -558,7 +580,8 @@ func spawn_objects():
 
 	if len(available_tiles) <= 0:
 		return
-	var chosen_spawn_tile = available_tiles[rand_range(0, len(available_tiles))]
+	if chosen_spawn_tile == null:
+		chosen_spawn_tile = available_tiles[rand_range(0, len(available_tiles))]
 	if is_row_block and not chosen_spawn_tile.movable:
 		return
 	var o = main.instancer(main.OBJECT, null, false)
@@ -586,7 +609,10 @@ func spawn_objects():
 	o.current_tile = chosen_spawn_tile
 	o.current_tile.add_to_group("active_tile")
 	o.previous_tile = o.current_tile
-	o.position = o.current_tile.global_position
+	if spawn_pos != faux_default_pos:
+		o.position = spawn_pos
+	else:
+		o.position = o.current_tile.global_position
 	o.tile_index = o.current_tile.index
 	o.preview_tile = o.current_tile
 	o.current_tile.has_object = true
@@ -611,8 +637,12 @@ func spawn_tiles():
 			t.z_index = tile_count
 			t.hold_z_idx = tile_count
 			t.index = tile_count
-			if c == 4 and r == 10:
-				player_start_tile = t
+			if game.in_tutorial:
+				if c == 4 and r == 5:
+					player_start_tile = t
+			else:
+				if c == 3 and r == 10:
+					player_start_tile = t
 			if tile_count <= 1:
 				t.position = starting_tile.global_position
 			else:
@@ -643,7 +673,6 @@ func spawn_tiles():
 			elif c == col-1:
 				bottom_row_tiles.append(t)
 				#t.modulate = Color(1, 0, 0, 1)
-
 
 func get_varied_movement(dir='right'):
 	# move at an angle, not by choice

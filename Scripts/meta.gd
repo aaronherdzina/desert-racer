@@ -165,19 +165,28 @@ var tutorial_0_message_1 = 'Welcome to ' + str(main.game_name).capitalize() + '!
 						  'or the left joystick on a game pad to highlight the card \'MOVE UP 1\''
 var tutorial_0_message_2 = 'Great job!'
 var tutorial_1_message_1 = 'tutorial_1_message_1!'
-var tutorial_1_message_2 = 'tutorial_1_message_2'
+var tutorial_1_message_2 = 'Perfect!'
 var tutorial_2_message_1 = 'tutorial_2_message_1'
-var tutorial_2_message_2 = 'tutorial_2_message_2'
+var tutorial_2_message_2 = 'Keep it up!'
 var tutorial_3_message_1 = 'tutorial_3_message_1'
-var tutorial_3_message_2 = 'tutorial_3_message_2'
+var tutorial_3_message_2 = 'Almost there!'
 var tutorial_4_message_1 = ''
-var tutorial_4_message_2 = ''
+var tutorial_4_message_2 = 'Nice!'
 var tutorial_5_message_1 = ''
-var tutorial_5_message_2 = ''
+var tutorial_5_message_2 = 'Excellent!'
 var tutorial_6_message_1 = ''
-var tutorial_6_message_2 = ''
+var tutorial_6_message_2 = 'Close call!'
 var tutorial_7_message_1 = ''
-var tutorial_7_message_2 = ''
+var tutorial_7_message_2 = 'We\'re in the clear now!'
+
+var tutorial_0_tile_idx = Vector2(8, 4)
+var tutorial_1_tile_idx = Vector2(13, 3)
+var tutorial_2_tile_idx = Vector2(18, 4)
+var tutorial_3_tile_idx = Vector2(24, 4)
+var tutorial_4_tile_idx = Vector2(24, 3)
+var tutorial_5_tile_idx = Vector2(26, 4)
+var tutorial_6_tile_idx = Vector2(26, 5)
+var tutorial_7_tile_idx = Vector2(29, 2)
 
 func play_screen_cap_anim():
 	if can_capture:

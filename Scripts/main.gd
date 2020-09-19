@@ -422,6 +422,9 @@ func handle_menus(dir):
 			var l = instancer(LEVEL)
 			l.spawn_tiles()
 			l.spawn_player()
+			if game.in_tutorial:
+				for i in range(0, 7):
+					l.spawn_objects()
 		elif 'overworld' in current_menu:
 			if not overworld.set_level_details(menu_list[menu_idx]):
 				# start level

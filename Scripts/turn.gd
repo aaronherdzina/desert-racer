@@ -230,14 +230,16 @@ func handle_turn():
 	## 0) Handle randomly spawning objects
 	#print('handling turn pre spawning')
 # warning-ignore:unused_variable
-	for i in range(0, game.objs_per_turn):
-		if rand_range(0, 100) < game.object_chance and len(pre_loop_objects) < game.object_limit:
-			l.spawn_objects()
+	if not game.in_tutorial:
+		for i in range(0, game.objs_per_turn):
+			if rand_range(0, 100) < game.object_chance and len(pre_loop_objects) < game.object_limit:
+				l.spawn_objects()
 	
 # warning-ignore:unused_variable
-	for i in range(0, game.enms_per_turn):
-		if rand_range(0, 100) < game.spawn_enm_chance and len(pre_loop_enemies) < game.enemy_limit:
-			l.spawn_enemies()
+	if not game.in_tutorial:
+		for i in range(0, game.enms_per_turn):
+			if rand_range(0, 100) < game.spawn_enm_chance and len(pre_loop_enemies) < game.enemy_limit:
+				l.spawn_enemies()
 	## 1) BEFORE STEPS: Get next tiles for player if moving and all objects
 	print('handling turn pre first wait')
 	if main.checkIfNodeDeleted(p) == false and main.checkIfNodeDeleted(p.get_node("preview_body")) == false:
