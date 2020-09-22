@@ -59,7 +59,6 @@ const smoke_puff = preload("res://Scenes/smoke puff.tscn")
 const cross_pos = preload("res://Sprites/General/cross pos.png")
 const level_pos = preload("res://Sprites/General/blank pos.png")
 const blank_pos = preload("res://Sprites/General/level pos.png")
-
 ####
 
 

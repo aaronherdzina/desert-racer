@@ -361,7 +361,6 @@ func move_object(delta):
 		if velocity != Vector2(0, 0):
 			velocity = Vector2(0, 0)
 		var tiles = meta.get_neighboring_tiles(current_tile, ['left', 'up', 'right', 'down', 'right_up', 'left_up', 'right_down', 'left_down'])
-		
 		current_tile.get_node("Sprite").modulate = Color(0, 0, 1, .4)
 
 

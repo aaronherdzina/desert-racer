@@ -107,11 +107,12 @@ func _ready():
 		game.objs_per_turn = 1
 	if game.in_tutorial:
 		turn.step = 4
-	var tp = main.instancer(main.text_popup)
-	tp.get_node('Label').set_text(game.set_tutorial_messages())
-	tp.add_to_group("remove_tutorial")
-	main.can_click_start = true
-	game.handling_tutorial_messages = true
+		overworld.level_step_target = 20
+		var tp = main.instancer(main.text_popup)
+		tp.get_node('Label').set_text(game.set_tutorial_messages())
+		tp.add_to_group("remove_tutorial")
+		main.can_click_start = true
+		game.handling_tutorial_messages = true
 	while game.handling_tutorial_messages: # wait until input clears in main
 		var timer = Timer.new()
 		timer.set_wait_time(.1)

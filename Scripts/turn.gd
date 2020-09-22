@@ -499,6 +499,8 @@ func preview_turn():
 				if len(p.preview_move_tiles) > 0 and p.preview_move_tiles[len(p.preview_move_tiles)-1] != null:
 					p.set_next_preview_move_tile()
 					p.preview_tile.has_player = true # needs to be reset
+					if main.checkIfNodeDeleted(p.preview_tile) == false:
+						p.preview_tile.get_node("Sprite").modulate = Color(.1, .1, 1, 1)
 		else:
 			return # if player is not presented that means level is over and should stop now
 

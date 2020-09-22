@@ -160,24 +160,41 @@ var playing_screen_cap = false
 
 
 var tutorial_0_message_1 = 'Welcome to ' + str(main.game_name).capitalize() + '! \n' + \
-						  'Your goal is to race to the end and try not to crash! '+\
-						  'Speaking of which... Quick use W-A-S-D or the arrow keys on your keyboard '+\
-						  'or the left joystick on a game pad to highlight the card \'MOVE UP 1\''
+						  'Your goal is to race to the end safely! '+\
+						  'Speaking of which... Quick, use W-A-S-D or the arrow keys on your keyboard, '+\
+						  'or the left joystick on a game pad to highlight the card \'MOVE UP 1\' then press (A)/[Enter] to play the card'
 var tutorial_0_message_2 = 'Great job!'
-var tutorial_1_message_1 = 'tutorial_1_message_1!'
+var tutorial_1_message_1 = 'Well that helped... for now..\nNow as you can see the obstacle in front of you will hit you next turn if you don\'t move! ' +\
+						  '\n\nChoose the card \'MOVE DOWN 1\' to avoid the next obstacle. The tile you end up in will be highlighted with a blue square.'
 var tutorial_1_message_2 = 'Perfect!'
-var tutorial_2_message_1 = 'tutorial_2_message_1'
+var tutorial_2_message_1 = 'Outside of the tutorial you have a limited time or a card will be played for you and you\'ll lose the time you have each turn to pick a card. That can get out of control quick so don\'t waste time. Don\'t worry we can still make it. You drew a \'MISSILE\' card. Standard \'MISSILE\' cards spawn a projectile in your tile and advance forward up to the current speed durning each turn. ' +\
+						  'Once it makes contact with something it will explode destroying whatever it hits.\n Play a \'MISSILE\' card.'
 var tutorial_2_message_2 = 'Keep it up!'
-var tutorial_3_message_1 = 'tutorial_3_message_1'
-var tutorial_3_message_2 = 'Almost there!'
-var tutorial_4_message_1 = ''
-var tutorial_4_message_2 = 'Nice!'
-var tutorial_5_message_1 = ''
+var tutorial_3_message_1 = 'Behind this popout you\'ll find the speed everything is moving at, the steps/tiles you\'ve traveled and your step/tile goal, and your remaing stability which is the cost of playing cards. I think you know what card to play now. I wish we had a better option but \'MOVE LEFT 2\' is the safest card to play.'
+var tutorial_3_message_2 = 'Let\'s see what we get next..'
+var tutorial_4_message_1 = 'We\'re cutting it close... Between turns when selecting a card you can see a preview of what is going to happen next turn depneding on the card you have highlighted. '+\
+                           'Highlight each card to see where you and the objects will end up. The tile each object stops on is red. There isn\'t really a better option here so choose the \'SPEED DOWN 1\' card to last at least 1 more turn'
+var tutorial_4_message_2 = 'Here we go...'
+var tutorial_5_message_1 = 'Perfect! Just what we need. It\'s risky but we can choose one of the JUMP 1 cards and soar over obstacles. You\'ll need to be careful since you can\'t play a move card while in the air.'
 var tutorial_5_message_2 = 'Excellent!'
-var tutorial_6_message_1 = ''
+var tutorial_6_message_1 = 'All cards cost \'Stability\' to play, which you can see behind this text box outside of the tutorial or right now after you play a card. When run out you draw \'UNSTABLE\' cards automatically no matter what\'s in your deck. ' +\
+						  'Looks like we lucked out again. We can\'t move because we\'re in the air, but if we speed up we\'ll be fine.\nChoose the \'SPEED UP\' card.'
 var tutorial_6_message_2 = 'Close call!'
-var tutorial_7_message_1 = ''
+var tutorial_7_message_1 = 'You did it! You drew some standard \'HOLD STEADY\' cards which help restore some stability. Play one and cruise to victory!'
 var tutorial_7_message_2 = 'We\'re in the clear now!'
+
+"""
+var tutorial_0_expected_card = 'UP'
+var tutorial_1_expected_card = 'DOWN'
+var tutorial_2_expected_card = 'MISSILE'
+var tutorial_3_expected_card = 'LEFT'
+var tutorial_4_expected_card = 'SPEED DOWN'
+var tutorial_5_expected_card = 'JUMP'
+var tutorial_6_expected_card = 'CURVE'
+var tutorial_7_expected_card = 'SPEED UP'
+
+"""
+
 
 var tutorial_0_tile_idx = Vector2(8, 4)
 var tutorial_1_tile_idx = Vector2(13, 3)
@@ -186,7 +203,7 @@ var tutorial_3_tile_idx = Vector2(24, 4)
 var tutorial_4_tile_idx = Vector2(24, 3)
 var tutorial_5_tile_idx = Vector2(26, 4)
 var tutorial_6_tile_idx = Vector2(26, 5)
-var tutorial_7_tile_idx = Vector2(29, 2)
+var tutorial_7_tile_idx = Vector2(29, 4)
 
 func play_screen_cap_anim():
 	if can_capture:
