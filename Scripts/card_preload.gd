@@ -187,7 +187,7 @@ var testing_deck = [card_bomb_1, card_bomb_1, card_bomb_1, move_left_1, move_rig
 					move_down_1, move_up_1, card_mine_1, card_float_1]
 
 
-var tutorial_deck_0 = [move_up_1, move_left_1, redraw]
+var tutorial_deck_0 = [move_up_1, move_left_1, move_right_2]
 var tutorial_deck_1 = [move_down_1, move_down_1, move_down_1]
 var tutorial_deck_2 = [move_left_1, move_right_2, missile_1]
 var tutorial_deck_3 = [move_left_2, speed_up_1, move_right_2]
