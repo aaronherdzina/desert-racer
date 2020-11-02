@@ -896,11 +896,10 @@ func draw():
 			else:
 				print(can_play_card_result[1])
 				c.modulate = meta.cant_play_card_color
-	if not can_afford:
+	if not can_afford and l and l != null and not in_tutorial:
 		player_lost_control = true
-		if l and l != null and not in_tutorial:
-			l.get_node("text_container/high_z_index/afford_tip").visible = true
-			l.get_node("text_container/high_z_index/in_air_warning").visible = false
+		l.get_node("text_container/high_z_index/afford_tip").visible = true
+		l.get_node("text_container/high_z_index/in_air_warning").visible = false
 		turn.step_timer = 8
 		if not redraw:
 			redraw = true

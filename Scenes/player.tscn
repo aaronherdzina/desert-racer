@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/smoke/000000000000030.png" type="Texture" id=2]
@@ -72,6 +72,7 @@
 [ext_resource path="res://animations/cart_turn_up.tres" type="Animation" id=70]
 [ext_resource path="res://Sprites/player/cart2/tech cart top.png" type="Texture" id=71]
 [ext_resource path="res://Sprites/player/cart2/new tread 1.png" type="Texture" id=72]
+[ext_resource path="res://Sprites/player/misc/Untitled_Artwork-1 65.png" type="Texture" id=73]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -500,7 +501,8 @@ texture = ExtResource( 3 )
 modulate = Color( 1, 0.862745, 0.862745, 1 )
 position = Vector2( -28.6312, 32.4014 )
 rotation = -0.558505
-texture = ExtResource( 9 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 73 )
 
 [node name="preview_body" type="KinematicBody2D" parent="."]
 modulate = Color( 0.588235, 0.588235, 1, 0.392157 )
@@ -599,7 +601,6 @@ autoplay = "shake"
 anims/shake = SubResource( 5 )
 
 [node name="turn_anim_player" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 anims/crash1 = ExtResource( 67 )
 anims/idle = SubResource( 6 )
 anims/idle_losing_control = ExtResource( 68 )
