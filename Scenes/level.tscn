@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/parallax_background/6.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Sprites/parallax_background/Floor.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/UI/Untitled_Artwork.jpg" type="Texture" id=19]
 [ext_resource path="res://Sprites/parallax_background/Sand dune.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/parallax_background/desert backgorund.png" type="Texture" id=21]
 
 [sub_resource type="Animation" id=1]
 length = 30.0
@@ -126,7 +127,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2500, 20 ), Vector2( 500, 20 ) ]
+"values": [ Vector2( 2500, 300 ), Vector2( 500, 300 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("b5:position")
@@ -138,7 +139,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 500, 20 ), Vector2( -1500, 20 ) ]
+"values": [ Vector2( 255.955, 181 ), Vector2( -1500, 181 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("b5_3:position")
@@ -150,7 +151,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 700, 60 ), Vector2( -1300, 60 ) ]
+"values": [ Vector2( 700, 300 ), Vector2( -1300, 300 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("b5_4:position")
@@ -174,7 +175,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1900, -160 ), Vector2( -200, -160 ) ]
+"values": [ Vector2( 1900, 182 ), Vector2( -200, 182 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("b5_6:position")
@@ -242,7 +243,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 500, 675 ), Vector2( -1500, 675 ) ]
+"values": [ Vector2( 949.335, 383.399 ), Vector2( -955.139, 383.399 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("f1_2:position")
@@ -254,7 +255,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2500, 675 ), Vector2( 500, 675 ) ]
+"values": [ Vector2( 2844.34, 383.399 ), Vector2( 945, 383.399 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -396,7 +397,8 @@ scale = Vector2( 0.621809, 0.749352 )
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 765.51, 389.41 )
+visible = false
+position = Vector2( 765.51, 382 )
 scale = Vector2( 1.35763, 0.45418 )
 texture = ExtResource( 18 )
 
@@ -478,11 +480,20 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="b5" type="Sprite" parent="backgrounds"]
-position = Vector2( 241.788, 20 )
+visible = false
+position = Vector2( -1500, 181 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 2
 texture = ExtResource( 20 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="b5_5" type="Sprite" parent="backgrounds"]
-position = Vector2( 1628.88, -160 )
+visible = false
+position = Vector2( -200, 182 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 2
 texture = ExtResource( 20 )
 
 [node name="Sprite6" type="Sprite" parent="backgrounds"]
@@ -519,7 +530,6 @@ z_index = 2000
 texture = ExtResource( 6 )
 
 [node name="f2_2" type="Sprite" parent="backgrounds"]
-visible = false
 modulate = Color( 1, 1, 1, 0.196078 )
 position = Vector2( 566.667, 390 )
 scale = Vector2( 1.2, 1 )
@@ -541,22 +551,34 @@ texture = ExtResource( 6 )
 [node name="b5_6" type="Sprite" parent="backgrounds"]
 visible = false
 modulate = Color( 0.882353, 0.882353, 0.882353, 1 )
-position = Vector2( 3341.79, -160 )
+position = Vector2( 1600, -160 )
 texture = ExtResource( 20 )
+
+[node name="Sprite21" type="Sprite" parent="backgrounds"]
+modulate = Color( 1, 1, 1, 0.0392157 )
+position = Vector2( 605, 129.733 )
+scale = Vector2( 0.518174, 0.252214 )
+z_index = 2
+texture = ExtResource( 2 )
 
 [node name="b5_3" type="Sprite" parent="backgrounds"]
 modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
-position = Vector2( 441.788, 60 )
+position = Vector2( -1300, 300 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 1
 texture = ExtResource( 20 )
 
 [node name="b5_2" type="Sprite" parent="backgrounds"]
 modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
-position = Vector2( 2241.79, 20 )
+position = Vector2( 500, 300 )
+scale = Vector2( 0.4, 0.4 )
+z_index = 1
 texture = ExtResource( 20 )
 
 [node name="b5_4" type="Sprite" parent="backgrounds"]
+visible = false
 modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
-position = Vector2( 2441.79, 60 )
+position = Vector2( 700, 60 )
 texture = ExtResource( 20 )
 
 [node name="Sprite13" type="Sprite" parent="backgrounds"]
@@ -573,11 +595,14 @@ scale = Vector2( 0.518174, 1.27929 )
 texture = ExtResource( 3 )
 
 [node name="b4" type="Sprite" parent="backgrounds"]
-position = Vector2( -1160, 151 )
+position = Vector2( 840, 151 )
 texture = ExtResource( 20 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="b4_2" type="Sprite" parent="backgrounds"]
-position = Vector2( 840, 151 )
+position = Vector2( 2840, 151 )
 texture = ExtResource( 20 )
 
 [node name="Sprite14" type="Sprite" parent="backgrounds"]
@@ -587,26 +612,35 @@ scale = Vector2( 0.518174, 0.749352 )
 texture = ExtResource( 2 )
 
 [node name="Sprite8" type="Sprite" parent="backgrounds"]
+visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 539.251, 259.176 )
 scale = Vector2( 0.518174, 0.940352 )
 texture = ExtResource( 3 )
 
 [node name="f1" type="Sprite" parent="backgrounds"]
-position = Vector2( -1500, 675 )
-scale = Vector2( 1, 1.4 )
+position = Vector2( -955.139, 383.399 )
+scale = Vector2( 1, 0.626665 )
 z_index = 1
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="f4" type="Sprite" parent="backgrounds/f1"]
 visible = false
-modulate = Color( 0.686275, 0.686275, 0.784314, 1 )
-position = Vector2( 5, -2 )
+position = Vector2( -484.082, -174.948 )
+scale = Vector2( 0.490539, 1.15899 )
 z_index = -1
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
+
+[node name="f6" type="Sprite" parent="backgrounds/f1"]
+visible = false
+position = Vector2( 468.177, -128.575 )
+scale = Vector2( 0.506821, 0.731249 )
+z_index = -1
+texture = ExtResource( 21 )
+flip_h = true
 
 [node name="f5" type="Sprite" parent="backgrounds/f1"]
 visible = false
@@ -616,27 +650,43 @@ z_index = -1
 texture = ExtResource( 5 )
 
 [node name="f1_2" type="Sprite" parent="backgrounds"]
-position = Vector2( 500, 675 )
-scale = Vector2( 0.98, 1.4 )
+position = Vector2( 945, 383.399 )
+scale = Vector2( 0.98, 0.617062 )
 z_index = 1
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
+flip_h = true
 
 [node name="f1_3" type="Sprite" parent="backgrounds/f1_2"]
 visible = false
-modulate = Color( 0.686275, 0.686275, 0.784314, 1 )
-position = Vector2( 5, -2 )
+position = Vector2( -484.082, -174.948 )
+scale = Vector2( 0.490539, 1.15899 )
 z_index = -1
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="f1_4" type="Sprite" parent="backgrounds/f1_2"]
 visible = false
-modulate = Color( 0.392157, 0.392157, 0.392157, 0.0980392 )
-position = Vector2( 16.8, 1 )
-scale = Vector2( 1.025, 1.02 )
+position = Vector2( 468.177, -128.575 )
+scale = Vector2( 0.506821, 0.731249 )
 z_index = -1
-texture = ExtResource( 5 )
+texture = ExtResource( 21 )
+flip_h = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Sprite16" type="Sprite" parent="backgrounds"]
+visible = false
+modulate = Color( 1, 1, 1, 0.0588235 )
+position = Vector2( 533.418, 862.433 )
+scale = Vector2( 0.518174, 0.343146 )
+z_index = 1
+texture = ExtResource( 2 )
 
 [node name="Sprite10" type="Sprite" parent="backgrounds"]
+visible = false
 modulate = Color( 1, 1, 1, 0.215686 )
 position = Vector2( 539.251, 761 )
 scale = Vector2( 0.518174, 1.608 )
@@ -664,6 +714,7 @@ scale = Vector2( 0.518174, 1.46095 )
 texture = ExtResource( 3 )
 
 [node name="Sprite19" type="Sprite" parent="backgrounds"]
+visible = false
 modulate = Color( 1, 1, 1, 0.215686 )
 position = Vector2( 539.251, 882.524 )
 scale = Vector2( 0.518174, 1.83095 )
@@ -751,6 +802,7 @@ z_index = 1
 texture = ExtResource( 3 )
 
 [node name="Sprite12" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.215686 )
 position = Vector2( 647.101, 607.024 )
 scale = Vector2( 0.621809, 1.60595 )
@@ -758,6 +810,7 @@ z_index = 1
 texture = ExtResource( 3 )
 
 [node name="Sprite11" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.215686 )
 position = Vector2( 647.101, 514.2 )
 scale = Vector2( 0.621809, 1.4203 )
@@ -777,6 +830,13 @@ modulate = Color( 0, 0, 0, 0.294118 )
 position = Vector2( 300, -200 )
 scale = Vector2( 1, 0.3 )
 texture = ExtResource( 14 )
+
+[node name="Sprite16" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.0588235 )
+position = Vector2( 726, -485.845 )
+scale = Vector2( 0.621809, 0.744676 )
+z_index = 1
+texture = ExtResource( 2 )
 
 [node name="tile_container" type="Node2D" parent="."]
 position = Vector2( -41.021, 45 )

@@ -1036,7 +1036,6 @@ func start_next_round():
 	highlight_card()
 	turn.step_timer_can_change = true
 	turn.step_timer = turn.step_timer_max
-	l.handle_background_anims(false)
 	check_and_remove_debuffs()
 	in_preview = true
 	for projectile in projectiles:
@@ -1056,6 +1055,7 @@ func start_next_round():
 		p.preview_tile = p.current_tile
 		p.preview_move_tiles = []
 	player_lost_control = false
+	l.handle_background_anims(false)
 	var timer = Timer.new()
 	timer.set_wait_time(1)
 	timer.set_one_shot(true)

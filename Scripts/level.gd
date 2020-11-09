@@ -4,7 +4,7 @@ var b6_default_speed = .3
 var b6_slow_speed = .0
 var b5_default_speed = .5
 var b5_slow_speed = .0
-var b4_default_speed = .7
+var b4_default_speed = .3
 var b4_slow_speed = .00
 var b3_default_speed = 1.5
 var b3_slow_speed = 0
@@ -12,7 +12,7 @@ var b2_default_speed = 1.3
 var b2_slow_speed = .0
 var b1_default_speed = 2
 var b1_slow_speed = 0
-var f1_default_speed = .85
+var f1_default_speed = .5
 var f1_slow_speed = .00
 var f2_default_speed = .8
 var f2_slow_speed = .0
@@ -608,6 +608,7 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	o.get_node("body/shadow").rotation = rand_obj['shadow_rotation']
 	o.get_node("preview_body/shadow").rotation = rand_obj['shadow_rotation']
 	o.current_tile = chosen_spawn_tile
+	get_row_scale(o.get_node('body/Sprite'), chosen_spawn_tile, Vector2(0, 0), 500, o)
 	o.current_tile.add_to_group("active_tile")
 	o.previous_tile = o.current_tile
 	if spawn_pos != faux_default_pos:
@@ -618,6 +619,25 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	o.preview_tile = o.current_tile
 	o.current_tile.has_object = true
 	find_object_move_tiles(turn.step, o)
+
+
+func get_row_scale(o, tile, new_vec=Vector2(0, 0), bonus_idx=0, index_o=null):
+	if o and main.checkIfNodeDeleted(o) == false:
+		var col_variance_scale = .06
+		var default_scale = o.get_scale() if new_vec == Vector2(0, 0) else new_vec
+		var count = meta.savable.col
+		print('\n\n\nhere1 w ' + str(o.name))
+		for i in range(0, meta.savable.col):
+			if tile.col == i:
+				print('\n\n\nhere333333333 w ' + str(o.name))
+				if new_vec != Vector2(0, 0) and main.checkIfNodeDeleted(index_o) == false:
+					index_o.z_index = i + bonus_idx
+					print('\n\n\nhere w ' + str(o.name))
+				else:
+					o.z_index = i
+				o.set_scale(Vector2(default_scale.x-(col_variance_scale*count),
+								   default_scale.y-(col_variance_scale*count)))
+			count -= 1
 
 
 func spawn_tiles():

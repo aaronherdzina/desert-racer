@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Slick ship base.png-603429d8233649168f8aee106da97a80.stex"
+path="res://.import/desert backgorund.png-9c3f69f66b6111d9be9a5cae94f2d2ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/player/minimalist/Slick ship base.png"
-dest_files=[ "res://.import/Slick ship base.png-603429d8233649168f8aee106da97a80.stex" ]
+source_file="res://Sprites/parallax_background/desert backgorund.png"
+dest_files=[ "res://.import/desert backgorund.png-9c3f69f66b6111d9be9a5cae94f2d2ca.stex" ]
 
 [params]
 

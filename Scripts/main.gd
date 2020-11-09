@@ -213,6 +213,13 @@ func _input(event):
 			game.hand_idx = validate_menu_idx(game.hand_idx, game.hand, 'left')
 			game.highlight_card()
 		handle_input_delay()
+		
+	elif current_menu == 'main':
+		if Input.is_action_just_released("left")\
+		   or Input.is_action_just_released("right")\
+		   or Input.is_action_just_released("up")\
+		   or Input.is_action_just_released("down"):
+			handle_main_menu_arrow_highlighting('none', true)
 
 
 func handle_input_delay(type='any'):
@@ -253,6 +260,7 @@ func handle_menus(dir):
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
 			menu_idx = validate_menu_idx(menu_idx, main_menu_buttons, 'left')
+			handle_main_menu_arrow_highlighting(dir)
 		elif 'deck_select' in current_menu:
 			if menu_list != meta.savable.player.decks: menu_list = meta.savable.player.decks
 			menu_idx = validate_menu_idx(menu_idx, menu_list, 'left')
@@ -289,6 +297,7 @@ func handle_menus(dir):
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
 			menu_idx = validate_menu_idx(menu_idx, main_menu_buttons, 'right')
+			handle_main_menu_arrow_highlighting(dir)
 		elif 'deck_select' in current_menu:
 			if menu_list != meta.savable.player.decks: menu_list = meta.savable.player.decks
 			menu_idx = validate_menu_idx(menu_idx, menu_list, 'right')
@@ -325,6 +334,7 @@ func handle_menus(dir):
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
 			menu_idx = validate_menu_idx(menu_idx, main_menu_buttons, 'left')
+			handle_main_menu_arrow_highlighting(dir)
 		elif 'create' in current_menu:
 			c_scene.get_node('card_container/arrow').visible = false
 			c_scene.get_node('card_container/AnimationPlayer').stop()
@@ -351,6 +361,7 @@ func handle_menus(dir):
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
 			menu_idx = validate_menu_idx(menu_idx, main_menu_buttons, 'right')
+			handle_main_menu_arrow_highlighting(dir)
 		elif 'create' in current_menu:
 			c_scene.get_node('card_container/arrow').visible = false
 			c_scene.get_node('card_container/AnimationPlayer').stop()
@@ -519,11 +530,21 @@ func handle_menus(dir):
 		if not main_menu_buttons: main_menu_buttons = get_node("/root/startingScene/buttons").get_children()
 		if menu_idx >= 0 and menu_idx < len(main_menu_buttons) and len(main_menu_buttons) > 0:
 			main_menu_buttons[menu_idx].modulate = globalUiDetails.focusEnterColor
-
 #### END OF INPUT FUNCS
 
 
 #### HELPER FUNCS
+func handle_main_menu_arrow_highlighting(dir, reset=false):
+	if checkIfNodeDeleted(get_node("/root/startingScene/control_tip_imgs")) == false:
+		var control_tip_img_container = get_node("/root/startingScene/control_tip_imgs")
+		for n in control_tip_img_container.get_children():
+			if current_menu == 'main' and checkIfNodeDeleted(n) == false:
+				if not 'shadow' in n.name:
+					n.modulate = Color(1, 1, 1, 1)
+				if not reset and dir in n.name:
+					n.modulate = Color(1, .3, .3, 1)
+
+
 func checkIfNodeDeleted(nodeToCheck, eraseNode=false):
 	if not nodeToCheck or 'Deleted' in str(nodeToCheck) or 'Object:0' in str(nodeToCheck) or not nodeToCheck.get_parent(): # nodeToCheck.is_queued_for_deletion()
 		if eraseNode:
