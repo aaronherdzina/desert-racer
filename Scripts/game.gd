@@ -468,13 +468,44 @@ func highlight_card():
 			var can_play_card_result = validate_can_play_card(hand[hand_idx])
 			if can_play_card_result[0]:
 				hand[hand_idx].modulate = Color(1, 1, .5, 1)
+				handle_card_alert('', true)
+				get_node("/root/level/text_container/high_z_index/card_msg").visible = false
 			else:
 				print(can_play_card_result[1])
 				hand[hand_idx].modulate = meta.cant_play_card_color
+				handle_card_alert(can_play_card_result[1])
 			hand[hand_idx].get_node("description").visible = true
 	else:
 		pass
 		#print('hand idx out of score in highlight???? hand ' + str(hand) + ' hand_idx ' + str(hand_idx))
+
+
+func handle_card_alert(alert_msg, remove_alert=false, alert_time=null):
+	if get_node("/root").has_node("level") and main.checkIfNodeDeleted(get_node("/root/level")) == false:
+		var l = get_node("/root/level")
+		if l.get_node("text_container/high_z_index/afford_tip").visible:
+			return
+		if remove_alert:
+			l.get_node("text_container/high_z_index/card_msg").set_text('')
+			l.get_node("text_container/high_z_index/card_msg").visible = false
+			l.get_node("text_container/high_z_index/in_air_warning").visible = false
+			return
+
+		l.get_node("text_container/high_z_index/card_msg").set_text(alert_msg)
+		l.get_node("text_container/high_z_index/card_msg").visible = true
+		l.get_node("text_container/high_z_index/in_air_warning").visible = false
+
+		if alert_time:
+			var timer = Timer.new()
+			timer.set_wait_time(alert_time)
+			timer.set_one_shot(true)
+			get_node("/root").add_child(timer)
+			timer.start()
+			yield(timer, "timeout")
+			timer.queue_free()
+			if l and main.checkIfNodeDeleted(l) == false:
+				l.get_node("text_container/high_z_index/card_msg").set_text('')
+				l.get_node("text_container/high_z_index/card_msg").visible = false
 
 
 func validate_can_play_card(card):
@@ -482,24 +513,24 @@ func validate_can_play_card(card):
 		Return reason for reference elsewhere
 	 """
 	var p = null
-	var reason = 'none'
+	var reason = "Can't play selected card. "
 	if get_node("/root").has_node("player"):
 		p = get_node("/root/player")
 
 	if p == null or main.checkIfNodeDeleted(p) == true:
-		reason = 'no player'
+		reason += ' - '
 		return [false, reason]
 
 	if card.details.cost > player_stability:
-		reason = 'stability'
+		reason += ' not enough stability'
 		return [false, reason]
 	if p.player_in_air:
-		if 'projectile' in str(card.details.type) or 'jump' in str(card.details.type):
-			reason = 'in air'
+		if 'projectile' in str(card.details.type) or 'jump' in str(card.details.type) or 'move' in str(card.details.type):
+			reason += ' ' + str(card.details.type) + ' cards are not playable while in the air'
 			return [false, reason]
 	if in_tutorial:
 		if not expected_tutorial_card_text in str(card.details.title):
-			reason = 'wrong tutorial card, expecting ' + str(expected_tutorial_card_text)
+			reason += ' play tutorial card "' + str(expected_tutorial_card_text) + '"'
 			return [false, reason]
 	return [true, reason]
 
@@ -812,13 +843,14 @@ func draw():
 		return
 	var l = get_node("/root/level/")
 	var p = get_node("/root/player")
+	if main.checkIfNodeDeleted(p) == true or main.checkIfNodeDeleted(l) == true:
+		game.level_over = true
+		return
 	var cd = meta.savable.player.current_deck
 	var dd = discard_deck
 	var ad = added_deck
 	var temp_hand = hand
-	if main.checkIfNodeDeleted(p) == true or main.checkIfNodeDeleted(l) == true:
-		game.level_over = true
-		return
+	hand_idx = 0
 	# Clear hands before modifying/drawing for coming turn
 	temp_hand = []
 	hand = []
@@ -850,7 +882,6 @@ func draw():
 				if len(ad) > 0:
 					ad.remove(0)
 			elif len(cd) > 0 and main.checkIfNodeDeleted(cd[0]) == false:
-				# this serves to reset vals from mid game bonuses like overclocking
 				temp_hand.append(cd[0])
 				if len(cd) > 0:
 					cd.remove(0)
@@ -874,7 +905,7 @@ func draw():
 				if temp_hand[i].details.in_deck != 'removal':
 					temp_hand[i].modulate = Color(1, 1, 1, 1)
 					temp_hand[i].details.in_deck = 'hand'
-				meta.animate_cycle_card(temp_hand[i], false)
+				meta.animate_cycle_card(temp_hand[i], false, false, (i == 0))
 		##
 
 		if main.checkIfNodeDeleted(temp_hand[i]) == false:
@@ -888,14 +919,17 @@ func draw():
 		turn.can_play_card = true
 	var can_afford = false
 	
-	for c in hand:
-		if main.checkIfNodeDeleted(c) == false:
-			var can_play_card_result = validate_can_play_card(hand[hand_idx])
-			if can_play_card_result[0]:
-				can_afford = true
-			else:
-				print(can_play_card_result[1])
-				c.modulate = meta.cant_play_card_color
+	if in_tutorial:
+		can_afford = true
+	else:
+		for c in hand:
+			if main.checkIfNodeDeleted(c) == false:
+				var can_play_card_result = validate_can_play_card(hand[hand_idx])
+				if can_play_card_result[0]:
+					can_afford = true
+				else:
+					print(can_play_card_result[1])
+					c.modulate = meta.cant_play_card_color
 	if not can_afford and l and l != null and not in_tutorial:
 		player_lost_control = true
 		l.get_node("text_container/high_z_index/afford_tip").visible = true
@@ -904,6 +938,25 @@ func draw():
 		if not redraw:
 			redraw = true
 			discard_hand(hand)
+			"""
+			# TODO: fix/finish below:
+			# this is where we still show cards discarded when the player loses control
+			# so players still know what they drew and aren't confused
+			if len(discard_deck) >= hand_limit: 
+				var count = len(discard_deck)
+				var idx = 0
+				for x in range(0, len(discard_deck)):
+					count -= 1
+					if l and count >= 0 and count < len(discard_deck)
+					   and main.checkIfNodeDeleted(discard_deck[count]) == false:
+						discard_deck[count].position = l.get_node("hand_pos_0").position
+						discard_deck[count].position.x = l.get_node("hand_pos_0").position.x + (idx * card_x_buffer)
+						discard_deck[count].position.y += 100
+						discard_deck[count].set_scale(card_hand_size)
+						discard_deck[count].visible = true
+						discard_deck[count].z_index = 700
+					idx += 1
+			"""
 			if l:
 				l.get_node("text_container/high_z_index/afford_tip").visible = true
 				l.get_node("text_container/high_z_index/in_air_warning").visible = false

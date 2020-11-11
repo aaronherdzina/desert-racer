@@ -904,8 +904,8 @@ margin_bottom = 690.0
 custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.607843, 0.176471, 0.176471, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "(You are losing control and drew all cards you can't afford! You can only play a Losing Control Card and after you'll restore some stability.)
-"
+text = "You drew all cards you can't play and now you're losing control! 
+You can only play a 'Losing Control Card'"
 align = 1
 valign = 1
 autowrap = true
@@ -923,6 +923,21 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.607843, 0.176471, 0.176471, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "(While in air you can't play projectiles or jump again and movement is semi-random)"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="card_msg" type="Label" parent="text_container/high_z_index"]
+margin_left = 167.0
+margin_top = 399.0
+margin_right = 1147.0
+margin_bottom = 690.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.607843, 0.176471, 0.176471, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
 autowrap = true

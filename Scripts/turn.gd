@@ -48,6 +48,7 @@ func play_card(end_turn, here_with_input=false):
 		var hold_card = null
 		var can_afford = true
 		var can_afford_any = false
+		game.handle_card_alert('', true)
 		
 		# Make sure card is there and not removed
 		if len(game.hand) > 0 and game.hand_idx < len(game.hand) and game.hand_idx >= 0 and\
@@ -55,10 +56,11 @@ func play_card(end_turn, here_with_input=false):
 		   main.checkIfNodeDeleted(game.hand[game.hand_idx]) == false:
 			var card = null 
 			var can_play_card_result = game.validate_can_play_card(game.hand[game.hand_idx])
-
+			# create alert to show here
 			# if we can't play the card
 			if not can_play_card_result[0]: 
 				can_afford = false
+				game.handle_card_alert(can_play_card_result[1])
 				for c in game.hand:
 					if 'Node' in str(c) and main.checkIfNodeDeleted(c) == false:
 						if c.details.cost <= game.player_stability:
@@ -252,7 +254,8 @@ func handle_turn():
 				e.move_tiles = []
 				e.get_node("preview_body").visible = false
 				l.find_enemy_move_tiles(e.move_speed, e, e.move_dir)
-				if len(e.move_tiles) > 0:
+				if len(e.move_tiles) > 0 and main.checkIfNodeDeleted(e.get_node('body')) == false\
+				   and main.checkIfNodeDeleted(e.get_node('body/Sprite')) == false:
 					l.get_row_scale(e.get_node('body/Sprite'), e.move_tiles[0], Vector2(1.3, 1.3), e)
 		print('handling turn post e pre loops')
 		for o in pre_loop_objects:

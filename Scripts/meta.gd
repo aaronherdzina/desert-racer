@@ -401,7 +401,7 @@ func set_player_keys(new_char, set_meta=false):
 		new_char.dig_bonus = savable.dig_bonus
 
 
-func animate_cycle_card(card, right=true, in_battle=false):
+func animate_cycle_card(card, right=true, in_battle=false, first_card=false):
 	if main.checkIfNodeDeleted(card) == true: return
 	var anim_time = 10
 	var anim_frame_delay = .001
@@ -438,8 +438,11 @@ func animate_cycle_card(card, right=true, in_battle=false):
 				timer.queue_free()
 		if main.checkIfNodeDeleted(card) == false:
 			card.position = pos
-			card.set_scale(s)
 			card.details.id = 0
+			if first_card:
+				card.set_scale(game.highlight_card_size)
+			else:
+				card.set_scale(s)
 		var t = Timer.new()
 		t.set_wait_time(.25)
 		t.set_one_shot(true)

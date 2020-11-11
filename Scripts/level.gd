@@ -623,13 +623,11 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 
 func get_row_scale(o, tile, new_vec=Vector2(0, 0), bonus_idx=0, index_o=null):
 	if o and main.checkIfNodeDeleted(o) == false:
-		var col_variance_scale = .06
+		var col_variance_scale = .07
 		var default_scale = o.get_scale() if new_vec == Vector2(0, 0) else new_vec
 		var count = meta.savable.col
-		print('\n\n\nhere1 w ' + str(o.name))
 		for i in range(0, meta.savable.col):
 			if tile.col == i:
-				print('\n\n\nhere333333333 w ' + str(o.name))
 				if new_vec != Vector2(0, 0) and main.checkIfNodeDeleted(index_o) == false:
 					index_o.z_index = i + bonus_idx
 					print('\n\n\nhere w ' + str(o.name))
