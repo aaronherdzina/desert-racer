@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/parallax_background/6.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Sprites/UI/Untitled_Artwork.jpg" type="Texture" id=19]
 [ext_resource path="res://Sprites/parallax_background/Sand dune.png" type="Texture" id=20]
 [ext_resource path="res://Sprites/parallax_background/desert backgorund.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/parallax_background/Desert_Racer_Ground 2.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 length = 30.0
@@ -622,7 +623,7 @@ texture = ExtResource( 3 )
 position = Vector2( -955.139, 383.399 )
 scale = Vector2( 1, 0.626665 )
 z_index = 1
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -653,7 +654,7 @@ texture = ExtResource( 5 )
 position = Vector2( 945, 383.399 )
 scale = Vector2( 0.98, 0.617062 )
 z_index = 1
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 flip_h = true
 
 [node name="f1_3" type="Sprite" parent="backgrounds/f1_2"]
