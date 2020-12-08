@@ -29,7 +29,7 @@ var regen_on_enm = false
 var regen_on_projectile = false
 var regen_val = 0
 
-var obj_row_block_chance = 10
+var obj_row_block_chance = -1
 var enm_projectile_chance = 20
 var enm_bomb_projectile_chance = 20
 var spawn_enm_chance = 20

@@ -2,7 +2,7 @@ extends Node2D
 
 var b6_default_speed = .3
 var b6_slow_speed = .0
-var b5_default_speed = .5
+var b5_default_speed = .17
 var b5_slow_speed = .0
 var b4_default_speed = .3
 var b4_slow_speed = .00
@@ -14,7 +14,7 @@ var b1_default_speed = 2
 var b1_slow_speed = 0
 var f1_default_speed = .5
 var f1_slow_speed = .00
-var f2_default_speed = .8
+var f2_default_speed = 1
 var f2_slow_speed = .0
 var f3_default_speed = 10
 var f3_slow_speed = .0
@@ -569,8 +569,8 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	var faux_default_pos = Vector2(-10,-10) # if we see this skip setting this (this is just to avoid changing each spawn call
 	var available_tiles = []
 	var is_row_block = false
-	if rand_range(0, 100) <= game.obj_row_block_chance and not game.in_tutorial:
-		is_row_block = true
+	#if rand_range(0, 100) <= game.obj_row_block_chance and not game.in_tutorial:
+	#	is_row_block = true
 
 	for t in last_column_tiles:
 		if t != last_column_tiles[0]:
