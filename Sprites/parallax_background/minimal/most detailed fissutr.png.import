@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green light.png-495dad220f0d93d026ee733884904004.stex"
+path="res://.import/most detailed fissutr.png-0d5ce841b39b3649ef599f9dee60766f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/parallax_background/minimal/green light.png"
-dest_files=[ "res://.import/green light.png-495dad220f0d93d026ee733884904004.stex" ]
+source_file="res://Sprites/parallax_background/minimal/most detailed fissutr.png"
+dest_files=[ "res://.import/most detailed fissutr.png-0d5ce841b39b3649ef599f9dee60766f.stex" ]
 
 [params]
 

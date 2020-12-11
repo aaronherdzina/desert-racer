@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/more detailed fissure.png-467838f2000fc35304b791101d825eaa.stex"
+path="res://.import/top down rock 3.png-e3f43015e5610deeb79d7da1a268f90a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/parallax_background/minimal/more detailed fissure.png"
-dest_files=[ "res://.import/more detailed fissure.png-467838f2000fc35304b791101d825eaa.stex" ]
+source_file="res://Sprites/objects/minimalist/top down rock 3.png"
+dest_files=[ "res://.import/top down rock 3.png-e3f43015e5610deeb79d7da1a268f90a.stex" ]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/normal_map=0
 flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
-flags/anisotropic=false
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

@@ -2,17 +2,17 @@ extends Node2D
 
 var b6_default_speed = .3
 var b6_slow_speed = .0
-var b5_default_speed = .17
+var b5_default_speed = .35
 var b5_slow_speed = .0
-var b4_default_speed = .3
+var b4_default_speed = .4
 var b4_slow_speed = .00
-var b3_default_speed = 1.5
+var b3_default_speed = 1.3
 var b3_slow_speed = 0
 var b2_default_speed = 1.3
 var b2_slow_speed = .0
 var b1_default_speed = 2
 var b1_slow_speed = 0
-var f1_default_speed = .5
+var f1_default_speed = .53  # .53perfectly matches object speed
 var f1_slow_speed = .00
 var f2_default_speed = 1
 var f2_slow_speed = .0
@@ -586,7 +586,11 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	if is_row_block and not chosen_spawn_tile.movable:
 		return
 	var o = main.instancer(main.OBJECT, null, false)
+	var img_idx
 	var rand_obj = main.object_imgs[rand_range(0, len(main.object_imgs))]
+	
+	if rand_obj['name'] == 'tree_group':
+		pass
 
 	o.is_row_block = is_row_block
 	if is_row_block:
@@ -618,6 +622,10 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	o.tile_index = o.current_tile.index
 	o.preview_tile = o.current_tile
 	o.current_tile.has_object = true
+	o.get_node('body/Sprite').position.x += rand_obj['img_offset'].x
+	o.get_node('body/Sprite').position.y += rand_obj['img_offset'].y
+	o.get_node('preview_body/Sprite').position.x += rand_obj['img_offset'].x
+	o.get_node('preview_body/Sprite').position.y += rand_obj['img_offset'].y
 	find_object_move_tiles(turn.step, o)
 
 
