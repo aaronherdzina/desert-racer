@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-1.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-6.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-7.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/player/misc/driverless top.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/enemies/new enm 3.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/smoke/000000000000005.png" type="Texture" id=12]
 [ext_resource path="res://animations/new_animation.tres" type="Animation" id=13]
 [ext_resource path="res://animations/smoke.tres" type="Animation" id=14]
@@ -60,17 +61,19 @@
 [ext_resource path="res://Sprites/smoke_main_imgs/Smoke_Anim-6.png" type="Texture" id=59]
 [ext_resource path="res://animations/smoke shadow.tres" type="Animation" id=60]
 [ext_resource path="res://animations/shake.tres" type="Animation" id=61]
+[ext_resource path="res://Sprites/enemies/new enm 1.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/enemies/new enm 2.png" type="Texture" id=63]
 
 [sub_resource type="Animation" id=1]
 resource_name = "enm1"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("engine2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -82,7 +85,7 @@ tracks/1/path = NodePath("engine3:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -94,7 +97,7 @@ tracks/2/path = NodePath("detail1:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -106,7 +109,7 @@ tracks/3/path = NodePath("detail2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -118,7 +121,7 @@ tracks/4/path = NodePath("detail3:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -130,7 +133,7 @@ tracks/5/path = NodePath("detail4:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -142,7 +145,7 @@ tracks/6/path = NodePath("seat:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -154,7 +157,7 @@ tracks/7/path = NodePath("seat:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -166,7 +169,7 @@ tracks/8/path = NodePath("seat:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -178,7 +181,7 @@ tracks/9/path = NodePath("seat:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -190,7 +193,7 @@ tracks/10/path = NodePath("engine1:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -202,7 +205,7 @@ tracks/11/path = NodePath("engine1:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
-tracks/11/enabled = true
+tracks/11/enabled = false
 tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -214,7 +217,7 @@ tracks/12/path = NodePath("engine1:scale")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
-tracks/12/enabled = true
+tracks/12/enabled = false
 tracks/12/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -226,7 +229,7 @@ tracks/13/path = NodePath("engine1:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
-tracks/13/enabled = true
+tracks/13/enabled = false
 tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -238,7 +241,7 @@ tracks/14/path = NodePath("engine2:texture")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -250,7 +253,7 @@ tracks/15/path = NodePath("engine1:texture")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
-tracks/15/enabled = true
+tracks/15/enabled = false
 tracks/15/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -264,17 +267,17 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ) ]
+"values": [ ExtResource( 62 ), ExtResource( 63 ), ExtResource( 62 ), ExtResource( 11 ) ]
 }
 tracks/17/type = "value"
 tracks/17/path = NodePath("engine2:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
-tracks/17/enabled = true
+tracks/17/enabled = false
 tracks/17/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -286,7 +289,7 @@ tracks/18/path = NodePath("engine2:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
-tracks/18/enabled = true
+tracks/18/enabled = false
 tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -298,7 +301,7 @@ tracks/19/path = NodePath("engine2:scale")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
-tracks/19/enabled = true
+tracks/19/enabled = false
 tracks/19/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -310,7 +313,7 @@ tracks/20/path = NodePath("detail3:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
-tracks/20/enabled = true
+tracks/20/enabled = false
 tracks/20/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -322,7 +325,7 @@ tracks/21/path = NodePath("detail3:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
-tracks/21/enabled = true
+tracks/21/enabled = false
 tracks/21/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -334,7 +337,7 @@ tracks/22/path = NodePath("detail3:scale")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
-tracks/22/enabled = true
+tracks/22/enabled = false
 tracks/22/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -346,7 +349,7 @@ tracks/23/path = NodePath("detail4:position")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
-tracks/23/enabled = true
+tracks/23/enabled = false
 tracks/23/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -358,7 +361,7 @@ tracks/24/path = NodePath("detail4:rotation_degrees")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
-tracks/24/enabled = true
+tracks/24/enabled = false
 tracks/24/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -370,7 +373,7 @@ tracks/25/path = NodePath("detail4:scale")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
-tracks/25/enabled = true
+tracks/25/enabled = false
 tracks/25/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -382,7 +385,7 @@ tracks/26/path = NodePath("detail3:modulate")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
-tracks/26/enabled = true
+tracks/26/enabled = false
 tracks/26/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -1007,13 +1010,15 @@ texture = ExtResource( 15 )
 position = Vector2( -138.593, -34.8339 )
 
 [node name="engine1" type="Sprite" parent="body/anim_container1/cart_imgs"]
-position = Vector2( -11.3621, 102.585 )
-texture = ExtResource( 4 )
+visible = false
+position = Vector2( -17.7002, 104.825 )
+texture = ExtResource( 3 )
 
 [node name="engine2" type="Sprite" parent="body/anim_container1/cart_imgs"]
+visible = false
 modulate = Color( 1, 0.923843, 0.929647, 1 )
-position = Vector2( 132.33, 219.166 )
-texture = ExtResource( 3 )
+position = Vector2( 139.286, 223.418 )
+texture = ExtResource( 4 )
 
 [node name="engine3" type="Sprite" parent="body/anim_container1/cart_imgs"]
 visible = false
@@ -1021,32 +1026,39 @@ modulate = Color( 1, 0.882353, 0.882353, 1 )
 texture = ExtResource( 5 )
 
 [node name="detail1" type="Sprite" parent="body/anim_container1/cart_imgs"]
+visible = false
 position = Vector2( -40.9813, 25.608 )
 texture = ExtResource( 6 )
 
 [node name="detail2" type="Sprite" parent="body/anim_container1/cart_imgs"]
+visible = false
 position = Vector2( -40.9813, 25.608 )
 texture = ExtResource( 7 )
 
 [node name="detail3" type="Sprite" parent="body/anim_container1/cart_imgs"]
+visible = false
 position = Vector2( 46.2343, 54.2737 )
 rotation = -0.959931
 texture = ExtResource( 8 )
 
 [node name="detail4" type="Sprite" parent="body/anim_container1/cart_imgs"]
+visible = false
 position = Vector2( 84.9941, 97.8174 )
 rotation = -0.872665
 texture = ExtResource( 9 )
 
 [node name="seat" type="Sprite" parent="body/anim_container1/cart_imgs"]
-rotation = -0.0523599
-texture = ExtResource( 10 )
+position = Vector2( 160.836, -39.7506 )
+rotation = -0.523599
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 62 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="body/anim_container1/cart_imgs"]
+autoplay = "enm1"
 anims/enm1 = SubResource( 1 )
 
 [node name="smoke_imgs" type="Sprite" parent="body/anim_container1"]
-modulate = Color( 1, 1, 1, 0.392157 )
+modulate = Color( 1, 1, 1, 0.0980392 )
 position = Vector2( -255.549, 120.91 )
 rotation = -0.785398
 

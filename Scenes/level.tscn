@@ -123,7 +123,7 @@ tracks/1/keys = {
 length = 10.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("b5_2:position")
+tracks/0/path = NodePath("b5_container/b5_2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -159,7 +159,7 @@ tracks/2/keys = {
 "values": [ Vector2( 700, 300 ), Vector2( -1300, 300 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("b5_4:position")
+tracks/3/path = NodePath("b5_container/b5_4:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -199,7 +199,7 @@ tracks/5/keys = {
 length = 10.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("b4:position")
+tracks/0/path = NodePath("b4_container/b4:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -208,10 +208,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 840, 670 ), Vector2( -1075, 670 ) ]
+"values": [ Vector2( 840, 525 ), Vector2( -1075, 525 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("b4_2:position")
+tracks/1/path = NodePath("b4_container/b4_2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -220,7 +220,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2760, 670 ), Vector2( 840, 670 ) ]
+"values": [ Vector2( 2760, 525 ), Vector2( 840, 525 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -239,7 +239,7 @@ loop = true
 length = 10.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("f1:position")
+tracks/0/path = NodePath("ground_container/f1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -248,10 +248,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 942.35, 700 ), Vector2( -955.139, 700 ) ]
+"values": [ Vector2( 942.35, 500 ), Vector2( -955.139, 500 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("f1_2:position")
+tracks/1/path = NodePath("ground_container/f1_2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -260,7 +260,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 10 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2844.34, 700 ), Vector2( 942.35, 700 ) ]
+"values": [ Vector2( 2844.34, 500 ), Vector2( 942.35, 500 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -578,7 +578,9 @@ scale = Vector2( 0.4, 0.4 )
 z_index = 1
 texture = ExtResource( 20 )
 
-[node name="b5_2" type="Sprite" parent="backgrounds"]
+[node name="b5_container" type="Node2D" parent="backgrounds"]
+
+[node name="b5_2" type="Sprite" parent="backgrounds/b5_container"]
 modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
 position = Vector2( -1010.14, 400 )
 z_index = 1
@@ -588,7 +590,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="b5_4" type="Sprite" parent="backgrounds"]
+[node name="b5_4" type="Sprite" parent="backgrounds/b5_container"]
 modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
 position = Vector2( 895, 400 )
 z_index = 1
@@ -605,16 +607,18 @@ position = Vector2( 533.418, 354.676 )
 scale = Vector2( 0.518174, 0.749352 )
 texture = ExtResource( 2 )
 
-[node name="b4" type="Sprite" parent="backgrounds"]
-position = Vector2( -1075, 670 )
+[node name="b4_container" type="Node2D" parent="backgrounds"]
+
+[node name="b4" type="Sprite" parent="backgrounds/b4_container"]
+position = Vector2( 840, 525 )
 z_index = 1
 texture = ExtResource( 23 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="b4_2" type="Sprite" parent="backgrounds"]
-position = Vector2( 840, 670 )
+[node name="b4_2" type="Sprite" parent="backgrounds/b4_container"]
+position = Vector2( 2760, 525 )
 z_index = 1
 texture = ExtResource( 23 )
 
@@ -632,8 +636,10 @@ position = Vector2( 539.251, 259.176 )
 scale = Vector2( 0.518174, 0.940352 )
 texture = ExtResource( 3 )
 
-[node name="f1" type="Sprite" parent="backgrounds"]
-position = Vector2( 942.35, 700 )
+[node name="ground_container" type="Node2D" parent="backgrounds"]
+
+[node name="f1" type="Sprite" parent="backgrounds/ground_container"]
+position = Vector2( 731.297, 500 )
 scale = Vector2( 1, 0.626665 )
 z_index = 1
 texture = ExtResource( 24 )
@@ -641,14 +647,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="f4" type="Sprite" parent="backgrounds/f1"]
+[node name="f4" type="Sprite" parent="backgrounds/ground_container/f1"]
 visible = false
 position = Vector2( -484.082, -174.948 )
 scale = Vector2( 0.490539, 1.15899 )
 z_index = -1
 texture = ExtResource( 21 )
 
-[node name="f6" type="Sprite" parent="backgrounds/f1"]
+[node name="f6" type="Sprite" parent="backgrounds/ground_container/f1"]
 visible = false
 position = Vector2( 468.177, -128.575 )
 scale = Vector2( 0.506821, 0.731249 )
@@ -656,20 +662,20 @@ z_index = -1
 texture = ExtResource( 21 )
 flip_h = true
 
-[node name="f5" type="Sprite" parent="backgrounds/f1"]
+[node name="f5" type="Sprite" parent="backgrounds/ground_container/f1"]
 visible = false
 modulate = Color( 0.392157, 0.392157, 0.392157, 0.0980392 )
 scale = Vector2( 1, 1.02 )
 z_index = -1
 texture = ExtResource( 5 )
 
-[node name="f1_2" type="Sprite" parent="backgrounds"]
-position = Vector2( 2844.34, 700 )
+[node name="f1_2" type="Sprite" parent="backgrounds/ground_container"]
+position = Vector2( 2632.79, 500 )
 scale = Vector2( 1, 0.627 )
 z_index = 1
 texture = ExtResource( 24 )
 
-[node name="f1_3" type="Sprite" parent="backgrounds/f1_2"]
+[node name="f1_3" type="Sprite" parent="backgrounds/ground_container/f1_2"]
 visible = false
 position = Vector2( -484.082, -174.948 )
 scale = Vector2( 0.490539, 1.15899 )
@@ -679,7 +685,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="f1_4" type="Sprite" parent="backgrounds/f1_2"]
+[node name="f1_4" type="Sprite" parent="backgrounds/ground_container/f1_2"]
 visible = false
 position = Vector2( 468.177, -128.575 )
 scale = Vector2( 0.506821, 0.731249 )

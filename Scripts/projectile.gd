@@ -169,8 +169,8 @@ func check_tile_based_collision():
 		if current_tile.has_two_projs or\
 		   current_tile.has_enemy and not parent or\
 		   current_tile.has_enemy and parent and parent != current_tile.enm_str or\
-		   current_tile.has_player and not parent or\
-		   current_tile.has_player and parent and parent != current_tile.player_str or\
+		   current_tile.has_player and can_hurt_player and not parent or\
+		   current_tile.has_player and can_hurt_player and parent and parent != current_tile.player_str or\
 		   current_tile.has_object:
 			# we are here because we possibly collided with a something on a previous tile 
 			should_destroy = true

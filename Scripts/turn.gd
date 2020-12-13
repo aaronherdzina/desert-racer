@@ -222,10 +222,10 @@ func handle_turn():
 	var pre_loop_enemies = get_tree().get_nodes_in_group("active_enemies")
 	show_level_details(l, false)
 	var total_steps = meta.round_stats.steps_taken_in_level
-	if total_steps > 30 and total_steps < 60 or total_steps > 90 and total_steps < 120 or total_steps > 160:
-		game.move_sun_and_change_tiles(true)
-	else:
-		game.move_sun_and_change_tiles(false)
+	#if total_steps > 30 and total_steps < 60 or total_steps > 90 and total_steps < 120 or total_steps > 160:
+	#	game.move_sun_and_change_tiles(true)
+	#else:
+	#	game.move_sun_and_change_tiles(false)
 	#print('done checking sun')
 	l.get_node("text_container/high_z_index/afford_tip").visible = false
 	## 0) Handle randomly spawning objects

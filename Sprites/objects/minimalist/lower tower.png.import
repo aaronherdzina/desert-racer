@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tree_2.png-6d22b40b9073e2679fb19e33dd02ce8a.stex"
+path="res://.import/lower tower.png-c0ebec7a4ee29b8ee3f6f74b2f5617ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/objects/minimalist/tree_2.png"
-dest_files=[ "res://.import/tree_2.png-6d22b40b9073e2679fb19e33dd02ce8a.stex" ]
+source_file="res://Sprites/objects/minimalist/lower tower.png"
+dest_files=[ "res://.import/lower tower.png-c0ebec7a4ee29b8ee3f6f74b2f5617ef.stex" ]
 
 [params]
 

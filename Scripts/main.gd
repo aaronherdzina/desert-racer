@@ -26,7 +26,10 @@ const rock3 = preload("res://Sprites/parallax_background/minimal/rock shadow 3.p
 const rock4 = preload("res://Sprites/objects/2-2 5.png")
 const rock5 = preload("res://Sprites/objects/2-3 4.png")
 const tree_obstacle_1 = preload("res://Sprites/objects/minimalist/2 large trees.png")
-const tree_obstacle_2 = preload("res://Sprites/objects/minimalist/tree_2.png")
+const tree_obstacle_2 = preload("res://Sprites/objects/minimalist/single tree.png")
+const tower_obstacle = preload("res://Sprites/objects/minimalist/towerr.png")
+const lower_tower = preload("res://Sprites/objects/minimalist/lower tower.png")
+const tri_tree = preload("res://Sprites/objects/minimalist/tri tree.png")
 const small_barricade = preload("res://Sprites/General/small barricaxe.png")
 const cactus = preload("res://Sprites/General/new cactus small.png")
 
@@ -36,7 +39,11 @@ var object_imgs = [{'img': rock1, 'size': Vector2(.7, .7), 'shadow_rotation': (0
 					{'img': rock2, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': '2_rocks'},
 					{'img': rock3, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': 'slanted_rock'},
 					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'}]
+					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': lower_tower, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'},
+					{'img': tri_tree, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tower_obstacle, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'}]
 
 const TAN_TILE = preload("res://Sprites/General/tan tile.png")
 const DARK_BLUE_TILE = preload("res://Sprites/General/dark blue tile.png")
@@ -116,7 +123,7 @@ func _ready():
 
 
 #### SAVE LOAD FUNCS
-var debug_remove_save_file = false
+var debug_remove_save_file = true
 
 func loadGameData(onlyGameData=false):
 	print("loading...")
@@ -124,6 +131,7 @@ func loadGameData(onlyGameData=false):
 	if file.file_exists(dataFilepath) and not debug_remove_save_file:
 		file.open(dataFilepath, File.READ)
 		meta.savable.had_tutorial = file.get_var()
+		game.in_tutorial = meta.savable.had_tutorial
 		file.close()
 		print("loaded " + str(dataFilepath))
 	elif debug_remove_save_file and game_name in dataFilepath:
@@ -443,6 +451,7 @@ func handle_menus(dir):
 		elif 'overworld' in current_menu:
 			if not overworld.set_level_details(menu_list[menu_idx]):
 				# start level
+				print('\n lvl cols is ' + str(meta.savable.col) + '\n')
 				overworld.overworld_position = menu_list[menu_idx].name
 				current_menu = 'deck_select'
 				var dss = main.instancer(DECK_SELECT_SCENE)

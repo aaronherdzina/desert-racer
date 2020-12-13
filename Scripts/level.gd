@@ -33,6 +33,8 @@ var t_buffer = 49
 var start_buffer = 15
 var starting_tile = null
 var last_column_tiles = []
+var second_to_last_column_tiles = []
+var third_to_last_column_tiles = []
 var first_column_tiles = []
 var top_row_tiles = []
 var row_2_tiles = []
@@ -99,13 +101,14 @@ func _ready():
 		main.master_sound.get_node("engine noise 2").volume_db = -20
 		main.master_sound.get_node("engine_passby").play()
 		main.master_sound.get_node("engine noise 2").play()
-	if not meta.savable.had_tutorial:
+	if not meta.savable.had_tutorial and game.in_tutorial:
 		meta.handle_opening_tutorial()
 	if game.object_chance <= 60:
 		game.object_chance += 60
 	if game.objs_per_turn < 1:
 		game.objs_per_turn = 1
 	if game.in_tutorial:
+		meta.savable.col = 6
 		turn.step = 4
 		overworld.level_step_target = 20
 		var tp = main.instancer(main.text_popup)
@@ -258,8 +261,7 @@ func handle_round_timer():
 	   not turn.step_timer_can_change or\
 	   game.level_over:
 		return
-	
-	print('in tut ' + str(game.in_tutorial))
+
 	turn.step_timer = stepify(turn.step_timer - level_delta, .01)
 	if turn.step_timer <= 0:
 		turn.step_timer = 0
@@ -573,11 +575,20 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	#	is_row_block = true
 
 	for t in last_column_tiles:
-		if t != last_column_tiles[0]:
-			if not t.has_enemy and not t.strict_hazard and not t.has_player and\
-			   not t.has_object and not t.strict_immovable:
-				if not is_row_block or is_row_block and t.movable:
-					available_tiles.append(t)
+		if not t.has_enemy and not t.strict_hazard and not t.has_player and\
+		   not t.has_object and not t.strict_immovable:
+			if not is_row_block or is_row_block and t.movable:
+				available_tiles.append(t)
+	for t in second_to_last_column_tiles:
+		if not t.has_enemy and not t.strict_hazard and not t.has_player and\
+		   not t.has_object and not t.strict_immovable:
+			if not is_row_block or is_row_block and t.movable:
+				available_tiles.append(t)
+	for t in third_to_last_column_tiles:
+		if not t.has_enemy and not t.strict_hazard and not t.has_player and\
+		   not t.has_object and not t.strict_immovable:
+			if not is_row_block or is_row_block and t.movable:
+				available_tiles.append(t)
 
 	if len(available_tiles) <= 0:
 		return
@@ -631,7 +642,7 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 
 func get_row_scale(o, tile, new_vec=Vector2(0, 0), bonus_idx=0, index_o=null):
 	if o and main.checkIfNodeDeleted(o) == false:
-		var col_variance_scale = .07
+		var col_variance_scale = .05
 		var default_scale = o.get_scale() if new_vec == Vector2(0, 0) else new_vec
 		var count = meta.savable.col
 		for i in range(0, meta.savable.col):
@@ -646,6 +657,44 @@ func get_row_scale(o, tile, new_vec=Vector2(0, 0), bonus_idx=0, index_o=null):
 			count -= 1
 
 
+func map_cols_to_starting_tile(starting_t, col):
+	if col == 4:
+		$backgrounds/ground_container.position.y = 245
+		$backgrounds/b4_container.position.y = 245
+		$backgrounds/b5_container.position.y = 245
+		starting_t.position.y = meta.four_col_y
+	elif col == 5:
+		$backgrounds/ground_container.position.y = 196
+		$backgrounds/b4_container.position.y = 196
+		$backgrounds/b5_container.position.y = 196
+		starting_t.position.y = meta.five_col_y
+	elif col == 6:
+		$backgrounds/ground_container.position.y = 147
+		$backgrounds/b4_container.position.y = 147
+		$backgrounds/b5_container.position.y = 147
+		starting_t.position.y = meta.six_col_y
+	elif col == 7:
+		$backgrounds/ground_container.position.y = 98
+		$backgrounds/b4_container.position.y = 98
+		$backgrounds/b5_container.position.y = 98
+		starting_t.position.y = meta.seven_col_y
+	elif col == 8:
+		$backgrounds/ground_container.position.y = 49
+		$backgrounds/b4_container.position.y = 49
+		$backgrounds/b5_container.position.y = 49
+		starting_t.position.y = meta.eight_col_y
+	elif col == 9:
+		$backgrounds/ground_container.position.y = 0
+		$backgrounds/b4_container.position.y = 0
+		$backgrounds/b5_container.position.y = 0
+		starting_t.position.y = meta.nine_col_y
+	elif col == 10:
+		starting_t.position.y = meta.ten_col_y
+		$backgrounds/ground_container.position.y = -49
+		$backgrounds/b4_container.position.y = -49
+		$backgrounds/b5_container.position.y = -49
+
+
 func spawn_tiles():
 	var col = meta.savable.col
 	var row = meta.savable.row
@@ -653,6 +702,7 @@ func spawn_tiles():
 	if not starting_tile:
 		starting_tile = get_node("starting_tile")
 	var tile_count = 0
+	map_cols_to_starting_tile(starting_tile, col)
 	for c in range(0, col):
 		for r in range(0, row):
 			tile_count += 1
@@ -680,6 +730,12 @@ func spawn_tiles():
 			if r == row-1:
 				last_column_tiles.append(t)
 				#t.modulate = Color(0, 1, 0, 1)
+			if r == row-2:
+				last_column_tiles.append(t)
+				#t.modulate = Color(0, 1, 0, 1)
+			if r == row-3:
+				last_column_tiles.append(t)
+				#t.modulate = Color(0, 1, 0, 1)
 			elif r == 0:
 				first_column_tiles.append(t)
 				#t.modulate = Color(1, 1, 0, 1)
@@ -700,6 +756,7 @@ func spawn_tiles():
 			elif c == col-1:
 				bottom_row_tiles.append(t)
 				#t.modulate = Color(1, 0, 0, 1)
+
 
 func get_varied_movement(dir='right'):
 	# move at an angle, not by choice

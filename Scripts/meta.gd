@@ -2,7 +2,7 @@ extends Sprite
 
 var savable = {
 	col = 6,
-	row = 30,
+	row = 32,
 	player = {
 		character = 'Slick',
 		current_deck = [],
@@ -158,6 +158,14 @@ var screen_cap_array = []
 var can_capture = true
 var playing_screen_cap = false
 
+
+var four_col_y = 478
+var five_col_y = 429
+var six_col_y = 380
+var seven_col_y = 331
+var eight_col_y = 282
+var nine_col_y = 233
+var ten_col_y = 184
 
 var tutorial_0_message_1 = 'Welcome to ' + str(main.game_name).capitalize() + '! \n' + \
 						  'Your goal is to race to the end safely! '+\

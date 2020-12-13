@@ -1,10 +1,10 @@
 extends Sprite
 
 var game_delta = 0
-var object_chance = 50
-var default_object_chance = 50
+var object_chance = 45
+var default_object_chance = 45
 var default_object_chance_low = 25
-var default_object_chance_high = 65
+var default_object_chance_high = 80
 var player_move_dir = 'right'
 var player_move_speed = 0
 var preview_player_move_speed = 0
@@ -32,9 +32,9 @@ var regen_val = 0
 var obj_row_block_chance = -1
 var enm_projectile_chance = 20
 var enm_bomb_projectile_chance = 20
-var spawn_enm_chance = 20
+var spawn_enm_chance = 35
 var enms_per_turn = 1
-var objs_per_turn = 2
+var objs_per_turn = 4
 
 var global_move_buff = 0
 var global_speed_buff = 0
@@ -43,7 +43,7 @@ var active_buffs = []
 
 var player_stability = 0
 
-var object_limit = 10
+var object_limit = 25
 var enemy_limit = 7
 
 var set_finish_tiles = false
@@ -52,7 +52,7 @@ var set_finish_col_idx = 0
 var finish_tile_color = Color(.95, .95, 1, .3)
 
 var player_continue_tutorial = true
-var in_tutorial = true
+var in_tutorial = false
 var use_tutorial_deck = true
 var handling_tutorial_messages = false
 var previous_tutorial_idx = 0
@@ -767,8 +767,8 @@ func handle_turn_start():
 				if main.checkIfNodeDeleted(e.preview_tile) == false and e.preview_tile.hazard:
 					e.preview_tile.get_node("occupied_sprite").modulate = meta.light_red_mod
 		print('handle turn start end AFTER e')
-		if game.object_chance <= 50:
-			game.object_chance += 1
+		if object_chance <= default_object_chance_high:
+			object_chance += 1
 		if main.checkIfNodeDeleted(p) == false:
 			p.get_node("turn_anim_player").play("idle")
 		if player_stability <= 0:
@@ -834,7 +834,6 @@ func handle_turn_start():
 		for n in get_tree().get_nodes_in_group("remove_tutorial"):
 			if n and n != null and main.checkIfNodeDeleted(n) == false:
 				n.queue_free()
-
 
 
 var redraw = false
@@ -1029,8 +1028,6 @@ func set_tutorial_obj_and_tile():
 		and tile.col == meta.tutorial_7_tile_idx.y and not l.t_7_found:
 			l.t_7_found = true
 			return tile
-
-
 
 
 func set_tutorial_messages(idx=1, show_second_message=false):

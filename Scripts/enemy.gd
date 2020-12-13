@@ -22,10 +22,11 @@ var dirs = ['left', 'right', 'up', 'down', 'right_down', 'left_down',
 				'right_up', 'left_up']
 
 func _ready():
-	var r = rand_range(.7, 1)
-	var g = rand_range(.7, 1)
-	var b = rand_range(.7, 1)
-	get_node("body/anim_container1").modulate = Color(r, g, b, 1)
+	pass
+	#var r = rand_range(.7, 1)
+	#var g = rand_range(.7, 1)
+	#var b = rand_range(.7, 1)
+	#get_node("body/anim_container1").modulate = Color(r, g, b, 1)
 
 
 func set_next_move_tile_group():

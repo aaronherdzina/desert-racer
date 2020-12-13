@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tree_2.png-6d22b40b9073e2679fb19e33dd02ce8a.stex"
+path="res://.import/new ship 1.png-34c5fb39b45b6ab6b8678c2f9d79796a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/objects/minimalist/tree_2.png"
-dest_files=[ "res://.import/tree_2.png-6d22b40b9073e2679fb19e33dd02ce8a.stex" ]
+source_file="res://Sprites/General/new ship 1.png"
+dest_files=[ "res://.import/new ship 1.png-34c5fb39b45b6ab6b8678c2f9d79796a.stex" ]
 
 [params]
 

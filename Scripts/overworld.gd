@@ -53,7 +53,7 @@ func set_level_details(level_node):
 				game.object_chance = lvl['object_chance']
 				game.objs_per_turn = lvl['objects_per_turn']
 				return false
-	return true
+	return false
 
 
 func set_overworld_level_details():
@@ -71,11 +71,9 @@ func set_overworld_level_details():
 		var obj_deets = get_level_object_chance(focuses, l_name)
 		var is_pass_through = 0
 		var steps = get_level_step_target(focuses, l_name)
-		if rand_range(0, 100) >= 70 and '1-a' != l_name and '8-+' != l_name:
-			is_pass_through = 1
 		var level_deets = {
 			'name_index': l_name,
-			'detail': 'Passthrough' if is_pass_through != 0 else deets[0], # for example, steps focused, enemy focused, use to get img for node
+			'detail': 'Passthrough' if is_pass_through == 1 else deets[0], # for example, steps focused, enemy focused, use to get img for node
 			'img': deets[1],
 			'step_target': steps,
 			'enemy_chance': enm_deets[0],
@@ -84,10 +82,10 @@ func set_overworld_level_details():
 			'enm_bomb_chance': enm_projectile_deets[1],
 			'object_chance': obj_deets[0],
 			'objects_per_turn': obj_deets[1],
-			'is_pass_through': is_pass_through
+			'is_pass_through': 0
 		}
-		level_deets['details'] = deets[0]
-		level_deets['img'] = deets[1]
+		# TODO? DICT MIGHT BE COPYING, TRY SETTTING DEFAULTS ABOVE THEN OVERWRITE BELOW
+
 		#print('lvl ' + str(l_name) + ' deets ' + str(level_deets))
 		all_level_details.append(level_deets)
 
@@ -112,7 +110,7 @@ func get_level_enemy_projectile_chance(focuses, lvl):
 
 func get_level_enemy_chance(focuses, lvl):
 	var focus = false
-	var base_enm_amount = 15
+	var base_enm_amount = 25
 	var lvl_num = get_level_num(lvl) 
 	var val = base_enm_amount * (lvl_num * .5) if lvl_num > 0 else 1
 	for f in focuses:
@@ -120,7 +118,7 @@ func get_level_enemy_chance(focuses, lvl):
 			focus = true
 			break
 	var enms_per_turn = 1
-	if enms_per_turn > 3: enms_per_turn = 3
+	if enms_per_turn > 2: enms_per_turn = 2
 	if focus:
 		enms_per_turn += rand_range(1, 3)
 		val *= rand_range(1.05, 1.5)
@@ -130,16 +128,16 @@ func get_level_enemy_chance(focuses, lvl):
 
 func get_level_object_chance(focuses, lvl):
 	var focus = false
-	var base_obj_amount = 30
+	var base_obj_amount = game.default_object_chance
 	var lvl_num = get_level_num(lvl) 
-	var val = base_obj_amount * (lvl_num * .5) if lvl_num > 0 else 1
+	var val = base_obj_amount * (lvl_num * .25) if lvl_num > 0 else 1
 	for f in focuses:
 		if f == 'objects':
 			focus = true
 			break
-	var objs_per_turn = rand_range(1, 2)
+	var objs_per_turn = rand_range(2, 6)
 	if focus:
-		objs_per_turn = rand_range(2, 3)
+		objs_per_turn = rand_range(5, 11)
 		val *= rand_range(1.25, 1.5)
 	if val > 90: val = 90
 	if objs_per_turn < 1: objs_per_turn = 1
