@@ -2,7 +2,7 @@ extends Sprite
 
 var savable = {
 	col = 6,
-	row = 32,
+	row = 34,
 	player = {
 		character = 'Slick',
 		current_deck = [],

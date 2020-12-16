@@ -1105,4 +1105,8 @@ position = Vector2( 647.101, 755.143 )
 scale = Vector2( 0.621809, 0.0515486 )
 z_index = 4096
 texture = ExtResource( 2 )
+
+[node name="cam" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
 [connection signal="animation_finished" from="global_sun_anim" to="." method="_on_global_sun_anim_animation_finished"]

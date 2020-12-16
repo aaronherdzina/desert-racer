@@ -41,6 +41,9 @@ var object_imgs = [{'img': rock1, 'size': Vector2(.7, .7), 'shadow_rotation': (0
 					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': lower_tower, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'},
 					{'img': tri_tree, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': tower_obstacle, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'}]
@@ -597,35 +600,6 @@ func get_char_move_noises():
 		main.master_sound.get_node("tech_passby").play()
 	if meta.char_list[meta.char_idx].character == 'TECH':
 		main.master_sound.get_node("engine_passby").play()
-
-
-func cameraShake(mag, length):
-	randomize()
-	if not get_node("/root").has_node("cam"):
-		return
-	var cam = get_node("/root/cam")
-	var magnitude = mag if mag <= 10 else 10
-	var timeToShake = length if length <= 4 else 4
-	if shaking:
-		return
-	while timeToShake > 0:
-		shaking = true
-		var pos = Vector2()
-		pos.x = rand_range(-magnitude, magnitude)
-		pos.y = rand_range(-magnitude, magnitude)
-		cam.position = pos
-		timeToShake -= get_process_delta_time()
-
-		var timer = Timer.new()
-		timer.set_wait_time(.015)
-		timer.set_one_shot(true)
-		get_node("/root").add_child(timer)
-		timer.start()
-		yield(timer, "timeout")
-		timer.queue_free()
-
-	magnitude = 0
-	shaking = false
 
 
 func instancer(objToInstance=null, parent=null, addDeferred=false, addToThisGroup=null, returnObj=true):

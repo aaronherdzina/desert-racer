@@ -259,7 +259,7 @@ func check_tile_based_collision():
 					game.player_move_speed += 1
 					if game.player_move_speed > turn.step:
 						game.player_move_speed = turn.step
-	
+
 				handle_crash()
 			else:
 				if player_in_air:
@@ -268,7 +268,7 @@ func check_tile_based_collision():
 
 	if not removing and main.checkIfNodeDeleted(previous_tile) == false:
 		# next check collisions from passover conditions
-		if previous_tile.has_projectile or\
+		if previous_tile.has_projectile and str(self) != previous_tile.player_str  or\
 		   previous_tile.has_enemy or\
 		   previous_tile.has_object:
 			if game.player_move_dir == 'left' and previous_tile.previous_obstacle_dir == 'right' or\

@@ -257,6 +257,9 @@ text = "Options"
 align = 1
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="quit_text" type="Label" parent="."]
 margin_left = 1.0

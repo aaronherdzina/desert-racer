@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/smoke/smoke 2/Engine_Smoke-1.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-6.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-7.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/player/misc/driverless top.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/enemies/new enm 3.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/enemies/larger enm ship4.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/smoke/000000000000005.png" type="Texture" id=12]
 [ext_resource path="res://animations/new_animation.tres" type="Animation" id=13]
 [ext_resource path="res://animations/smoke.tres" type="Animation" id=14]
@@ -61,12 +61,13 @@
 [ext_resource path="res://Sprites/smoke_main_imgs/Smoke_Anim-6.png" type="Texture" id=59]
 [ext_resource path="res://animations/smoke shadow.tres" type="Animation" id=60]
 [ext_resource path="res://animations/shake.tres" type="Animation" id=61]
-[ext_resource path="res://Sprites/enemies/new enm 1.png" type="Texture" id=62]
-[ext_resource path="res://Sprites/enemies/new enm 2.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/enemies/larger enm ship2.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/enemies/larger enm ship1.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/enemies/larger enm ship3.png" type="Texture" id=64]
 
 [sub_resource type="Animation" id=1]
 resource_name = "enm1"
-length = 0.8
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("engine2:visible")
@@ -267,10 +268,10 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 62 ), ExtResource( 63 ), ExtResource( 62 ), ExtResource( 11 ) ]
+"values": [ ExtResource( 63 ), ExtResource( 62 ), ExtResource( 64 ), ExtResource( 11 ) ]
 }
 tracks/17/type = "value"
 tracks/17/path = NodePath("engine2:position")
@@ -1048,10 +1049,10 @@ rotation = -0.872665
 texture = ExtResource( 9 )
 
 [node name="seat" type="Sprite" parent="body/anim_container1/cart_imgs"]
-position = Vector2( 160.836, -39.7506 )
+position = Vector2( 144.37, 20.1656 )
 rotation = -0.523599
-scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 62 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 64 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="body/anim_container1/cart_imgs"]
 autoplay = "enm1"
@@ -1059,7 +1060,7 @@ anims/enm1 = SubResource( 1 )
 
 [node name="smoke_imgs" type="Sprite" parent="body/anim_container1"]
 modulate = Color( 1, 1, 1, 0.0980392 )
-position = Vector2( -255.549, 120.91 )
+position = Vector2( -176.552, 84.3821 )
 rotation = -0.785398
 
 [node name="Sprite2" type="Sprite" parent="body/anim_container1/smoke_imgs"]

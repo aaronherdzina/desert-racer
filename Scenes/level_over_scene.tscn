@@ -43,10 +43,13 @@ margin_bottom = 131.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.607843, 0.176471, 0.607843, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Death by enemy collision"
+text = "Died"
 align = 1
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="continue" type="Label" parent="."]
 margin_top = 146.0

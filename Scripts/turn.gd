@@ -41,7 +41,7 @@ func _ready():
 	pass
 
 
-func play_card(end_turn, here_with_input=false):
+func play_card(end_turn, here_with_input=false, found_card=null):
 	if game.level_over or handling_turn:
 		return
 	if can_play_card:
@@ -54,8 +54,8 @@ func play_card(end_turn, here_with_input=false):
 		if len(game.hand) > 0 and game.hand_idx < len(game.hand) and game.hand_idx >= 0 and\
 		   'Node' in str(game.hand[game.hand_idx]) and\
 		   main.checkIfNodeDeleted(game.hand[game.hand_idx]) == false:
-			var card = null 
-			var can_play_card_result = game.validate_can_play_card(game.hand[game.hand_idx])
+			var card = null if not found_card or main.checkIfNodeDeleted(found_card) == true else found_card
+			var can_play_card_result = game.validate_can_play_card(game.hand[game.hand_idx]) if not found_card else game.validate_can_play_card(found_card)
 			# create alert to show here
 			# if we can't play the card
 			if not can_play_card_result[0]: 
@@ -199,6 +199,10 @@ func handle_turn():
 		..in each obj before we change current to its newest spot, however we should ensure that previous
 		..is set to current if we don't move left or right otherwise it would give unwanted collisions
 	"""
+	
+	var l = get_node("/root/level")
+	l.should_shake_cam = true
+	l.cameraShake(.7, .015)
 	should_end_preview = true
 	while not safely_out_of_preview:
 		var wait_timer = Timer.new()
@@ -215,7 +219,7 @@ func handle_turn():
 		turns_at_bottom_timer_count += 1
 
 	var p = get_node("/root/player")
-	var l = get_node("/root/level")
+	l = get_node("/root/level")
 	l.repeat_player_tile_call = false
 	var pre_loop_objects = get_tree().get_nodes_in_group("active_objects")
 	var pre_loop_projectiles = get_tree().get_nodes_in_group("projectile")
@@ -438,6 +442,9 @@ func handle_turn():
 	handling_turn = false
 
 	print('before handle round over in handle turn')
+	
+	l.should_shake_cam = false
+	l.cameraShake(0, .00)
 	game.handle_round_over()
 	print('after handle round over in handle turn')
 	# handle win cases, if we can't find a player tile and are over step limit

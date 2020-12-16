@@ -1,5 +1,5 @@
 extends Node2D
-
+var should_shake_cam = false
 var b6_default_speed = .3
 var b6_slow_speed = .0
 var b5_default_speed = .35
@@ -35,6 +35,8 @@ var starting_tile = null
 var last_column_tiles = []
 var second_to_last_column_tiles = []
 var third_to_last_column_tiles = []
+var fourth_to_last_column_tiles = []
+var fith_to_last_column_tiles = []
 var first_column_tiles = []
 var top_row_tiles = []
 var row_2_tiles = []
@@ -116,6 +118,7 @@ func _ready():
 		tp.add_to_group("remove_tutorial")
 		main.can_click_start = true
 		game.handling_tutorial_messages = true
+	cameraShake(3, .05)
 	while game.handling_tutorial_messages: # wait until input clears in main
 		var timer = Timer.new()
 		timer.set_wait_time(.1)
@@ -276,6 +279,30 @@ func handle_round_timer():
 		get_node("text_container/turn_counter").set_text(str(turn.step_timer) + ' / ' + str(turn.step_timer_max))
 	if get_node("text_container/stability").get_text() != 'Stability: ' + str(game.player_stability) + ' / ' + str(meta.savable.player.stability_max):
 		get_node("text_container/stability").set_text('Stability: ' + str(game.player_stability) + ' / ' + str(meta.savable.player.stability_max))
+
+
+func cameraShake(mag, time_between_shakes):
+	randomize()
+	if not $cam:
+		return
+	var cam = $cam
+	var magnitude = mag if mag <= 10 else 10
+	while should_shake_cam:
+		var pos = Vector2()
+		pos.x = rand_range(-magnitude, magnitude)
+		pos.y = rand_range(-magnitude, magnitude)
+		cam.position = pos
+		# timeToShake -= get_process_delta_time()
+
+		var timer = Timer.new()
+		timer.set_wait_time(time_between_shakes)
+		timer.set_one_shot(true)
+		get_node("/root").add_child(timer)
+		timer.start()
+		yield(timer, "timeout")
+		timer.queue_free()
+	cam.position = Vector2(0, 0)
+	magnitude = 0
 
 
 func spawn_enemies():
@@ -589,6 +616,17 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 		   not t.has_object and not t.strict_immovable:
 			if not is_row_block or is_row_block and t.movable:
 				available_tiles.append(t)
+	for t in fourth_to_last_column_tiles:
+		if not t.has_enemy and not t.strict_hazard and not t.has_player and\
+		   not t.has_object and not t.strict_immovable:
+			if not is_row_block or is_row_block and t.movable:
+				available_tiles.append(t)
+	for t in fith_to_last_column_tiles:
+		if not t.has_enemy and not t.strict_hazard and not t.has_player and\
+		   not t.has_object and not t.strict_immovable:
+			if not is_row_block or is_row_block and t.movable:
+				available_tiles.append(t)
+
 
 	if len(available_tiles) <= 0:
 		return

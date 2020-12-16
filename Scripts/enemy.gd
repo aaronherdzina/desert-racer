@@ -104,7 +104,7 @@ func check_tile_based_collision():
 	if main.checkIfNodeDeleted(current_tile) == false:
 		# first check immediate collisions
 		if current_tile.has_two_enms or\
-		   current_tile.has_projectile or\
+		   current_tile.has_projectile and str(self) != current_tile.enm_str or\
 		   current_tile.has_object or\
 		   current_tile.has_player:
 			# we are here because we possibly collided with a something on a previous tile 
@@ -124,7 +124,7 @@ func check_tile_based_collision():
 	if not removing and main.checkIfNodeDeleted(previous_tile) == false:
 		# next check collisions from passover conditions
 		if previous_tile.has_two_enms or\
-		   previous_tile.has_projectile and str(self) != current_tile.enm_str or\
+		   previous_tile.has_projectile and str(self) != previous_tile.enm_str or\
 		   previous_tile.has_object or\
 		   previous_tile.has_player:
 			if move_dir == 'left' and previous_tile.previous_obstacle_dir == 'right' or\

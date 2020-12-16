@@ -1,8 +1,8 @@
 extends Sprite
 
 var game_delta = 0
-var object_chance = 45
-var default_object_chance = 45
+var object_chance = 35
+var default_object_chance = 35
 var default_object_chance_low = 25
 var default_object_chance_high = 80
 var player_move_dir = 'right'
@@ -561,6 +561,10 @@ func handle_round_over():
 	print('before card removal')
 	removal_deck = []
 	print('after card removal')
+
+
+func mouse_card_select(card_node, c_details):
+	turn.play_card(true, true, card_node)
 
 
 func resolve_card(card_node):

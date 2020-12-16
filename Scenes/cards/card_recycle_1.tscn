@@ -5,11 +5,7 @@
 [ext_resource path="res://Sprites/cards/recycle new.png" type="Texture" id=3]
 
 [node name="card_recycle_1" instance=ExtResource( 1 )]
-
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="2"]
-
+[node name="Sprite" parent="." index="3"]
 texture = ExtResource( 3 )
-
-

@@ -7,5 +7,5 @@
 [node name="card_move_boost_1" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="2"]
+[node name="Sprite" parent="." index="3"]
 texture = ExtResource( 3 )

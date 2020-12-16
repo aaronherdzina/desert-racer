@@ -197,9 +197,9 @@ func check_tile_based_collision():
 		# next check collisions from passover conditions
 		if previous_tile.has_two_projs or\
 		   previous_tile.has_enemy and not parent or\
-		   previous_tile.has_enemy and parent and parent != current_tile.enm_str or\
+		   previous_tile.has_enemy and parent and parent != previous_tile.enm_str or\
 		   previous_tile.has_player and not parent or\
-		   previous_tile.has_player and parent and parent != current_tile.player_str or\
+		   previous_tile.has_player and parent and parent != previous_tile.player_str or\
 		   previous_tile.has_object:
 			if dir == 'left' and previous_tile.previous_obstacle_dir == 'right' or\
 			   dir == 'up' and previous_tile.previous_obstacle_dir == 'down' or\

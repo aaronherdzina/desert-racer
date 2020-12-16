@@ -7,8 +7,8 @@
 [node name="card_mine_1" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="2"]
+[node name="Sprite" parent="." index="3"]
 texture = ExtResource( 3 )
 
-[node name="cost" parent="." index="5"]
+[node name="cost" parent="." index="6"]
 margin_left = -216.0

@@ -54,11 +54,13 @@ func set_next_move_tile(s):
 
 
 func set_next_preview_move_tile():
-	var preview_tile_option = preview_move_tiles[len(preview_move_tiles)-1]
+	var preview_tile_option = current_tile
+	if len(preview_move_tiles) > 1:
+		preview_tile_option = preview_move_tiles[len(preview_move_tiles)-2]
+	elif len(preview_move_tiles) > 0:
+		preview_tile_option = preview_move_tiles[len(preview_move_tiles)-1]
 	if current_tile.col == preview_tile_option.col:
 		preview_tile = preview_tile_option
-	else:
-		preview_tile = current_tile
 	if main.checkIfNodeDeleted(preview_tile) == false:
 		preview_tile.get_node("occupied_sprite").modulate = Color(1, .4, .4, 1)
 	#preview_tile.add_to_group("active_tile")

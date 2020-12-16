@@ -130,14 +130,14 @@ func get_level_object_chance(focuses, lvl):
 	var focus = false
 	var base_obj_amount = game.default_object_chance
 	var lvl_num = get_level_num(lvl) 
-	var val = base_obj_amount * (lvl_num * .25) if lvl_num > 0 else 1
+	var val = base_obj_amount * (lvl_num * .2) if lvl_num > 0 else 1
 	for f in focuses:
 		if f == 'objects':
 			focus = true
 			break
-	var objs_per_turn = rand_range(2, 6)
+	var objs_per_turn = rand_range(3, 5)
 	if focus:
-		objs_per_turn = rand_range(5, 11)
+		objs_per_turn = rand_range(5, 10)
 		val *= rand_range(1.25, 1.5)
 	if val > 90: val = 90
 	if objs_per_turn < 1: objs_per_turn = 1
