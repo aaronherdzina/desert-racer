@@ -86,3 +86,11 @@ func _ready():
 
 func _on_Button_pressed():
 	game.mouse_card_select(self, self.details)
+
+
+func _on_Button_mouse_entered():
+	game.mouse_card_hover(self)
+
+
+func _on_Button_mouse_exited():
+	game.mouse_card_exit_hover(self)

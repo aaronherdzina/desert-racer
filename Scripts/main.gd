@@ -20,16 +20,16 @@ const options = preload("res://Scenes/Options.tscn")
 const confirmMenuBtn = preload("res://Scenes/confirmMenuOption.tscn")
 const credits = preload("res://Scenes/credits.tscn")
 ## IMGS
-const rock1 = preload("res://Sprites/parallax_background/minimal/rock shadow.png")
-const rock2 = preload("res://Sprites/parallax_background/minimal/rock shadow 2.png")
-const rock3 = preload("res://Sprites/parallax_background/minimal/rock shadow 3.png")
-const rock4 = preload("res://Sprites/objects/2-2 5.png")
+const rock1 = preload("res://Sprites/objects/minimalist/outlined imgs/rock outlined1.png")
+const rock2 = preload("res://Sprites/objects/minimalist/outlined imgs/rock outlined2.png")
+const rock3 = preload("res://Sprites/objects/minimalist/outlined imgs/rock outlined3.png")
+const rock4 = preload("res://Sprites/objects/minimalist/outlined imgs/rock outlined4.png")
 const rock5 = preload("res://Sprites/objects/2-3 4.png")
-const tree_obstacle_1 = preload("res://Sprites/objects/minimalist/2 large trees.png")
-const tree_obstacle_2 = preload("res://Sprites/objects/minimalist/single tree.png")
+const tree_obstacle_1 = preload("res://Sprites/objects/minimalist/outlined imgs/single tree outlined 1.png")
+const tree_obstacle_2 = preload("res://Sprites/objects/minimalist/outlined imgs/double tree outline.png")
 const tower_obstacle = preload("res://Sprites/objects/minimalist/towerr.png")
 const lower_tower = preload("res://Sprites/objects/minimalist/lower tower.png")
-const tri_tree = preload("res://Sprites/objects/minimalist/tri tree.png")
+const tri_tree = preload("res://Sprites/objects/minimalist/outlined imgs/tri tree outlined.png")
 const small_barricade = preload("res://Sprites/General/small barricaxe.png")
 const cactus = preload("res://Sprites/General/new cactus small.png")
 
@@ -38,9 +38,10 @@ const WARNING_SYMBOL = preload("res://Sprites/objects/warning icon.png")
 var object_imgs = [{'img': rock1, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': 'big_rock'},
 					{'img': rock2, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': '2_rocks'},
 					{'img': rock3, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': 'slanted_rock'},
+					{'img': rock4, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': 'big_rock'},
 					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
 					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
@@ -108,7 +109,7 @@ var useController = true
 var controllerCursorObj = false
 #### END OF CONTROLLER
 
-
+var main_menu_buttons = null
 #### MAIN READY/PROCESS
 func _ready():
 	randomize()
@@ -117,6 +118,7 @@ func _ready():
 	master_sound.get_node("chords").play()
 	menu_idx = 0
 	get_node("/root/startingScene/buttons/start").modulate = globalUiDetails.focusEnterColor
+	main_menu_buttons = get_node("/root/startingScene/buttons").get_children()
 
 
 #func _process(delta):
@@ -229,7 +231,6 @@ func _input(event):
 			game.hand_idx = validate_menu_idx(game.hand_idx, game.hand, 'left')
 			game.highlight_card()
 		handle_input_delay()
-		
 	elif current_menu == 'main':
 		if Input.is_action_just_released("left")\
 		   or Input.is_action_just_released("right")\
@@ -255,7 +256,6 @@ func handle_input_delay(type='any'):
 
 
 func handle_menus(dir):
-	var main_menu_buttons = null
 	var c_scene = null
 	if current_menu == 'main':
 		main_menu_buttons = get_node("/root/startingScene/buttons").get_children()
@@ -293,22 +293,7 @@ func handle_menus(dir):
 			menu_list[menu_idx].modulate = c_scene.HIGHLIGHT_COLOR
 			menu_list[menu_idx].set_scale(c_scene.focused_size)
 		elif 'character_select' in current_menu:
-			if menu_list != meta.char_list: menu_list = meta.char_list
-			var new_game_scene = get_node("/root/new_game_screen")
-			meta.char_idx = validate_menu_idx(meta.char_idx, menu_list, 'left')
-			new_game_scene.show_char_details()
-			new_game_scene.get_node("arrow anim").stop()
-			new_game_scene.get_node("arrow anim").play("arrow left")
-			main.master_sound.get_node("engine noise 1").stop()
-			main.master_sound.get_node("engine noise 2").stop()
-			if meta.char_list[meta.char_idx].character == 'TECH':
-				main.master_sound.get_node("engine noise 2").volume_db = -10
-				main.master_sound.get_node("tech_passby").play()
-				main.master_sound.get_node("engine noise 2").play()
-			if meta.char_list[meta.char_idx].character == 'SLICK':
-				main.master_sound.get_node("engine noise 1").volume_db = -10
-				main.master_sound.get_node("engine_passby").play()
-				main.master_sound.get_node("engine noise 1").play()
+			call_character_select_scene(dir)
 	if dir == 'right':
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
@@ -330,98 +315,29 @@ func handle_menus(dir):
 			menu_list[menu_idx].modulate = c_scene.HIGHLIGHT_COLOR
 			menu_list[menu_idx].set_scale(c_scene.focused_size)
 		elif 'character_select' in current_menu:
-			if menu_list != meta.char_list: menu_list = meta.char_list
-			var new_game_scene = get_node("/root/new_game_screen")
-			meta.char_idx = validate_menu_idx(meta.char_idx, menu_list, 'right')
-			new_game_scene.show_char_details()
-			new_game_scene.get_node("arrow anim").stop()
-			new_game_scene.get_node("arrow anim").play("arrow right")
-			main.master_sound.get_node("engine noise 1").stop()
-			main.master_sound.get_node("engine noise 2").stop()
-			if meta.char_list[meta.char_idx].character == 'TECH':
-				main.master_sound.get_node("engine noise 2").volume_db = -10
-				main.master_sound.get_node("tech_passby").play()
-				main.master_sound.get_node("engine noise 2").play()
-			if meta.char_list[meta.char_idx].character == 'SLICK':
-				main.master_sound.get_node("engine noise 1").volume_db = -10
-				main.master_sound.get_node("engine_passby").play()
-				main.master_sound.get_node("engine noise 1").play()
+			call_character_select_scene(dir)
 	if dir == 'up':
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
 			menu_idx = validate_menu_idx(menu_idx, main_menu_buttons, 'left')
 			handle_main_menu_arrow_highlighting(dir)
 		elif 'create' in current_menu:
-			c_scene.get_node('card_container/arrow').visible = false
-			c_scene.get_node('card_container/AnimationPlayer').stop()
-			c_scene.get_node('deck_container/arrow').visible = false
-			c_scene.get_node('deck_container/AnimationPlayer').stop()
-			if menu_list != c_scene.current_deck_display and len(c_scene.current_deck_display) > 0:
-				#print('current?')
-				c_scene.in_deck = true
-				menu_list = c_scene.current_deck_display
-				menu_idx = 0
-				menu_idx = validate_menu_idx(menu_idx, menu_list, 'left')
-				c_scene.adjust_focus(menu_list, menu_idx)
-			elif menu_list != c_scene.all_instanced_cards:
-				#print('all_instanced_cards?')
-				c_scene.in_deck = false
-				menu_list = c_scene.all_instanced_cards
-				menu_idx = 0
-				c_scene.adjust_focus(menu_list, menu_idx)
-			for c in menu_list:
-				c.set_scale(c_scene.unfocused_size)
-			menu_list[menu_idx].modulate = c_scene.HIGHLIGHT_COLOR
-			menu_list[menu_idx].set_scale(c_scene.focused_size)
+			create_deck_swap_deck(c_scene)
 	if dir == 'down':
 		if main.master_sound: main.master_sound.get_node("card swipe").play()
 		if current_menu == 'main':
 			menu_idx = validate_menu_idx(menu_idx, main_menu_buttons, 'right')
 			handle_main_menu_arrow_highlighting(dir)
 		elif 'create' in current_menu:
-			c_scene.get_node('card_container/arrow').visible = false
-			c_scene.get_node('card_container/AnimationPlayer').stop()
-			c_scene.get_node('deck_container/arrow').visible = false
-			c_scene.get_node('deck_container/AnimationPlayer').stop()
-			if menu_list != c_scene.current_deck_display and len(c_scene.current_deck_display) > 0:
-				c_scene.in_deck = true
-				menu_list = c_scene.current_deck_display
-				menu_idx = 0
-				c_scene.adjust_focus(menu_list, menu_idx)
-			elif menu_list != c_scene.all_instanced_cards:
-				c_scene.in_deck = false
-				menu_list = c_scene.all_instanced_cards
-				menu_idx = 0
-				c_scene.adjust_focus(menu_list, menu_idx)
-			for c in menu_list:
-				c.set_scale(c_scene.unfocused_size)
-			menu_list[menu_idx].modulate = c_scene.HIGHLIGHT_COLOR
-			menu_list[menu_idx].set_scale(c_scene.focused_size)
+			create_deck_swap_deck(c_scene)
 	if dir == 'start':
 		if main.master_sound: main.master_sound.get_node("sci fi select").play()
 		if current_menu == 'main':
 			if main_menu_buttons and menu_idx > 0 or menu_idx < len(main_menu_buttons):
 				if main_menu_buttons[menu_idx].name == 'start':
-					in_menu = true
-					current_menu = 'overworld'
-					var o = instancer(OVERWORLD_SCENE)
-					if not overworld.world_generated:
-						overworld.set_overworld_level_details()
-					if overworld.overworld_position == '' or overworld.overworld_position == '1-a':
-						o.get_node("char").visible = false
-					else:
-						o.get_node("char").visible = true
-						o.get_node("char").set_text(str(meta.savable.player.character))
-					overworld.set_node_imgs()
-					menu_idx = 0
-					overworld.get_next_move_node()
-					menu_list = overworld.next_available_pos
-					overworld.set_node_details(menu_list[menu_idx])
+					call_start_new_game()
 				elif main_menu_buttons[menu_idx].name == 'create deck':
-					current_menu = 'create'
-					var create_scene = instancer(CREATE_DECK_SCENE)
-					create_scene.spawn_cards()
-					create_scene.adjust_focus(menu_list, menu_idx)
+					call_create_scene()
 				elif main_menu_buttons[menu_idx].name == 'options':
 					holdMenu = main.instancer(POPUP_MENU, null, true, "btnsToRemove")
 				elif main_menu_buttons[menu_idx].name == 'quit':
@@ -452,81 +368,11 @@ func handle_menus(dir):
 				for i in range(0, 7):
 					l.spawn_objects()
 		elif 'overworld' in current_menu:
-			if not overworld.set_level_details(menu_list[menu_idx]):
-				# start level
-				print('\n lvl cols is ' + str(meta.savable.col) + '\n')
-				overworld.overworld_position = menu_list[menu_idx].name
-				current_menu = 'deck_select'
-				var dss = main.instancer(DECK_SELECT_SCENE)
-				main.menu_idx = 0
-				main.menu_list = meta.savable.player.decks
-				dss.show_next_deck()
-			else:
-				# level is a 'passthrough' (skipable) see overworld.gd
-				overworld.overworld_position = menu_list[menu_idx].name
-				overworld.get_next_move_node()
-				menu_list = overworld.next_available_pos
-				menu_idx = validate_menu_idx(menu_idx, menu_list, 'right')
-				overworld.set_node_details(menu_list[menu_idx])
+			handle_start_from_overworld()
 		elif 'deck_select' in current_menu:
-			for n in get_tree().get_nodes_in_group("shown_deck_card"):
-				if checkIfNodeDeleted(n) == false:
-					n.queue_free()
-			if get_node("/root").has_node("choose_deck_scene"):
-				 get_node("/root/choose_deck_scene").queue_free()
-			if len(meta.savable.player.game_deck) > 0:
-				meta.savable.player.game_deck = []
-			meta.savable.player.game_deck = meta.savable.player.decks[main.menu_idx].duplicate()
-			current_menu = 'overworld'
-			if overworld.overworld_position == '' or overworld.overworld_position == '1-a':
-				current_menu = 'character_select'
-				var cs = instancer(CHARACTER_SELECT_SCENE)
-				menu_list = meta.char_list
-				meta.char_idx = 0
-				main.master_sound.get_node("engine noise 1").stop()
-				main.master_sound.get_node("engine noise 2").stop()
-				if meta.char_list[meta.char_idx].character == 'SLICK':
-					main.master_sound.get_node("tech_passby").play()
-					main.master_sound.get_node("engine noise 2").play()
-				if meta.char_list[meta.char_idx].character == 'TECH':
-					main.master_sound.get_node("engine_passby").play()
-					main.master_sound.get_node("engine noise 1").play()
-			else:
-				for n in get_tree().get_nodes_in_group("remove_on_game_start"):
-					if checkIfNodeDeleted(n) == false:
-						n.queue_free()
-				game_started = true
-				in_menu = false
-				current_menu = 'game'
-				var l = instancer(LEVEL)
-				l.spawn_tiles()
-				l.spawn_player()
+			handle_start_level_menu_swap()
 		elif 'level_over' in current_menu:
-			meta.clear_captures()
-			meta.playing_screen_cap = false
-			
-			if game.level_won:
-				if '8' in overworld.overworld_position:
-					overworld.world_generated = false
-				in_menu = true
-				current_menu = 'overworld'
-				var o = instancer(OVERWORLD_SCENE)
-				if not overworld.world_generated:
-					overworld.set_overworld_level_details()
-				o.get_node("char").set_text(str(meta.savable.player.character))
-				overworld.set_node_imgs()
-				menu_idx = 0
-				overworld.get_next_move_node()
-				menu_list = overworld.next_available_pos
-				overworld.set_node_details(menu_list[menu_idx])
-			else:
-				overworld.world_generated = false
-				current_menu = 'main'
-			if get_node("/root").has_node("level_over_scene"):
-				var los = get_node("/root/level_over_scene")
-				if checkIfNodeDeleted(los) == false:
-					los.queue_free()
-
+			handle_level_over()
 	if dir == 'quit':
 		if current_menu == 'main':
 			pass
@@ -551,6 +397,154 @@ func handle_menus(dir):
 
 
 #### HELPER FUNCS
+func handle_level_over():
+	meta.clear_captures()
+	meta.playing_screen_cap = false
+	if game.level_won:
+		if '8' in overworld.overworld_position:
+			overworld.world_generated = false
+		in_menu = true
+		current_menu = 'overworld'
+		var o = instancer(OVERWORLD_SCENE)
+		if not overworld.world_generated:
+			overworld.set_overworld_level_details()
+		o.get_node("char").set_text(str(meta.savable.player.character))
+		overworld.set_node_imgs()
+		menu_idx = 0
+		overworld.get_next_move_node()
+		menu_list = overworld.next_available_pos
+		overworld.set_node_details(menu_list[menu_idx])
+	else:
+		overworld.world_generated = false
+		current_menu = 'main'
+	if get_node("/root").has_node("level_over_scene"):
+		var los = get_node("/root/level_over_scene")
+		if checkIfNodeDeleted(los) == false:
+			los.queue_free()
+
+
+func call_create_scene():
+	current_menu = 'create'
+	var create_scene = instancer(CREATE_DECK_SCENE)
+	create_scene.spawn_cards()
+	create_scene.adjust_focus(menu_list, menu_idx)
+
+
+func create_deck_swap_deck(c_scene):
+	# swap from deck of cards to choose from to current deck and back
+	c_scene.get_node('card_container/arrow').visible = false
+	c_scene.get_node('card_container/AnimationPlayer').stop()
+	c_scene.get_node('deck_container/arrow').visible = false
+	c_scene.get_node('deck_container/AnimationPlayer').stop()
+	if menu_list != c_scene.current_deck_display and len(c_scene.current_deck_display) > 0:
+		c_scene.in_deck = true
+		menu_list = c_scene.current_deck_display
+		menu_idx = 0
+		c_scene.adjust_focus(menu_list, menu_idx)
+	elif menu_list != c_scene.all_instanced_cards:
+		c_scene.in_deck = false
+		menu_list = c_scene.all_instanced_cards
+		menu_idx = 0
+		c_scene.adjust_focus(menu_list, menu_idx)
+	for c in menu_list:
+		c.set_scale(c_scene.unfocused_size)
+	menu_list[menu_idx].modulate = c_scene.HIGHLIGHT_COLOR
+	menu_list[menu_idx].set_scale(c_scene.focused_size)
+
+
+func handle_start_level_menu_swap():
+	for n in get_tree().get_nodes_in_group("shown_deck_card"):
+		if checkIfNodeDeleted(n) == false:
+			n.queue_free()
+	if get_node("/root").has_node("choose_deck_scene"):
+		 get_node("/root/choose_deck_scene").queue_free()
+	if len(meta.savable.player.game_deck) > 0:
+		meta.savable.player.game_deck = []
+	meta.savable.player.game_deck = meta.savable.player.decks[main.menu_idx].duplicate()
+	current_menu = 'overworld'
+	if overworld.overworld_position == '' or overworld.overworld_position == '1-a':
+		current_menu = 'character_select'
+		var cs = instancer(CHARACTER_SELECT_SCENE)
+		menu_list = meta.char_list
+		meta.char_idx = 0
+		main.master_sound.get_node("engine noise 1").stop()
+		main.master_sound.get_node("engine noise 2").stop()
+		if meta.char_list[meta.char_idx].character == 'SLICK':
+			main.master_sound.get_node("tech_passby").play()
+			main.master_sound.get_node("engine noise 2").play()
+		if meta.char_list[meta.char_idx].character == 'TECH':
+			main.master_sound.get_node("engine_passby").play()
+			main.master_sound.get_node("engine noise 1").play()
+	else:
+		for n in get_tree().get_nodes_in_group("remove_on_game_start"):
+			if checkIfNodeDeleted(n) == false:
+				n.queue_free()
+		game_started = true
+		in_menu = false
+		current_menu = 'game'
+		var l = instancer(LEVEL)
+		l.spawn_tiles()
+		l.spawn_player()
+
+
+func handle_start_from_overworld():
+	if not overworld.set_level_details(menu_list[menu_idx]):
+		# start level
+		# print('\n lvl cols is ' + str(meta.savable.col) + '\n')
+		overworld.overworld_position = menu_list[menu_idx].name
+		current_menu = 'deck_select'
+		var dss = main.instancer(DECK_SELECT_SCENE)
+		main.menu_idx = 0
+		main.menu_list = meta.savable.player.decks
+		dss.show_next_deck()
+	else:
+		# level is a 'passthrough' (skipable) see overworld.gd
+		overworld.overworld_position = menu_list[menu_idx].name
+		overworld.get_next_move_node()
+		menu_list = overworld.next_available_pos
+		menu_idx = validate_menu_idx(menu_idx, menu_list, 'right')
+		overworld.set_node_details(menu_list[menu_idx])
+
+
+func call_start_new_game():
+	in_menu = true
+	current_menu = 'overworld'
+	var o = instancer(OVERWORLD_SCENE)
+	if not overworld.world_generated:
+		overworld.set_overworld_level_details()
+	if overworld.overworld_position == '' or overworld.overworld_position == '1-a':
+		o.get_node("char").visible = false
+	else:
+		o.get_node("char").visible = true
+		o.get_node("char").set_text(str(meta.savable.player.character))
+	overworld.set_node_imgs()
+	menu_idx = 0
+	overworld.get_next_move_node()
+	menu_list = overworld.next_available_pos
+	overworld.set_node_details(menu_list[menu_idx])
+
+
+func call_character_select_scene(dir):
+	if dir == 'up': dir = 'right'
+	if dir == 'down': dir = 'left'
+	if menu_list != meta.char_list: menu_list = meta.char_list
+	var new_game_scene = get_node("/root/new_game_screen")
+	meta.char_idx = validate_menu_idx(meta.char_idx, menu_list, dir)
+	new_game_scene.show_char_details()
+	new_game_scene.get_node("arrow anim").stop()
+	new_game_scene.get_node("arrow anim").play("arrow left")
+	main.master_sound.get_node("engine noise 1").stop()
+	main.master_sound.get_node("engine noise 2").stop()
+	if meta.char_list[meta.char_idx].character == 'TECH':
+		main.master_sound.get_node("engine noise 2").volume_db = -10
+		main.master_sound.get_node("tech_passby").play()
+		main.master_sound.get_node("engine noise 2").play()
+	if meta.char_list[meta.char_idx].character == 'SLICK':
+		main.master_sound.get_node("engine noise 1").volume_db = -10
+		main.master_sound.get_node("engine_passby").play()
+		main.master_sound.get_node("engine noise 1").play()
+
+
 func handle_main_menu_arrow_highlighting(dir, reset=false):
 	if checkIfNodeDeleted(get_node("/root/startingScene/control_tip_imgs")) == false:
 		var control_tip_img_container = get_node("/root/startingScene/control_tip_imgs")

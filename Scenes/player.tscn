@@ -107,7 +107,7 @@ tracks/2/path = NodePath("anim_container1/smoke_imgs:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0.2, 2.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -350,6 +350,7 @@ z_index = 500
 script = ExtResource( 1 )
 
 [node name="body" type="KinematicBody2D" parent="."]
+z_index = 200
 collision_layer = 0
 collision_mask = 0
 
@@ -372,13 +373,14 @@ uppercase = true
 
 [node name="shadow" type="Sprite" parent="body/anim_container1"]
 visible = false
-modulate = Color( 0, 0, 0, 0 )
+modulate = Color( 0, 0, 0, 0.196078 )
 self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 50.2038, 154.143 )
 rotation = -0.785398
 scale = Vector2( 2, 2 )
 
 [node name="shadow2" type="Sprite" parent="body/anim_container1/shadow"]
+visible = false
 modulate = Color( 0, 0, 0, 0.784314 )
 self_modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( -146.571, 4.8322 )
@@ -387,6 +389,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 26 )
 
 [node name="shadow3" type="Sprite" parent="body/anim_container1/shadow"]
+visible = false
 modulate = Color( 0, 0, 0, 0.784314 )
 self_modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( -25.2731, 24.3141 )
@@ -397,61 +400,36 @@ texture = ExtResource( 2 )
 [node name="cart_imgs" type="Node2D" parent="body/anim_container1"]
 visible = false
 position = Vector2( -288.868, 55.8013 )
-rotation = 0.785398
-scale = Vector2( 0.6, 0.6 )
 
 [node name="engine1" type="Sprite" parent="body/anim_container1/cart_imgs"]
-position = Vector2( 2865.32, 2946.03 )
-rotation = 1.39626
 texture = ExtResource( 72 )
 
 [node name="engine2" type="Sprite" parent="body/anim_container1/cart_imgs"]
-modulate = Color( 1, 0.392157, 0.392157, 0.740039 )
-position = Vector2( 221.006, 570.704 )
-rotation = 8.72665
-scale = Vector2( 0.6, 0.6 )
+modulate = Color( 1, 0.923843, 0.929647, 1 )
 texture = ExtResource( 72 )
 
 [node name="engine3" type="Sprite" parent="body/anim_container1/cart_imgs"]
 visible = false
-modulate = Color( 1, 0.392157, 0.392157, 0 )
-position = Vector2( -10196.6, 3852.21 )
-rotation = -3.31613
+modulate = Color( 1, 0.882353, 0.882353, 1 )
 texture = ExtResource( 22 )
 
 [node name="detail1" type="Sprite" parent="body/anim_container1/cart_imgs"]
 visible = false
-modulate = Color( 1, 0.392157, 0.392157, 0.392157 )
-position = Vector2( -104.428, 699.293 )
-rotation = -0.698132
 texture = ExtResource( 5 )
 
 [node name="detail2" type="Sprite" parent="body/anim_container1/cart_imgs"]
 visible = false
-modulate = Color( 1, 0.392157, 0.392157, 0.392157 )
-position = Vector2( -713.448, 734.698 )
-rotation = 5.23599
 texture = ExtResource( 6 )
 
 [node name="detail3" type="Sprite" parent="body/anim_container1/cart_imgs"]
 visible = false
-modulate = Color( 1, 0.392157, 0.392157, 0.392157 )
-position = Vector2( 439.495, 782.105 )
-rotation = 10.472
 texture = ExtResource( 7 )
 
 [node name="detail4" type="Sprite" parent="body/anim_container1/cart_imgs"]
 visible = false
-modulate = Color( 1, 0.392157, 0.392157, 0.392157 )
-position = Vector2( -388.795, -260.811 )
-rotation = -5.23599
 texture = ExtResource( 8 )
 
 [node name="seat" type="Sprite" parent="body/anim_container1/cart_imgs"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -199.113, 198.057 )
-rotation = -1.5708
-scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 71 )
 
 [node name="char" type="Sprite" parent="body/anim_container1/cart_imgs"]
@@ -464,9 +442,8 @@ anims/slick = ExtResource( 11 )
 "anims/tech anim" = ExtResource( 12 )
 
 [node name="smoke_imgs" type="Node2D" parent="body/anim_container1"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -159.158, 116.45 )
-rotation = -1.5708
+rotation = -0.785398
 
 [node name="Sprite2" type="Sprite" parent="body/anim_container1/smoke_imgs"]
 modulate = Color( 1, 1, 1, 0.215686 )
@@ -497,6 +474,7 @@ playback_speed = 5.0
 anims/smoke = ExtResource( 17 )
 
 [node name="shake_anim" type="AnimationPlayer" parent="body"]
+playback_speed = 0.25
 anims/shake = ExtResource( 18 )
 
 [node name="Sprite2" type="Sprite" parent="body"]
@@ -542,10 +520,10 @@ scale = Vector2( 2, 2 )
 
 [node name="shadow2" type="Sprite" parent="preview_body/anim_container1/shadow"]
 modulate = Color( 0, 0, 0, 0.784314 )
-position = Vector2( -125.431, -2.06868 )
+position = Vector2( -146.571, 4.8322 )
 rotation = -3.72529e-08
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 19 )
+texture = ExtResource( 26 )
 
 [node name="cart_imgs" type="Node2D" parent="preview_body/anim_container1"]
 position = Vector2( -39.2439, 90.406 )
@@ -589,21 +567,20 @@ rotation = -0.383972
 texture = ExtResource( 3 )
 
 [node name="smoke_imgs" type="Node2D" parent="preview_body/anim_container1"]
-modulate = Color( 1, 1, 1, 0.294118 )
+modulate = Color( 1, 1, 1, 0.0588235 )
 position = Vector2( -301.844, 232.081 )
 rotation = -0.785398
 
 [node name="Sprite2" type="Sprite" parent="preview_body/anim_container1/smoke_imgs"]
 visible = false
 modulate = Color( 1, 1, 1, 0.0196078 )
-position = Vector2( -161.146, -14.6925 )
+position = Vector2( -41.7193, -2.12134 )
 scale = Vector2( 1, 1.3 )
-texture = ExtResource( 24 )
+texture = ExtResource( 62 )
 
 [node name="Sprite" type="Sprite" parent="preview_body/anim_container1/smoke_imgs"]
 modulate = Color( 1, 1, 1, 0.784314 )
-position = Vector2( -119.426, -12.5712 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="col" type="CollisionShape2D" parent="preview_body"]
 shape = SubResource( 1 )

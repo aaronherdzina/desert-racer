@@ -566,6 +566,19 @@ func handle_round_over():
 func mouse_card_select(card_node, c_details):
 	turn.play_card(true, true, card_node)
 
+func mouse_card_hover(card_node):
+	if main.checkIfNodeDeleted(card_node) == false:
+		if len(hand) > 0:
+			for i in range(0, len(hand)):
+				var c = hand[i]
+				if  main.checkIfNodeDeleted(c) == false and c == card_node:
+					hand_idx = i
+					highlight_card()
+					return
+
+func mouse_card_exit_hover(card_node):
+	pass
+
 
 func resolve_card(card_node):
 	if main.checkIfNodeDeleted(card_node) == true or not 'Node' in str(card_node):

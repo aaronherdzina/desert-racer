@@ -139,11 +139,32 @@ position = Vector2( 597, 175 )
 scale = Vector2( 3, 0.4 )
 texture = ExtResource( 4 )
 
+[node name="Button" type="Button" parent="buttons/start"]
+modulate = Color( 0.392157, 0.490196, 0.607843, 0 )
+margin_left = -197.645
+margin_top = -138.332
+margin_right = 228.355
+margin_bottom = 133.668
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="create deck" type="Sprite" parent="buttons"]
 modulate = Color( 1, 1, 1, 0.882353 )
 position = Vector2( 597, 300 )
 scale = Vector2( 3, 0.4 )
 texture = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="buttons/create deck"]
+modulate = Color( 0.392157, 0.490196, 0.607843, 0 )
+margin_left = -197.645
+margin_top = -138.332
+margin_right = 228.355
+margin_bottom = 133.668
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
 [node name="options" type="Sprite" parent="buttons"]
 modulate = Color( 1, 1, 1, 0.882353 )
@@ -151,11 +172,33 @@ position = Vector2( 597, 425 )
 scale = Vector2( 3, 0.4 )
 texture = ExtResource( 4 )
 
+[node name="Button" type="Button" parent="buttons/options"]
+modulate = Color( 0.392157, 0.490196, 0.607843, 0 )
+margin_left = -197.645
+margin_top = -138.332
+margin_right = 228.355
+margin_bottom = 133.668
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
 [node name="quit" type="Sprite" parent="buttons"]
 modulate = Color( 1, 1, 1, 0.882353 )
 position = Vector2( 597, 550 )
 scale = Vector2( 3, 0.4 )
 texture = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="buttons/quit"]
+modulate = Color( 0.392157, 0.490196, 0.607843, 0 )
+margin_left = -197.645
+margin_top = -138.332
+margin_right = 228.355
+margin_bottom = 133.668
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( -1.14888, -0.230991 )
@@ -439,3 +482,15 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="mouse_entered" from="buttons/start/Button" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="buttons/start/Button" to="." method="_on_start_mouse_exited"]
+[connection signal="pressed" from="buttons/start/Button" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="buttons/create deck/Button" to="." method="_on_create_mouse_entered"]
+[connection signal="mouse_exited" from="buttons/create deck/Button" to="." method="_on_create_mouse_exited"]
+[connection signal="pressed" from="buttons/create deck/Button" to="." method="_on_create_pressed"]
+[connection signal="mouse_entered" from="buttons/options/Button" to="." method="_on_options_mouse_entered"]
+[connection signal="mouse_exited" from="buttons/options/Button" to="." method="_on_options_mouse_exited"]
+[connection signal="pressed" from="buttons/options/Button" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="buttons/quit/Button" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="buttons/quit/Button" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="buttons/quit/Button" to="." method="_on_quit_pressed"]

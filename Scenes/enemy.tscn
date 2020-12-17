@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-6.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-7.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/player/misc/driverless top.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/enemies/larger enm ship4.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/enemies/outlined ship 1.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/smoke/000000000000005.png" type="Texture" id=12]
 [ext_resource path="res://animations/new_animation.tres" type="Animation" id=13]
 [ext_resource path="res://animations/smoke.tres" type="Animation" id=14]
@@ -61,9 +61,9 @@
 [ext_resource path="res://Sprites/smoke_main_imgs/Smoke_Anim-6.png" type="Texture" id=59]
 [ext_resource path="res://animations/smoke shadow.tres" type="Animation" id=60]
 [ext_resource path="res://animations/shake.tres" type="Animation" id=61]
-[ext_resource path="res://Sprites/enemies/larger enm ship2.png" type="Texture" id=62]
-[ext_resource path="res://Sprites/enemies/larger enm ship1.png" type="Texture" id=63]
-[ext_resource path="res://Sprites/enemies/larger enm ship3.png" type="Texture" id=64]
+[ext_resource path="res://Sprites/enemies/outlined ship 4.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/enemies/outlined ship 3.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/enemies/outlined ship 2.png" type="Texture" id=64]
 
 [sub_resource type="Animation" id=1]
 resource_name = "enm1"
@@ -271,7 +271,7 @@ tracks/16/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 63 ), ExtResource( 62 ), ExtResource( 64 ), ExtResource( 11 ) ]
+"values": [ ExtResource( 11 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 62 ) ]
 }
 tracks/17/type = "value"
 tracks/17/path = NodePath("engine2:position")
@@ -991,9 +991,10 @@ collision_mask = 0
 rotation = 2.98023e-08
 
 [node name="anim_container1" type="Node2D" parent="body"]
+position = Vector2( -22.104, 23.6381 )
 
 [node name="shadow" type="Sprite" parent="body/anim_container1"]
-modulate = Color( 0, 0, 0, 0.196078 )
+modulate = Color( 0, 0, 0, 0.101961 )
 self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 176.886, 72.8055 )
 rotation = -0.785398
@@ -1002,10 +1003,10 @@ texture = ExtResource( 2 )
 
 [node name="shadow2" type="Sprite" parent="body/anim_container1/shadow"]
 modulate = Color( 0, 0, 0, 0.784314 )
-position = Vector2( -146.571, 4.8322 )
+position = Vector2( -157.861, -2.29168 )
 rotation = -3.72529e-08
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 15 )
+texture = ExtResource( 43 )
 
 [node name="cart_imgs" type="Sprite" parent="body/anim_container1"]
 position = Vector2( -138.593, -34.8339 )
@@ -1051,14 +1052,15 @@ texture = ExtResource( 9 )
 [node name="seat" type="Sprite" parent="body/anim_container1/cart_imgs"]
 position = Vector2( 144.37, 20.1656 )
 rotation = -0.523599
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 64 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="body/anim_container1/cart_imgs"]
 autoplay = "enm1"
 anims/enm1 = SubResource( 1 )
 
 [node name="smoke_imgs" type="Sprite" parent="body/anim_container1"]
+visible = false
 modulate = Color( 1, 1, 1, 0.0980392 )
 position = Vector2( -176.552, 84.3821 )
 rotation = -0.785398
@@ -1091,6 +1093,7 @@ playback_speed = 8.0
 
 [node name="shake_anim" type="AnimationPlayer" parent="body"]
 autoplay = "enm_shake"
+playback_speed = 0.25
 anims/enm_shake = SubResource( 4 )
 anims/shake = ExtResource( 61 )
 
