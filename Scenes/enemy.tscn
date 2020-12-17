@@ -983,7 +983,6 @@ z_index = 499
 script = ExtResource( 1 )
 
 [node name="body" type="KinematicBody2D" parent="."]
-z_index = 200
 collision_layer = 0
 collision_mask = 0
 

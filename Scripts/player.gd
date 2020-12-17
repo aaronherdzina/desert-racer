@@ -54,7 +54,7 @@ func _ready():
 		#get_node("body/anim_container1/cart_imgs/cart anim").play("tech anim")
 		get_node("body/anim_container1/cart_imgs").set_scale(tech_scale)
 	elif char_ref == 'SLICK':
-		$body/Sprite.modulate = Color(.75, 1, .75, 1)
+		#$body/Sprite.modulate = Color(.75, 1, .75, 1)
 		#get_node("body/anim_container1/cart_imgs/cart anim").play("slick")
 		get_node("body/anim_container1/cart_imgs").set_scale(slick_scale)
 	elif char_ref == 'RAVEN':
@@ -169,6 +169,7 @@ func set_next_move_tile_group():
 
 
 func set_next_move_tile(s):
+	z_index = game.get_z_index_off_row(current_tile)
 	previous_tile = current_tile
 	current_tile = move_tiles[s]
 	var move_len = len(move_tiles)

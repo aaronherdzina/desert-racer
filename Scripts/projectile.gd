@@ -123,6 +123,7 @@ func destroy_self():
 func set_next_move_tile(s):
 	previous_tile = current_tile 
 	current_tile = move_tiles[s]
+	z_index = game.get_z_index_off_row(current_tile)
 	#current_tile.get_node("Sprite").modulate = meta.tile_occupied_color
 	current_tile.z_index = 300
 	#current_tile.get_node("Sprite").set_texture(main.DARK_BLUE_TILE)

@@ -202,7 +202,7 @@ func handle_turn():
 	
 	var l = get_node("/root/level")
 	l.should_shake_cam = true
-	l.cameraShake(.7, .015)
+	l.cameraShake(1.7, .08)
 	should_end_preview = true
 	while not safely_out_of_preview:
 		var wait_timer = Timer.new()
@@ -444,7 +444,7 @@ func handle_turn():
 	print('before handle round over in handle turn')
 	
 	l.should_shake_cam = false
-	l.cameraShake(0, .00)
+	l.cameraShake(0, .000)
 	game.handle_round_over()
 	print('after handle round over in handle turn')
 	# handle win cases, if we can't find a player tile and are over step limit

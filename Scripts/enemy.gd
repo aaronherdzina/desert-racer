@@ -56,6 +56,7 @@ func get_enemy_direction():
 
 
 func set_next_move_tile(s):
+	z_index = game.get_z_index_off_row(current_tile)
 	previous_tile = current_tile
 	current_tile = move_tiles[s]
 	

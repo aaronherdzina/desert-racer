@@ -322,6 +322,7 @@ func spawn_enemies():
 	e.previous_tile = e.current_tile
 	e.current_tile.has_enemy = true
 	e.preview_tile = e.current_tile
+	e.z_index = game.get_z_index_off_row(e.current_tile)
 	find_enemy_move_tiles(turn.step, e)
 
 
@@ -340,6 +341,7 @@ func spawn_player():
 	p.get_neighbors()
 	game.set_initial_deck()
 	game.draw()
+	p.z_index = game.get_z_index_off_row(p.current_tile)
 	if game.in_tutorial:
 		game.player_stability = 500
 	#print('PLAYER spawned at pos ' + str(p.position))
@@ -570,6 +572,7 @@ func spawn_projectiles(parent, payload={'can_hurt_player': false,
 	e.position = p.global_position
 	p.tile_index = parent.current_tile.index
 	p.speed = turn.step_timer
+	p.z_index = game.get_z_index_off_row(p.current_tile)
 
 	if p.floater:
 		p.set_scale(Vector2(.15, .15))
@@ -671,6 +674,7 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	o.tile_index = o.current_tile.index
 	o.preview_tile = o.current_tile
 	o.current_tile.has_object = true
+	o.z_index = game.get_z_index_off_row(o.current_tile)
 	o.get_node('body/Sprite').position.x += rand_obj['img_offset'].x
 	o.get_node('body/Sprite').position.y += rand_obj['img_offset'].y
 	o.get_node('preview_body/Sprite').position.x += rand_obj['img_offset'].x

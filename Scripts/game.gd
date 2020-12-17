@@ -563,6 +563,16 @@ func handle_round_over():
 	print('after card removal')
 
 
+func get_z_index_off_row(tile):
+	# should be off row but col is correct.. ooopppsss why fix it now???..
+	if main.checkIfNodeDeleted(tile) == true:
+		return 500
+	var new_z_idx = 500
+	for i in range(0, meta.savable.col):
+		new_z_idx += i
+	return new_z_idx
+
+
 func mouse_card_select(card_node, c_details):
 	turn.play_card(true, true, card_node)
 
