@@ -85,7 +85,7 @@ tracks/0/path = NodePath("anim_container1/smoke_imgs:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 3.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -352,6 +352,7 @@ z_index = 500
 script = ExtResource( 1 )
 
 [node name="body" type="KinematicBody2D" parent="."]
+z_index = 200
 collision_layer = 0
 collision_mask = 0
 
@@ -453,7 +454,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="body/anim_container1/smoke_imgs"]
-modulate = Color( 0.686275, 0.588235, 0.333333, 0.0196078 )
+modulate = Color( 1, 0.882353, 0.784314, 0.0784314 )
 position = Vector2( -110.04, 104.806 )
 rotation = 0.174533
 scale = Vector2( 1.2, 0.6 )
@@ -502,7 +503,7 @@ texture = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="body"]
 position = Vector2( -28.6312, 32.4014 )
 rotation = -0.558505
-scale = Vector2( 1.4, 1.4 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 75 )
 
 [node name="preview_body" type="KinematicBody2D" parent="."]

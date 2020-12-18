@@ -1,11 +1,8 @@
 [gd_resource type="Animation" format=2]
 
 [resource]
-
 resource_name = "crash1"
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/anim_container1/cart_imgs/engine2:position")
 tracks/0/interp = 1
@@ -450,4 +447,3 @@ tracks/36/keys = {
 "update": 1,
 "values": [ 200, 0 ]
 }
-

@@ -682,18 +682,17 @@ func spawn_objects(spawn_pos=Vector2(-10,-10), chosen_spawn_tile=null):
 	find_object_move_tiles(turn.step, o)
 
 
-func get_row_scale(o, tile, new_vec=Vector2(0, 0), bonus_idx=0, index_o=null):
+func get_row_scale(o, tile, new_vec=Vector2(0, 0), bonus_idx=0, index_o=null, player=false):
 	if o and main.checkIfNodeDeleted(o) == false:
-		var col_variance_scale = .05
+		var col_variance_scale = .05 if not player else .07
 		var default_scale = o.get_scale() if new_vec == Vector2(0, 0) else new_vec
 		var count = meta.savable.col
+		if player:
+			print('\nplayer setting scalee??? pre loop\n')
 		for i in range(0, meta.savable.col):
 			if tile.col == i:
-				if new_vec != Vector2(0, 0) and main.checkIfNodeDeleted(index_o) == false:
-					index_o.z_index = i + bonus_idx
-					print('\n\n\nhere w ' + str(o.name))
-				else:
-					o.z_index = i
+				if player:
+					print('\n\nplayer setting scalee???\n\n')
 				o.set_scale(Vector2(default_scale.x-(col_variance_scale*count),
 								   default_scale.y-(col_variance_scale*count)))
 			count -= 1

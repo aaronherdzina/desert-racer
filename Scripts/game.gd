@@ -58,7 +58,7 @@ var handling_tutorial_messages = false
 var previous_tutorial_idx = 0
 # we set identifying card text here so we know if a player played the card we want
 var expected_tutorial_card_text = ''
-
+var default_player_scale = Vector2(1.6, 1.6)
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here

@@ -258,9 +258,6 @@ func handle_turn():
 				e.move_tiles = []
 				e.get_node("preview_body").visible = false
 				l.find_enemy_move_tiles(e.move_speed, e, e.move_dir)
-				if len(e.move_tiles) > 0 and main.checkIfNodeDeleted(e.get_node('body')) == false\
-				   and main.checkIfNodeDeleted(e.get_node('body/Sprite')) == false:
-					l.get_row_scale(e.get_node('body/Sprite'), e.move_tiles[0], Vector2(1.3, 1.3), e)
 		print('handling turn post e pre loops')
 		for o in pre_loop_objects:
 			if main.checkIfNodeDeleted(o) == false and 'Node' in str(o) and o.active and not o.removing and\
@@ -276,17 +273,13 @@ func handle_turn():
 				if not projectile.floater and not projectile.mine:
 					projectile.speed = turn.step
 				l.find_projectile_move_tiles(turn.step, projectile)
-				if len(projectile.move_tiles) > 0:
-					l.get_row_scale(projectile.get_node('body/Sprite'), projectile.move_tiles[0], Vector2(1.3, 1.3), projectile)
 		print('handling turn post projectile pre loops')
 		if main.checkIfNodeDeleted(p) == false and not p.removing and\
 		   main.checkIfNodeDeleted(p.current_tile) == false:
 			p.move_tiles = []
 			if game.player_move_speed >= 0:
 				l.find_player_move_tiles(game.player_move_speed, p, game.player_move_dir)
-				if len(p.move_tiles) > 0:
-					l.get_row_scale(p.get_node('body/Sprite'), p.move_tiles[0], Vector2(1.3, 1.3), 501, p)
-	
+				
 	if game.level_over:
 		return
 	meta.round_stats.rounds += 1
@@ -333,6 +326,8 @@ func handle_turn():
 		#	l.add_level_hazard(true)
 		if s < len(p.move_tiles) and main.checkIfNodeDeleted(p.move_tiles[s]) == false:
 			p.set_next_move_tile(s)
+			l.get_row_scale(p.get_node('body/Sprite'), p.move_tiles[0], game.default_player_scale, 501, p, true)
+	
 
 		p.current_tile.has_player = true # needs to be reset
 		print('handling turn step post get player move tile ')
@@ -342,6 +337,7 @@ func handle_turn():
 					if stop_moving:
 						stop_moving = false
 					proj.set_next_move_tile(s)
+					l.get_row_scale(proj.get_node('body/Sprite'), proj.move_tiles[0], Vector2(1.3, 1.3), 0, proj)
 				
 				proj.current_tile.has_projectile = true
 			else:
@@ -353,6 +349,9 @@ func handle_turn():
 					if stop_moving:
 						stop_moving = false
 					e.set_next_move_tile(s)
+					if main.checkIfNodeDeleted(e.get_node('body')) == false\
+					   and main.checkIfNodeDeleted(e.get_node('body/Sprite')) == false:
+						l.get_row_scale(e.get_node('body/Sprite'), e.move_tiles[0], Vector2(1.3, 1.3), 0, e)
 				e.current_tile.has_enemy = true
 			else:
 				stop_moving = true
