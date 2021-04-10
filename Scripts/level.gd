@@ -89,6 +89,7 @@ func _ready():
 	turn.step_timer_max = turn.step_timer_max_default
 	turn.step = turn.step_default
 	starting_tile = get_node("starting_tile")
+	meta.display_effects("/root/level/overlays")
 	game.player_stability = meta.savable.player.stability_max
 	main.master_sound.get_node("chords").stop()
 	main.master_sound.get_node("engine noise 1").stop()
@@ -252,11 +253,27 @@ func _process(delta):
 		if no_player_count >= 2:
 			game.end_level()
 			return
+	handle_cam_effects()
+	#$cam.position = get_node("/root/player/body/Sprite").position
 	handle_round_timer()
 	if get_node("text_container/steps").get_text() != "Speed: " + str(turn.step):
 		get_node("text_container/steps").set_text("Speed: " + str(turn.step))
 	if get_node("text_container/total steps").get_text() != "Steps: " + str(meta.round_stats.steps_taken_in_level) + '/' + str(overworld.level_step_target):
 		get_node("text_container/total steps").set_text("Steps: " + str(meta.round_stats.steps_taken_in_level) + '/' + str(overworld.level_step_target))
+
+
+func handle_cam_effects():
+	var c = $cam
+	var pos_mag = .2
+	var scale_mag = .1
+	#c.position -= pos_mag
+	var rand_scale = rand_range(-scale_mag, scale_mag)
+	var rand_vec = Vector2(rand_scale, rand_scale)
+	c.set_scale(rand_vec)
+	if c.get_scale().x > 1.3:
+		c.set_scale(1.3, 1.3)
+	elif c.get_scale().x < -1.3:
+		c.set_scale(-1.3, -1.3)
 
 
 func handle_round_timer():
@@ -300,7 +317,8 @@ func cameraShake(mag, time_between_shakes):
 		get_node("/root").add_child(timer)
 		timer.start()
 		yield(timer, "timeout")
-		timer.queue_free()
+		if self and timer and main.checkIfNodeDeleted(timer) == false:
+			timer.queue_free()
 	cam.position = Vector2(0, 0)
 	magnitude = 0
 

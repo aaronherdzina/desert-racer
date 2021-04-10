@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/smoke/000000000000030.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-4.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-6.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/player/cart_1/Desert_Racer_ISO-7.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/effects/Cloud pop.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/player/cart2/tech char.png" type="Texture" id=10]
 [ext_resource path="res://animations/slick.tres" type="Animation" id=11]
 [ext_resource path="res://animations/tech anim.tres" type="Animation" id=12]
@@ -117,7 +118,10 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 0.607843, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( -107.65, -69.071, -103.117, 71.4436, -67.7619, 70.5371, 150.716, -3.79967, 15.6404, -68.1645, -102.211, -94.4543 )
+
+[sub_resource type="Animation" id=6]
 length = 3.9
 loop = true
 tracks/0/type = "value"
@@ -169,7 +173,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -134.35, -14.1421 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 3.9
 loop = true
 tracks/0/type = "value"
@@ -221,7 +225,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -134.35, -14.1421 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim_container1:position")
@@ -236,7 +240,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 3.2819, -46.3989 ), Vector2( 40.9762, -24.8605 ), Vector2( -10.1908, -3.58849 ), Vector2( -19.169, 33.0186 ), Vector2( -30.9762, -4.71875 ), Vector2( -5.11146, -25.9565 ), Vector2( -30.4134, -11.3384 ), Vector2( 6.20206, -9.61487 ), Vector2( -25.4874, 16.5093 ), Vector2( -2.36245, -8.25854 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -264,7 +268,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ), ExtResource( 73 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("body:rotation_degrees")
@@ -303,7 +307,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 76 ), ExtResource( 73 ), ExtResource( 76 ), ExtResource( 76 ), ExtResource( 75 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("body:rotation_degrees")
@@ -352,7 +356,7 @@ z_index = 500
 script = ExtResource( 1 )
 
 [node name="body" type="KinematicBody2D" parent="."]
-z_index = 200
+z_index = -1
 collision_layer = 0
 collision_mask = 0
 
@@ -506,6 +510,16 @@ rotation = -0.558505
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 75 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="body/Sprite"]
+occluder = SubResource( 5 )
+
+[node name="Light2D" type="Light2D" parent="body"]
+visible = false
+position = Vector2( -290.745, 148.005 )
+texture = ExtResource( 9 )
+texture_scale = 1.5
+energy = 0.25
+
 [node name="preview_body" type="KinematicBody2D" parent="."]
 modulate = Color( 0.588235, 0.588235, 1, 0.392157 )
 collision_layer = 0
@@ -591,24 +605,24 @@ disabled = true
 [node name="smoke_anim" type="AnimationPlayer" parent="preview_body"]
 autoplay = "smoke"
 playback_speed = 8.0
-anims/smoke = SubResource( 3 )
+anims/smoke = SubResource( 6 )
 
 [node name="smoke_shadow_anim" type="AnimationPlayer" parent="preview_body"]
 autoplay = "smoke"
 playback_speed = 8.0
-anims/smoke = SubResource( 4 )
+anims/smoke = SubResource( 7 )
 
 [node name="shake_anim" type="AnimationPlayer" parent="preview_body"]
 autoplay = "shake"
-anims/shake = SubResource( 5 )
+anims/shake = SubResource( 8 )
 
 [node name="turn_anim_player" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 anims/crash1 = ExtResource( 67 )
-anims/idle = SubResource( 6 )
+anims/idle = SubResource( 9 )
 anims/idle_losing_control = ExtResource( 68 )
 anims/turn_down = ExtResource( 69 )
-anims/turn_down_player = SubResource( 7 )
+anims/turn_down_player = SubResource( 10 )
 anims/turn_up = ExtResource( 70 )
-anims/turn_up_player = SubResource( 8 )
+anims/turn_up_player = SubResource( 11 )
 [connection signal="animation_finished" from="turn_anim_player" to="." method="_on_turn_anim_player_animation_finished"]

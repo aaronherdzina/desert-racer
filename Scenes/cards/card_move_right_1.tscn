@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/cards/card_move_right_1.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/General/IMG_0019.PNG" type="Texture" id=2]
@@ -24,7 +24,11 @@ size = 100
 extra_spacing_char = 3
 font_data = ExtResource( 7 )
 
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( -213, -247, -258.401, 412.2, 210, 348, 257, -434, 243, -433 )
+
 [node name="card_move_right_1" type="Node2D"]
+light_mask = 0
 position = Vector2( -1124, 0 )
 z_index = 500
 script = ExtResource( 1 )
@@ -88,6 +92,9 @@ text = "CARD TITLE"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="description" type="Label" parent="."]
 margin_left = -386.0
@@ -113,6 +120,11 @@ valign = 2
 autowrap = true
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.00392157 )
+occluder = SubResource( 4 )
 [connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

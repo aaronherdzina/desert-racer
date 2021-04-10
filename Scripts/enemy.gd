@@ -52,13 +52,12 @@ func get_enemy_direction():
 			move_dir = 'down'
 		else:
 			move_dir = 'up'
-	
 
 
 func set_next_move_tile(s):
-	z_index = game.get_z_index_off_row(current_tile)
 	previous_tile = current_tile
 	current_tile = move_tiles[s]
+	z_index = game.get_z_index_off_row(current_tile)
 	
 	var move_len = len(move_tiles)
 	if move_dir != 'right':

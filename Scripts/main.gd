@@ -25,7 +25,8 @@ const rock2 = preload("res://Sprites/objects/minimalist/outlined imgs/rock b out
 const rock3 = preload("res://Sprites/objects/minimalist/outlined imgs/rock b outline tall.png")
 const rock4 = preload("res://Sprites/objects/minimalist/outlined imgs/rock b outline3.png")
 const rock5 = preload("res://Sprites/objects/2-3 4.png")
-const tree_obstacle_1 = preload("res://Sprites/objects/minimalist/outlined imgs/single tree b outlined.png")
+const tree_obstacle_1 = preload("res://Sprites/objects/minimalist/outlined imgs/shadowed high res red.png")
+const tree_peach_obstacle_1 = preload("res://Sprites/objects/minimalist/outlined imgs/shadowed high res orange.png")
 const tree_obstacle_2 = preload("res://Sprites/objects/minimalist/outlined imgs/double tree b outline.png")
 const tower_obstacle = preload("res://Sprites/objects/minimalist/towerr.png")
 const lower_tower = preload("res://Sprites/objects/minimalist/outlined imgs/tower b outline.png")
@@ -39,15 +40,15 @@ var object_imgs = [{'img': rock1, 'size': Vector2(.7, .7), 'shadow_rotation': (0
 					{'img': rock2, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': '2_rocks'},
 					{'img': rock3, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': 'slanted_rock'},
 					{'img': rock4, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(0, 0), 'name': 'big_rock'},
-					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_1, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tree_obstacle_2, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': lower_tower, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'},
-					{'img': tri_tree, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
-					{'img': tower_obstacle, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'}]
+					{'img': tree_peach_obstacle_1, 'size': Vector2(.6, .6), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-6, -23)), 'name': 'peach tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(.6, .6), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-6, -23)), 'name': 'peach tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(.6, .6), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-6, -23)), 'name': 'peach tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-6, -23)), 'name': 'tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-6, -23)), 'name': 'tree_group'},
+					{'img': tree_obstacle_1, 'size': Vector2(.7, .7), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-6, -23)), 'name': 'tree_group'},
+					{'img': lower_tower, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'}]
+					#{'img': tri_tree, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(6, 10), rand_range(-7, -11)), 'name': 'tree_group'},
+					#{'img': tower_obstacle, 'size': Vector2(1, 1), 'shadow_rotation': (0), 'img_offset': Vector2(rand_range(3, 6), rand_range(-3, -8)), 'name': 'building_group'}]
 
 const TAN_TILE = preload("res://Sprites/General/tan tile.png")
 const DARK_BLUE_TILE = preload("res://Sprites/General/dark blue tile.png")
@@ -361,7 +362,8 @@ func handle_menus(dir):
 			game.set_character_and_cart()
 			game_started = true
 			in_menu = false
-			var l = instancer(LEVEL)
+			var l = LEVEL.instance()
+			get_node("/root").add_child(l)
 			l.spawn_tiles()
 			l.spawn_player()
 			if game.in_tutorial:

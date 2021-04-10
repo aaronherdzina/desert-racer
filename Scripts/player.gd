@@ -169,9 +169,9 @@ func set_next_move_tile_group():
 
 
 func set_next_move_tile(s):
-	z_index = game.get_z_index_off_row(current_tile)
 	previous_tile = current_tile
 	current_tile = move_tiles[s]
+	z_index = game.get_z_index_off_row(current_tile)
 	var move_len = len(move_tiles)
 	var anim_speed = 1
 	
@@ -272,10 +272,10 @@ func check_tile_based_collision():
 		if previous_tile.has_projectile and str(self) != previous_tile.player_str  or\
 		   previous_tile.has_enemy or\
 		   previous_tile.has_object:
-			if game.player_move_dir == 'left' and previous_tile.previous_obstacle_dir == 'right' or\
-			   game.player_move_dir == 'up' and previous_tile.previous_obstacle_dir == 'down' or\
-			   game.player_move_dir == 'right' and previous_tile.previous_obstacle_dir == 'left' or\
-			   game.player_move_dir == 'down' and previous_tile.previous_obstacle_dir == 'up':
+			if not previous_tile.has_projectile and game.player_move_dir == 'left' and previous_tile.previous_obstacle_dir == 'right' or\
+			   not previous_tile.has_projectile and game.player_move_dir == 'up' and previous_tile.previous_obstacle_dir == 'down' or\
+			   not previous_tile.has_projectile and game.player_move_dir == 'right' and previous_tile.previous_obstacle_dir == 'left' or\
+			   not previous_tile.has_projectile and game.player_move_dir == 'down' and previous_tile.previous_obstacle_dir == 'up':
 
 				if player_can_crash and not invincible:
 					if previous_tile.has_enemy:
@@ -310,6 +310,7 @@ func set_tile_values(t):
 	t.player_can_be_shot = player_can_be_shot
 
 	t.player_str = str(self)
+	
 	t.previous_obstacle_dir = game.player_move_dir
 	if player_can_be_hurt and not invincible:
 		if t.hazard:

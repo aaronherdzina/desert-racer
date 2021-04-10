@@ -5,6 +5,7 @@ var savable = {
 	row = 34,
 	player = {
 		character = 'Slick',
+		hp = 1,
 		current_deck = [],
 		game_deck = [],
 		hand_limit = 2,
@@ -70,6 +71,7 @@ var round_stats = {
 
 var char_slick = {
 	character = 'SLICK',
+	hp = 2,
 	current_deck = [],
 	hand_limit = 3,
 	stability_max = 250,
@@ -89,6 +91,7 @@ var char_slick = {
 
 var char_tech = {
 	character = 'TECH',
+	hp = 2,
 	current_deck = [],
 	hand_limit = 4,
 	stability_max = 150,
@@ -108,6 +111,7 @@ var char_tech = {
 
 var char_raven = {
 	character = 'RAVEN',
+	hp = 1,
 	current_deck = [],
 	hand_limit = 3,
 	stability_max = 200,
@@ -126,6 +130,7 @@ var char_raven = {
 
 var char_dozer = {
 	character = 'DOZER',
+	hp = 3,
 	current_deck = [],
 	hand_limit = 2,
 	stability_max = 300,
@@ -254,6 +259,33 @@ func clear_captures():
 	main.clear_array(screen_cap_array)
 	screen_cap_array = []
 	can_capture = true
+
+
+
+func display_effects(path):
+	var node = get_node(path)
+	var valX = node.position.x
+	var valY = node.position.y
+	var x_limit = node.position.x
+	var y_limit = node.position.y
+	var mag = 10
+	while get_node("/root").has_node("level"):
+		if node and main.checkIfNodeDeleted(node) == false:
+			var imgX = node.get_children()[0].position.x
+			var imgY = node.get_children()[0].position.y
+			for img in node.get_children():
+				if node and main.checkIfNodeDeleted(node) == false:
+					img.visible = true if rand_range(-1, 1) >= -.9 else false
+					if img.visible:
+						img.position.x = rand_range(-imgX - mag, imgX + mag)
+						img.position.y = rand_range(-imgY - mag, imgY + mag)
+					var timer = Timer.new()
+					timer.set_wait_time(.02)
+					timer.set_one_shot(true)
+					get_node("/root").add_child(timer)
+					timer.start()
+					yield(timer, "timeout")
+					timer.queue_free()
 
 
 func get_capture():

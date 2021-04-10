@@ -569,7 +569,8 @@ func get_z_index_off_row(tile):
 		return 500
 	var new_z_idx = 500
 	for i in range(0, meta.savable.col):
-		new_z_idx += i
+		if i == tile.col:
+			new_z_idx += i
 	return new_z_idx
 
 

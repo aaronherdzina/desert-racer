@@ -349,8 +349,8 @@ func handle_turn():
 					if stop_moving:
 						stop_moving = false
 					e.set_next_move_tile(s)
-					if main.checkIfNodeDeleted(e.get_node('body')) == false\
-					   and main.checkIfNodeDeleted(e.get_node('body/Sprite')) == false:
+					if e.has_node("body") and main.checkIfNodeDeleted(e.get_node('body')) == false\
+					   and e.get_node('body').has_node("Sprite") and main.checkIfNodeDeleted(e.get_node('body/Sprite')) == false:
 						l.get_row_scale(e.get_node('body/Sprite'), e.move_tiles[0], Vector2(1.3, 1.3), 0, e)
 				e.current_tile.has_enemy = true
 			else:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/object.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/objects/rock 1.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/objects/minimalist/New rock 2 dark shadow 2.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/objects/minimalist/Side pit closed.png" type="Texture" id=4]
+[ext_resource path="res://shaders/new_occluderpolygon2d.tres" type="OccluderPolygon2D" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -32,11 +33,21 @@ scale = Vector2( 0.12, 0.095 )
 texture = ExtResource( 4 )
 flip_h = true
 
+[node name="Node2D" type="Node2D" parent="body"]
+visible = false
+position = Vector2( -2.78663, -8.25824 )
+
 [node name="Sprite" type="Sprite" parent="body"]
-position = Vector2( -9.375, -4.62499 )
+position = Vector2( -10.125, -5.49999 )
 texture = ExtResource( 3 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="body/Sprite"]
+position = Vector2( 6.24462, -3.63325 )
+z_index = 50
+occluder = ExtResource( 5 )
+
 [node name="col" type="CollisionShape2D" parent="body"]
+visible = false
 shape = SubResource( 1 )
 disabled = true
 
@@ -54,6 +65,7 @@ valign = 1
 uppercase = true
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="body"]
+visible = false
 
 [node name="preview_body" type="KinematicBody2D" parent="."]
 visible = false
